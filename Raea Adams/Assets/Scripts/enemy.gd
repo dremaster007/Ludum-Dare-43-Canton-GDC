@@ -1,12 +1,13 @@
 extends "res://Assets/Scripts/character_core.gd"
 
-var rand_num = 0
-var enemy_difficulty = 0
+var rand_num = 0 #Used for random "rolls"
+var enemy_difficulty = 0 #This is how the hard enemy will be to defeat
 
 func _ready():
-	print("enemy spawned")
 	set_physics_process(true)
-	enemy_gen()
+	enemy_gen() #Generates enemy stats
+	
+	#This is for testing purposes
 	if enemy_difficulty == 0:
 		$ColorRect.modulate = Color(0,0,0,1)
 	if enemy_difficulty == 1:
@@ -17,12 +18,12 @@ func _ready():
 		$ColorRect.modulate = Color(1,0,0,1)
 
 func enemy_gen():
-	var stat_number
+	var stat_number #This makes it easier to modify the stat limit to multiple difficulties
 	randomize()
 	
-	if game_info.current_difficulty == 0:
-		stat_number = 10
-		enemy_difficulty = 0
+	if game_info.current_difficulty == 0: #Checks the difficulty of the level
+		stat_number = 10 #Sets the stat number to the highest each stat can be
+		enemy_difficulty = 0 #Sets the difficulty of the enemy
 	if game_info.current_difficulty == 1:
 		stat_number = 20
 		enemy_difficulty = 1
@@ -36,15 +37,16 @@ func enemy_gen():
 		stat_number = 40
 		enemy_difficulty = 4
 	
+	rand_num = randi()%stat_number #Sets the random number 
+	stats.Max_Health = rand_num #Sets the health to the random number
 	rand_num = randi()%stat_number
-	stats.Max_Health = rand_num
+	stats.Mana = rand_num #Sets the Mana to the random number
 	rand_num = randi()%stat_number
-	stats.Mana = rand_num
+	stats.Attack = rand_num #Sets the Attack to the random number
 	rand_num = randi()%stat_number
-	stats.Attack = rand_num
-	rand_num = randi()%stat_number
-	stats.Defense = rand_num
+	stats.Defense = rand_num #Sets the Defense to the random number
 
 func _physics_process(delta):
 	if stats.Current_Health == 0:
 		#death()
+		pass
