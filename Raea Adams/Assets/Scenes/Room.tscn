@@ -1,6 +1,19 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Assets/Scripts/Room.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Scenes/Enemy.tscn" type="PackedScene" id=2]
+
+[sub_resource type="Curve2D" id=2]
+
+bake_interval = 5.0
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 389.34, 166.2, 0, 0, 0, 0, 389, 163, 0, 0, 0, 0, 622.361, 168.64, 0, 0, 0, 0, 485.361, 276.64 )
+}
+
+[sub_resource type="CircleShape2D" id=3]
+
+custom_solver_bias = 0.0
+radius = 36.1653
 
 [node name="Room" type="Node" index="0"]
 
@@ -8,10 +21,11 @@ script = ExtResource( 1 )
 difficulty = {
 "Decent": false,
 "Easy": false,
-"Hard": false,
+"Hard": true,
 "Hell": false,
 "Insane": false
 }
+enemy_scene = ExtResource( 2 )
 
 [node name="ColorRect" type="ColorRect" parent="." index="0"]
 
@@ -30,5 +44,28 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 color = Color( 0.214844, 0.214844, 0.214844, 1 )
+
+[node name="EnemySpawnArea" type="Path2D" parent="." index="1"]
+
+self_modulate = Color( 0.5, 0.6, 1, 0.7 )
+position = Vector2( -1.36038, 1.36035 )
+curve = SubResource( 2 )
+
+[node name="SpawnLocation" type="PathFollow2D" parent="EnemySpawnArea" index="0"]
+
+position = Vector2( 389.34, 166.2 )
+rotation = -0.719981
+scale = Vector2( 0.143579, 0.143579 )
+offset = 0.0
+h_offset = 0.0
+v_offset = 0.0
+rotate = false
+cubic_interp = true
+loop = true
+lookahead = 4.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemySpawnArea/SpawnLocation" index="0"]
+
+shape = SubResource( 3 )
 
 

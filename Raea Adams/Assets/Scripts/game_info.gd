@@ -1,8 +1,10 @@
 extends Node
 
-var current_difficulty = {"Easy": false, "Decent": false, "Hard": false, "Insane": false, "Hell": false}
+#0 = Easy | 1 = Decent | 2 = Hard | 3 = Insane | 4 = Hell
+var current_difficulty = 0
 
-var party_size = 4 #This will hold the size of the party, it will start at 4 [The player and 3 party members]
+#This will hold the size of the party, it will start at 4 [The player and 3 party members]
+var party_size = 4 
 
 #This holds a dictionary that has each difficulty which holds the values of the levels that can be pulled into the game
 var rooms = {"Easy": [], 
