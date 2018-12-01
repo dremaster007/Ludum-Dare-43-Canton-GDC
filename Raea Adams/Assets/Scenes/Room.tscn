@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Assets/Scripts/Room.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Scenes/Enemy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Scenes/Pickup.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Scenes/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Scenes/npc_core.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Curve2D" id=1]
 
@@ -62,5 +64,28 @@ lookahead = 4.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemySpawnArea/SpawnLocation" index="0"]
 
 shape = SubResource( 2 )
+
+[node name="Player" parent="." index="2" groups=[
+"player",
+] instance=ExtResource( 4 )]
+
+position = Vector2( 510.771, 266.489 )
+
+[node name="NPC_Core" parent="." index="3" groups=[
+"enemy",
+] instance=ExtResource( 5 )]
+
+position = Vector2( 344.492, 373.199 )
+speed = 50
+distance_buffer = 10
+
+[node name="NPC_Core2" parent="." index="4" groups=[
+"player",
+] instance=ExtResource( 5 )]
+
+position = Vector2( 664.377, 256.318 )
+npc_type = 1
+speed = 50
+distance_buffer = 10
 
 

@@ -1,13 +1,18 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Assets/Scripts/enemy.gd" type="Script" id=1]
-
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 28.0167, 27.5007 )
 
-[node name="Enemy" type="KinematicBody2D"]
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 145.663, 128.117 )
+
+[node name="Enemy" type="KinematicBody2D" groups=[
+"enemy",
+]]
 
 position = Vector2( 1.19301, 0.574405 )
 scale = Vector2( 0.310823, 0.310823 )
@@ -16,7 +21,6 @@ input_pickable = false
 collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
-script = ExtResource( 1 )
 _sections_unfolded = [ "Z Index" ]
 
 [node name="ColorRect" type="ColorRect" parent="." index="0"]
@@ -42,5 +46,26 @@ _sections_unfolded = [ "Visibility" ]
 
 position = Vector2( 0.0690548, 0.250346 )
 shape = SubResource( 1 )
+
+[node name="PlayerDetection" type="Area2D" parent="." index="2"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection" index="0"]
+
+shape = SubResource( 2 )
+
+[node name="AttackCooldown" type="Timer" parent="." index="3"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
 
 
