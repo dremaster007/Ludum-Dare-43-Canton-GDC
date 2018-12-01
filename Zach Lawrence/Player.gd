@@ -6,15 +6,21 @@ var velocity = Vector2()
 var mouse_position = Vector2()
 var local_mouse_position = Vector2()
 
+export (Texture) var runCycleRight
+var runCycleRightArray = [6,3]
+
+export (Texture) var runCycleLeft
+var runCycleLeftArray = [5,3]
+
 var sprite_state
 
 func _ready():
+	#change_sprite(runCycleRight, runCycleRightArray, "running_right")
 	pass
 	
 func _process(delta):
 	get_input()
 	position += velocity * delta
-
 
 func get_input():
 	velocity = Vector2()    
@@ -40,42 +46,35 @@ func get_input():
 	if mouse_position.x > position.x and mouse_position.y <= position.y + 50 and mouse_position.y >= position.y - 50:
 		# The player is looking directly right
 		sprite_state = "right"
-		print ("player is looking right")
-	if mouse_position.x <position.x and mouse_position.y <= position.y + 50 and mouse_position.y >= position.y - 50:
+		change_sprite("running_right")
+	if mouse_position.x < position.x and mouse_position.y <= position.y + 50 and mouse_position.y >= position.y - 50:
 		# The player is looking directly left
 		sprite_state = "left"
-		print ("player is looking left")
+		change_sprite("running_left")
 	if mouse_position.y < position.y and mouse_position.x <= position.x + 50 and mouse_position.x >= position.x - 50:
 		# The player is looking up
 		sprite_state = "up"
-		print ("player is looking up")
 	if mouse_position.y > position.y and mouse_position.x <= position.x + 50 and mouse_position.x >= position.x - 50:
 		# The player is looking down
 		sprite_state = "down"
-		print ("player is looking down")
 	if mouse_position.x >= position.x + 50 and mouse_position.y <= position.y - 50:
 		# The player is looking up and right
 		sprite_state = "up_right"
-		print ("player is looking up and right")
 	if mouse_position.x >= position.x + 50 and mouse_position.y >= position.y + 50:
 		# The player is looking down and right
 		sprite_state = "down_right"
-		print ("player is looking down and right")
 	if mouse_position.x <= position.x - 50 and mouse_position.y <= position.y - 50:
 		# The player is looking up and left
 		sprite_state = "up_left"
-		print ("player is looking up and left")
 	if mouse_position.x <= position.x - 50 and mouse_position.y >= position.y + 50:
 		# The player is loooking down and left
 		sprite_state = "down_left"
-		print ("player is looking down and left")
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+		
+func change_sprite(anim_name):
+	$Sprite/AnimationPlayer.current_animation = anim_name
+
+
+
+
+
+

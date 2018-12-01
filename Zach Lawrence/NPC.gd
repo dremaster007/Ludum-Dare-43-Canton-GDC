@@ -24,3 +24,4 @@ func _process(delta):
 			$AnimatedSprite.flip_h = false
 	else:
 		position += direction.normalized() * 0 * delta
+	
