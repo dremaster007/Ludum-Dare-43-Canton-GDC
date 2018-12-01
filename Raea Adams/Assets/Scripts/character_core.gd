@@ -12,7 +12,7 @@ var stats = {"Current_Health": 0,
 
 var possible_actions = {"Attack": false, "Pickup": false}
 
-func attack(type):
+func attack():
 	if possible_actions.Attack:
 		pass
 

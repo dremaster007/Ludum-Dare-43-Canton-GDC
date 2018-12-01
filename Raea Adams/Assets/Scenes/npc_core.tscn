@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 10, 10 )
+extents = Vector2( 10.8476, 11.6795 )
 
 [sub_resource type="SpriteFrames" id=2]
 
@@ -17,17 +17,17 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=3]
-
-custom_solver_bias = 0.0
-extents = Vector2( 49.0565, 41.4328 )
-
 [sub_resource type="RectangleShape2D" id=4]
 
 custom_solver_bias = 0.0
 extents = Vector2( 17.8322, 16.6486 )
 
-[node name="NPC_Core" type="KinematicBody2D"]
+[sub_resource type="RectangleShape2D" id=5]
+
+custom_solver_bias = 0.0
+extents = Vector2( 48.5074, 43.3981 )
+
+[node name="NPC_Core" type="KinematicBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1
@@ -62,22 +62,9 @@ audio_bus_name = "Master"
 
 shape = SubResource( 1 )
 
-[node name="EnemyDetection" type="Area2D" parent="." index="3"]
+[node name="AttackDetection" type="Area2D" parent="." index="3"]
 
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-audio_bus_override = false
-audio_bus_name = "Master"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetection" index="0"]
-
-shape = SubResource( 3 )
-
-[node name="AttackDetection" type="Area2D" parent="." index="4"]
-
+visible = false
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -90,12 +77,25 @@ audio_bus_name = "Master"
 
 shape = SubResource( 4 )
 
+[node name="EnemyDetection" type="Area2D" parent="." index="4"]
+
+visible = false
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetection" index="0"]
+
+shape = SubResource( 5 )
+
 [connection signal="body_entered" from="HitBox" to="." method="_on_body_entered"]
 
 [connection signal="body_exited" from="HitBox" to="." method="_on_body_exited"]
 
 [connection signal="body_entered" from="EnemyDetection" to="." method="_on_body_entered"]
-
-[connection signal="body_exited" from="EnemyDetection" to="." method="_on_body_exited"]
 
 

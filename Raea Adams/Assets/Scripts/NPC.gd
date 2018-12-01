@@ -1,10 +1,11 @@
-extends KinematicBody2D
+extends "res://Assets/Scripts/character_core.gd"
 
 #This determines what kind of npc it is
 #0 = Enemy | 1 = Party Member
 export (int) var npc_type = 0
 
-var possible_actions = {"Attack": false, "Move": false, "Heal": false}
+var rand_num = 0 #Used for random "rolls"
+var enemy_difficulty = 0 #This is how the hard enemy will be to defeat
 
 var distance
 var direction = Vector2()
@@ -33,24 +34,24 @@ func _physics_process(delta):
 	#else:
 	move_and_slide(direction, Vector2(0,0))
 
-func _on_body_entered(body):
-	if body.is_in_group("player"):
-		if npc_type == 0:
-			current_target = body
-			possible_actions.Attack = true
-			print("New target")
-	if body.is_in_group("enemy"):
-		if npc_type == 1:
-			enemy = body
-			current_target = enemy
-			print(current_target)
-			possible_actions.Attack = true
+#Handles what happens when an NPC hits a body
+func _on_body_entered(body): 
+	if body.is_in_group("player"): #Checks to see if the body is party member
+		if npc_type == 0: #If the NPC is an enemy
+			current_target = body #The new target is the enemy
+			possible_actions.Attack = true #The enemy can now attack 
+	
+	if body.is_in_group("enemy"): #Checks to see if the body is an enemy
+		if npc_type == 1: #If the NPC is a party member
+			current_target = body #The enemy body is the new target 
+			possible_actions.Attack = true #The party member can now attack
 
+#Handles what happens when the NPC leaves a body
 func _on_body_exited(body):
-	if body.is_in_group("player"):
-		if npc_type == 0:
-			possible_actions.Attack = false
-	if body.is_in_group("enemy"):
-		if npc_type == 1:
-			print(current_target)
-			current_target = player
+	if body.is_in_group("player"): #If the body is a party member
+		if npc_type == 0: #Checks to see if the NPC is an enemy
+			possible_actions.Attack = false #The enemy will stop attacking
+	
+	if body.is_in_group("enemy"): #Checks to see if the body is an enemy
+		if npc_type == 1: #Checks to see if the NPC is a party member
+			current_target = player #The NPC will go back to following the player
