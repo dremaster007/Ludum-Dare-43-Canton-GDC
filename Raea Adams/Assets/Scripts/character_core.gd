@@ -14,14 +14,16 @@ var possible_actions = {"Attack": false, "Pickup": false}
 
 func attack():
 	if possible_actions.Attack:
-		pass
+		$Attack/CollisionShape2D.disabled = false
+		print("Attack false")
+		possible_actions.Attack = false
+		$AttackDuration.start()
 
 func hurt(damage_taken):
 	stats.Current_Health -= damage_taken
-	print(damage_taken)
 	print(stats.Current_Health)
 	#The area2D will be used as attack boxes
 	#When an enemy attack box is entered it calls this function with one argument
 
-#func death():
-	#queue_free()
+func death():
+	queue_free()

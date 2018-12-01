@@ -1,12 +1,13 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Assets/Scripts/NPC.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Graphics/player-run-1.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Scenes/Attack.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 10.8476, 11.6795 )
+extents = Vector2( 15.8333, 13.5955 )
 
 [sub_resource type="SpriteFrames" id=2]
 
@@ -20,14 +21,14 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=4]
 
 custom_solver_bias = 0.0
-extents = Vector2( 17.8322, 16.6486 )
+extents = Vector2( 16.309, 13.3577 )
 
 [sub_resource type="RectangleShape2D" id=5]
 
 custom_solver_bias = 0.0
 extents = Vector2( 48.5074, 43.3981 )
 
-[node name="NPC_Core" type="KinematicBody2D" index="0"]
+[node name="NPC_Core" type="KinematicBody2D"]
 
 input_pickable = false
 collision_layer = 1
@@ -62,9 +63,10 @@ audio_bus_name = "Master"
 
 shape = SubResource( 1 )
 
-[node name="AttackDetection" type="Area2D" parent="." index="3"]
+[node name="Attack" type="Area2D" parent="." index="3" groups=[
+"damage",
+]]
 
-visible = false
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -72,8 +74,9 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
+script = ExtResource( 3 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackDetection" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack" index="0"]
 
 shape = SubResource( 4 )
 
@@ -92,10 +95,23 @@ audio_bus_name = "Master"
 
 shape = SubResource( 5 )
 
+[node name="AttackDuration" type="Timer" parent="." index="5"]
+
+process_mode = 1
+wait_time = 0.3
+one_shot = false
+autostart = false
+
+[connection signal="damage_transfer" from="." to="Attack" method="_on_NPC_Core_damage_transfer"]
+
+[connection signal="area_entered" from="HitBox" to="." method="_on_HitBox_area_entered"]
+
 [connection signal="body_entered" from="HitBox" to="." method="_on_body_entered"]
 
 [connection signal="body_exited" from="HitBox" to="." method="_on_body_exited"]
 
 [connection signal="body_entered" from="EnemyDetection" to="." method="_on_body_entered"]
+
+[connection signal="timeout" from="AttackDuration" to="." method="_on_AttackDuration_timeout"]
 
 

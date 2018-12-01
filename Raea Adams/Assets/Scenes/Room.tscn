@@ -1,19 +1,42 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Assets/Scripts/Room.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Scenes/Enemy.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Assets/Scenes/Pickup.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Assets/Scenes/Player.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Assets/Scenes/npc_core.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Scenes/Pickup.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Scenes/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Scenes/npc_core.tscn" type="PackedScene" id=4]
 
-[sub_resource type="Curve2D" id=1]
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 28.0167, 27.5007 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 145.663, 128.117 )
+
+[sub_resource type="PackedScene" id=3]
+
+_bundled = {
+"conn_count": 0,
+"conns": PoolIntArray(  ),
+"editable_instances": [  ],
+"names": PoolStringArray( "Enemy", "position", "scale", "z_index", "input_pickable", "collision_layer", "collision_mask", "collision/safe_margin", "_sections_unfolded", "enemy", "KinematicBody2D", "ColorRect", "anchor_left", "anchor_top", "anchor_right", "anchor_bottom", "margin_left", "margin_top", "margin_right", "margin_bottom", "rect_pivot_offset", "rect_clip_content", "mouse_filter", "mouse_default_cursor_shape", "size_flags_horizontal", "size_flags_vertical", "color", "CollisionShapes", "shape", "CollisionShape2D", "PlayerDetection", "gravity_vec", "gravity", "linear_damp", "angular_damp", "audio_bus_override", "audio_bus_name", "Area2D", "AttackCooldown", "process_mode", "wait_time", "one_shot", "autostart", "Timer" ),
+"node_count": 6,
+"node_paths": [  ],
+"nodes": PoolIntArray( -1, -1, 10, 0, -1, 8, 1, 0, 2, 1, 3, 2, 4, 3, 5, 4, 6, 4, 7, 5, 8, 6, 1, 9, 0, 0, 11, 262155, -1, 16, 12, 7, 13, 7, 14, 7, 15, 7, 16, 8, 17, 8, 18, 9, 19, 9, 20, 10, 21, 3, 22, 11, 23, 11, 24, 4, 25, 4, 26, 12, 8, 13, 0, 0, 0, 29, 524315, -1, 2, 1, 14, 28, 15, 0, 0, 0, 37, 786462, -1, 7, 4, 16, 31, 17, 32, 18, 33, 19, 34, 20, 35, 3, 36, 21, 0, 3, 0, 29, 262173, -1, 1, 28, 22, 0, 0, 0, 43, 1048614, -1, 4, 39, 4, 40, 20, 41, 3, 42, 3, 0 ),
+"variants": [ Vector2( 1.19301, 0.574405 ), Vector2( 0.310823, 0.310823 ), 2, false, 1, 0.08, [ "Z Index" ], 0.0, -28.0, 28.0, Vector2( 0, 0 ), 0, Color( 1, 1, 1, 1 ), [ "Visibility" ], Vector2( 0.0690548, 0.250346 ), SubResource( 1 ), true, Vector2( 0, 1 ), 98.0, 0.1, 1.0, "Master", SubResource( 2 ) ],
+"version": 2
+}
+
+[sub_resource type="Curve2D" id=4]
 
 bake_interval = 5.0
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 389.34, 166.2, 0, 0, 0, 0, 389, 163, 0, 0, 0, 0, 727.201, 103.275, 0, 0, 0, 0, 734.545, 255.556, 0, 0, 0, 0, 551.334, 188.934, 0, 0, 0, 0, 667.923, 150.071, 0, 0, 0, 0, 355.168, 224.096, 0, 0, 0, 0, 432.895, 336.983, 0, 0, 0, 0, 630.911, 298.12, 0, 0, 0, 0, 758.603, 420.261, 0, 0, 0, 0, 497.666, 442.469, 0, 0, 0, 0, 294.098, 388.801, 0, 0, 0, 0, 260.787, 201.888, 0, 0, 0, 0, 303.351, 144.519, 0, 0, 0, 0, 408.836, 76.046, 0, 0, 0, 0, 456.953, 100.104, 0, 0, 0, 0, 532.828, 250.004, 0, 0, 0, 0, 584.645, 362.892, 0, 0, 0, 0, 351.467, 327.73, 0, 0, 0, 0, 701.234, 303.672, 0, 0, 0, 0, 332.961, 192.635, 0, 0, 0, 0, 405.135, 163.025, 0, 0, 0, 0, 390.33, 163.025, 0, 0, 0, 0, 389.34, 166.2 )
 }
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="CircleShape2D" id=5]
 
 custom_solver_bias = 0.0
 radius = 36.1653
@@ -21,8 +44,8 @@ radius = 36.1653
 [node name="Room" type="Node" index="0"]
 
 script = ExtResource( 1 )
-enemy_scene = ExtResource( 2 )
-item_scene = ExtResource( 3 )
+enemy_scene = SubResource( 3 )
+item_scene = ExtResource( 2 )
 
 [node name="ColorRect" type="ColorRect" parent="." index="0"]
 
@@ -46,7 +69,7 @@ color = Color( 0.214844, 0.214844, 0.214844, 1 )
 
 self_modulate = Color( 0.5, 0.6, 1, 0.7 )
 position = Vector2( -1.36038, 1.36035 )
-curve = SubResource( 1 )
+curve = SubResource( 4 )
 
 [node name="SpawnLocation" type="PathFollow2D" parent="EnemySpawnArea" index="0"]
 
@@ -63,27 +86,46 @@ lookahead = 4.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemySpawnArea/SpawnLocation" index="0"]
 
-shape = SubResource( 2 )
+shape = SubResource( 5 )
 
 [node name="Player" parent="." index="2" groups=[
 "player",
-] instance=ExtResource( 4 )]
+"party",
+] instance=ExtResource( 3 )]
 
 position = Vector2( 510.771, 266.489 )
 
 [node name="NPC_Core" parent="." index="3" groups=[
 "enemy",
-] instance=ExtResource( 5 )]
+] instance=ExtResource( 4 )]
 
 position = Vector2( 344.492, 373.199 )
 speed = 50
 distance_buffer = 10
 
 [node name="NPC_Core2" parent="." index="4" groups=[
-"player",
-] instance=ExtResource( 5 )]
+"party",
+] instance=ExtResource( 4 )]
 
 position = Vector2( 664.377, 256.318 )
+npc_type = 1
+speed = 50
+distance_buffer = 10
+
+[node name="NPC_Core3" parent="." index="5" groups=[
+"party",
+] instance=ExtResource( 4 )]
+
+position = Vector2( 541.685, 179.068 )
+npc_type = 1
+speed = 50
+distance_buffer = 10
+
+[node name="NPC_Core4" parent="." index="6" groups=[
+"party",
+] instance=ExtResource( 4 )]
+
+position = Vector2( 571.222, 335.841 )
 npc_type = 1
 speed = 50
 distance_buffer = 10
