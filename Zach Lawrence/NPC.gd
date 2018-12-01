@@ -14,7 +14,6 @@ func _ready():
 
 func _process(delta):
 	direction = player.position - self.position  # gets the direction the npc is facing
-	print (direction, "  This is the direction")
 	distance = sqrt(direction.x * direction.x + direction.y * direction.y)  # calculates how far away player is
 	if distance >= distance_buffer:  # determines if npc should move
 		distance = sqrt(direction.x * direction.x + direction.y * direction.y)
