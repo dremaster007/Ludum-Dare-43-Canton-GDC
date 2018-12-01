@@ -28,4 +28,10 @@ func room_setup():
 		difficulty.Hell.true
 	
 	if difficulty.Easy:
-		pass
+		randomize()
+		rand_num = rand_range()%room_settings.Easy.Enemies.size()
+		#Spawn enemies
+		rand_num = rand_range()%room_settings.Easy.Weapons.size()
+		#Spawn weapons
+		rand_num = rand_range()%room_settings.Easy.Items.size()
+		#Spawn Items
