@@ -51,5 +51,8 @@ _sections_unfolded = [ "Limit", "Smoothing" ]
 [node name="HUD" parent="." index="4" instance=ExtResource( 5 )]
 
 Durability = 0
+Mana = 20
+Health = 20
+ItemCount = 20
 
 
