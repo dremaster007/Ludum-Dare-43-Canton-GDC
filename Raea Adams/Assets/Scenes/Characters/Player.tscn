@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Scenes/Characters/Character_Core.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Graphics/Characters/raea.png" type="Texture" id=2]
+
+[node name="Player" index="0" instance=ExtResource( 1 )]
+
+move_speed = 200
+speed = 10
+distance_buffer = 10
+
+[node name="Sprite" parent="." index="4"]
+
+position = Vector2( 0.566565, 0 )
+texture = ExtResource( 2 )
+vframes = 4
+hframes = 3
+_sections_unfolded = [ "Animation" ]
+
+[node name="sword" parent="Weapons" index="0"]
+
+position = Vector2( -4.77084, 8.23779 )
+rotation = -0.927349
+flip_h = true
+
+[node name="Particles2D" parent="Weapons/sword" index="0"]
+
+position = Vector2( 0.516708, -24.1804 )
+scale = Vector2( 0.137138, 0.195272 )
+
+[node name="SwordArea" parent="Weapons/sword" index="1"]
+
+position = Vector2( 8.16495, -19.4616 )
+
+

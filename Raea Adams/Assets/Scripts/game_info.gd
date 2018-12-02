@@ -13,3 +13,21 @@ var rooms = {"Easy": [],
              "Insane": [],
              "Hell": []
             }
+
+var character_texs = {"Raea": "res://Assets/Graphics/Characters/raea.png",
+                      "Hewer": "res://Assets/Graphics/Characters/hewer.png",
+                      "Emily": "Insert path",
+                      "Paul": "Insert path",
+                      "ZachL": "Insert path",
+                      "ZachS": "Insert path",
+                      "Tony": "Insert path",
+                      "James": "Insert path",
+                      "Karel": "Insert path",
+                      "Chris": "Insert path", 
+                    }
+
+var party = {"Player": character_texs.Raea,
+             "Member1": "texture path",
+             "Member2": "texture path",
+             "Member3": "texture path",
+            }

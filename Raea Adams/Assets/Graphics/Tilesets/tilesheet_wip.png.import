@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tilesheet_wip.png-147ab751a772e480e197103d317fb216.stex"
+path="res://.import/tilesheet_wip.png-462fa8d945a3e5544b3b6421ba3c0b13.stex"
 
 [deps]
 
-source_file="res://Assets/Graphics/tilesheet_wip.png"
-dest_files=[ "res://.import/tilesheet_wip.png-147ab751a772e480e197103d317fb216.stex" ]
+source_file="res://Assets/Graphics/Tilesets/tilesheet_wip.png"
+dest_files=[ "res://.import/tilesheet_wip.png-462fa8d945a3e5544b3b6421ba3c0b13.stex" ]
 
 [params]
 
