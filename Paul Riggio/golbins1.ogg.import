@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/golbins1.ogg-5552505fe9c329390332f9c1c903857d.oggstr"
+
+[deps]
+
+source_file="res://golbins1.ogg"
+dest_files=[ "res://.import/golbins1.ogg-5552505fe9c329390332f9c1c903857d.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
