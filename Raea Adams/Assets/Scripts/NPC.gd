@@ -34,7 +34,7 @@ func _ready():
 func _physics_process(delta):
 	if get_hurt:
 		hurt(damage_taken)
-	if stats.Current_Health == 0:
+	if stats.Current_Health <= 0:
 		dead = true
 		death()
 	
@@ -79,12 +79,22 @@ func _on_AttackDuration_timeout():
 
 func _on_HitBox_area_entered(area):
 	if area.is_in_group("damage"):
-		if npc_type != area.npc_type:
+		print("Enemy hit")
+		if area.is_in_group("npc"):
+			if npc_type != area.npc_type:
+				hurt(area.damage)
+				damage_taken = area.damage
+				get_hurt = true
+		else:
 			hurt(area.damage)
 			damage_taken = area.damage
 			get_hurt = true
-		else:
-			return
 
 func _on_BeforeHurt_timeout():
 	possible_actions.Can_Hurt = true
+
+
+func _on_HitBox_body_entered(body):
+	if body.is_in_group("damage") and body.is_in_group("party"):
+		if npc_type == 0:
+			hurt(body.damage)

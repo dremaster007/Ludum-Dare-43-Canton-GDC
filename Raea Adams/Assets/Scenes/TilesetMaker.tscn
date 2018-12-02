@@ -1,0 +1,177 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Graphics/tilesheet_wip.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 31.5573, 43.1213 )
+
+[node name="TilesetMaker" type="Node"]
+
+[node name="Foreground_Wall01" type="StaticBody2D" parent="." index="0"]
+
+input_pickable = false
+collision_layer = 4
+collision_mask = 27
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Collision" ]
+
+[node name="Sprite" type="Sprite" parent="Foreground_Wall01" index="0"]
+
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 374, -6, 60, 70 )
+_sections_unfolded = [ "Region" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Foreground_Wall01" index="1"]
+
+position = Vector2( -1.40928, -5.42623 )
+shape = SubResource( 1 )
+
+[node name="Foreground_Wall02" type="StaticBody2D" parent="." index="1"]
+
+editor/display_folded = true
+visible = false
+input_pickable = false
+collision_layer = 4
+collision_mask = 27
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Collision" ]
+
+[node name="Sprite" type="Sprite" parent="Foreground_Wall02" index="0"]
+
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 438, 0, 61.429, 64 )
+_sections_unfolded = [ "Region" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Foreground_Wall02" index="1"]
+
+position = Vector2( 0.0246582, 14.2905 )
+shape = SubResource( 1 )
+
+[node name="Foreground_Wall03" type="StaticBody2D" parent="." index="2"]
+
+editor/display_folded = true
+visible = false
+input_pickable = false
+collision_layer = 4
+collision_mask = 27
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Collision" ]
+
+[node name="Sprite" type="Sprite" parent="Foreground_Wall03" index="0"]
+
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 499.573, -4, 65, 66.5 )
+_sections_unfolded = [ "Region" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Foreground_Wall03" index="1"]
+
+position = Vector2( 0.0246582, 14.2905 )
+shape = SubResource( 1 )
+
+[node name="Foreground_Wall04" type="StaticBody2D" parent="." index="3"]
+
+editor/display_folded = true
+visible = false
+input_pickable = false
+collision_layer = 4
+collision_mask = 27
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Collision" ]
+
+[node name="Sprite" type="Sprite" parent="Foreground_Wall04" index="0"]
+
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 562.621, -7.5, 61.5, 69.5 )
+_sections_unfolded = [ "Region" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Foreground_Wall04" index="1"]
+
+position = Vector2( 0.0246582, 14.2905 )
+shape = SubResource( 1 )
+
+[node name="Foreground_Wall05" type="StaticBody2D" parent="." index="4"]
+
+editor/display_folded = true
+visible = false
+input_pickable = false
+collision_layer = 4
+collision_mask = 27
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Collision" ]
+
+[node name="Sprite" type="Sprite" parent="Foreground_Wall05" index="0"]
+
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 625.121, -1.5, 62, 64 )
+_sections_unfolded = [ "Region" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Foreground_Wall05" index="1"]
+
+position = Vector2( 0.0246582, 14.2905 )
+shape = SubResource( 1 )
+
+[node name="Wall01" type="Sprite" parent="." index="5"]
+
+visible = false
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 437, 373.008, 61.51, 69.007 )
+
+[node name="Wall02" type="Sprite" parent="." index="6"]
+
+visible = false
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 498, 375, 64, 63 )
+
+[node name="Wall03" type="Sprite" parent="." index="7"]
+
+visible = false
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 561, 375, 65, 63 )
+
+[node name="Wall04" type="Sprite" parent="." index="8"]
+
+visible = false
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 624, 377, 65, 64 )
+
+[node name="Wall05" type="Sprite" parent="." index="9"]
+
+visible = false
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 687, 370, 63, 70 )
+
+[node name="Wall06" type="Sprite" parent="." index="10"]
+
+visible = false
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 746, 375, 64, 63 )
+
+
