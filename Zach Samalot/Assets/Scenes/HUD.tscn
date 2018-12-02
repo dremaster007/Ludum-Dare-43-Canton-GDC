@@ -135,7 +135,7 @@ anti_aliasing = true
 anti_aliasing_size = 1
 _sections_unfolded = [ "Shadow" ]
 
-[node name="HUD" type="CanvasLayer"]
+[node name="HUD" type="CanvasLayer" index="0"]
 
 layer = 1
 offset = Vector2( 0, 0 )
@@ -146,10 +146,10 @@ script = ExtResource( 1 )
 MaxHealth = 100
 MaxMana = 100
 MaxDurability = 100
-Durability = null
-Mana = null
-Health = null
-ItemCount = null
+Durability = 20
+Mana = 20
+Health = 20
+ItemCount = 20
 
 [node name="Health" type="Control" parent="." index="0"]
 
@@ -165,6 +165,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+_sections_unfolded = [ "Hint" ]
 
 [node name="Health" type="Label" parent="Health" index="0"]
 

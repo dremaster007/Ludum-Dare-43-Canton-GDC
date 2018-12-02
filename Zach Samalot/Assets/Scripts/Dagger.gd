@@ -47,5 +47,6 @@ func _on_ButtonPopup_tween_started(object, key):
 func _on_ButtonPickup_pressed():
 	PickedUp = true
 	buttonTween(0)
+	game_info.inventory = "Dagger"
 	player.dagger()
 	#queue_free()

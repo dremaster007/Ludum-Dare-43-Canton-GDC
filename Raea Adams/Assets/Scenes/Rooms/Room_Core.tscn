@@ -190,5 +190,11 @@ classes = {
 [node name="Enemy" parent="." index="9" instance=ExtResource( 6 )]
 
 position = Vector2( 624.484, 310.608 )
+classes = {
+"Healer": false,
+"Knight": false,
+"Ranger": false,
+"Rogue": false
+}
 
 
