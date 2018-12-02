@@ -170,6 +170,8 @@ func hurt(damage_taken):
 		stats.Current_Health -= damage_taken
 		possible_actions.Can_Hurt = false
 		$BeforeHurt.start()
+		if character_type == 0:
+			print("Remaining Health: " + str(stats.Current_Health))
 
 func death():
 	queue_free()
