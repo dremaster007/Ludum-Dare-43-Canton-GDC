@@ -2,6 +2,7 @@ extends "res://Assets/Scripts/character_core.gd"
 
 export (int) var speed
 var attack_damage = 0
+var dead = false
 
 var velocity = Vector2()
 var mouse_position = Vector2()
@@ -11,10 +12,15 @@ var sprite_state
 
 func _ready():
 	player_setup()
+	possible_actions.Attack = true
 
 func _process(delta):
 	get_input()
 	move_and_slide(velocity, Vector2(0,0))
+	if Input.is_mouse_button_pressed(1) and possible_actions.Attack:
+		$AttackBox/EnemyDetect.disabled = false
+		possible_actions.Attack = false
+		$AttackCooldown.start()
 
 func get_input():
 	velocity = Vector2()    
@@ -69,6 +75,7 @@ func get_input():
 		# The player is loooking down and left
 		sprite_state = "down_left"
 #		print ("player is looking down and left")
+	
 
 #This is used to add/subtract stats
 func player_update(hp_change, mana_change):
@@ -83,7 +90,9 @@ func player_setup():
 	stats.Defense = 10
 
 func _on_AttackBox_body_entered(body):
-	print("Hit body")
 	if body.is_in_group("enemy"):
-		print("Enemy hit")
-		#hurt(body.stats.Attack)
+		pass
+
+func _on_AttackCooldown_timeout():
+	$AttackBox/EnemyDetect.disabled = true
+	possible_actions.Attack = true

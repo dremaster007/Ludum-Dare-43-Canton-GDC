@@ -1,29 +1,20 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/Scripts/NPC.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Graphics/player-run-1.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Scenes/Attack.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Scripts/Attack.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Graphics/Enemies/slime_placeholder.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 15.8333, 13.5955 )
+extents = Vector2( 8.28629, 7.03236 )
 
-[sub_resource type="SpriteFrames" id=2]
-
-animations = [ {
-"frames": [ ExtResource( 2 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
-
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
 extents = Vector2( 16.309, 13.3577 )
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=3]
 
 custom_solver_bias = 0.0
 extents = Vector2( 48.5074, 43.3981 )
@@ -43,13 +34,7 @@ distance_buffer = null
 
 shape = SubResource( 1 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="1"]
-
-frames = SubResource( 2 )
-animation = "default"
-offset = Vector2( 0, -5 )
-
-[node name="HitBox" type="Area2D" parent="." index="2"]
+[node name="HitBox" type="Area2D" parent="." index="1"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -61,9 +46,10 @@ audio_bus_name = "Master"
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="HitBox" index="0"]
 
+position = Vector2( -1.3176, 1.05408 )
 shape = SubResource( 1 )
 
-[node name="Attack" type="Area2D" parent="." index="3" groups=[
+[node name="Attack" type="Area2D" parent="." index="2" groups=[
 "damage",
 ]]
 
@@ -74,15 +60,14 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
-script = ExtResource( 3 )
+script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack" index="0"]
 
-shape = SubResource( 4 )
+shape = SubResource( 2 )
 
-[node name="EnemyDetection" type="Area2D" parent="." index="4"]
+[node name="EnemyDetection" type="Area2D" parent="." index="3"]
 
-visible = false
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -93,24 +78,26 @@ audio_bus_name = "Master"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetection" index="0"]
 
-shape = SubResource( 5 )
+shape = SubResource( 3 )
 
-[node name="AttackDuration" type="Timer" parent="." index="5"]
+[node name="AttackDuration" type="Timer" parent="." index="4"]
 
 process_mode = 1
 wait_time = 0.3
 one_shot = false
 autostart = false
 
+[node name="Sprite" type="Sprite" parent="." index="5"]
+
+texture = ExtResource( 3 )
+
 [connection signal="damage_transfer" from="." to="Attack" method="_on_NPC_Core_damage_transfer"]
 
 [connection signal="area_entered" from="HitBox" to="." method="_on_HitBox_area_entered"]
 
-[connection signal="body_entered" from="HitBox" to="." method="_on_body_entered"]
-
-[connection signal="body_exited" from="HitBox" to="." method="_on_body_exited"]
-
 [connection signal="body_entered" from="EnemyDetection" to="." method="_on_body_entered"]
+
+[connection signal="body_exited" from="EnemyDetection" to="." method="_on_body_exited"]
 
 [connection signal="timeout" from="AttackDuration" to="." method="_on_AttackDuration_timeout"]
 
