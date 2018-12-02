@@ -87,7 +87,14 @@ wait_time = 0.3
 one_shot = false
 autostart = false
 
-[node name="Sprite" type="Sprite" parent="." index="5"]
+[node name="BeforeHurt" type="Timer" parent="." index="5"]
+
+process_mode = 1
+wait_time = 0.6
+one_shot = false
+autostart = false
+
+[node name="Sprite" type="Sprite" parent="." index="6"]
 
 texture = ExtResource( 3 )
 
@@ -100,5 +107,7 @@ texture = ExtResource( 3 )
 [connection signal="body_exited" from="EnemyDetection" to="." method="_on_body_exited"]
 
 [connection signal="timeout" from="AttackDuration" to="." method="_on_AttackDuration_timeout"]
+
+[connection signal="timeout" from="BeforeHurt" to="." method="_on_BeforeHurt_timeout"]
 
 

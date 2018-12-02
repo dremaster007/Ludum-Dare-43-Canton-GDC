@@ -9,6 +9,8 @@ export (int) var npc_type = 0
 var rand_num = 0 #Used for random "rolls"
 var enemy_difficulty = 0 #This is how the hard enemy will be to defeat
 
+var damage_taken = 0
+
 var distance
 var direction = Vector2()
 
@@ -30,6 +32,8 @@ func _ready():
 	stats.Attack = 10
 
 func _physics_process(delta):
+	if get_hurt:
+		hurt(damage_taken)
 	if stats.Current_Health == 0:
 		dead = true
 		death()
@@ -44,7 +48,7 @@ func _physics_process(delta):
 	will_attack()
 
 func will_attack():
-	emit_signal("damage_transfer", stats.Attack)
+	emit_signal("damage_transfer", stats.Attack, npc_type)
 	attack()
 
 #Handles what happens when an NPC hits a body
@@ -53,25 +57,21 @@ func _on_body_entered(body):
 		if npc_type == 0: #If the NPC is an enemy
 			current_target = body #The new target is the enemy
 			possible_actions.Attack = true #The enemy can now attack 
-			print("Enemy attacking party")
 	
 	if body.is_in_group("enemy"): #Checks to see if the body is an enemy
 		if npc_type == 1: #If the NPC is a party member
 			current_target = body #The enemy body is the new target 
 			possible_actions.Attack = true #The party member can now attack
-			print("Party member attacking enemy")
 
 #Handles what happens when the NPC leaves a body
 func _on_body_exited(body):
 	if body.is_in_group("party"): #If the body is a party member
 		if npc_type == 0: #Checks to see if the NPC is an enemy
 			possible_actions.Attack = false #The enemy will stop attacking
-			print("Enemy is following player")
 	
 	if body.is_in_group("enemy"): #Checks to see if the body is an enemy
 		if npc_type == 1: #Checks to see if the NPC is a party member
 			current_target = player #The NPC will go back to following the player
-			print("Party Member is following player")
 
 func _on_AttackDuration_timeout():
 	$Attack/CollisionShape2D.disabled = true
@@ -79,4 +79,12 @@ func _on_AttackDuration_timeout():
 
 func _on_HitBox_area_entered(area):
 	if area.is_in_group("damage"):
-		hurt(area.damage)
+		if npc_type != area.npc_type:
+			hurt(area.damage)
+			damage_taken = area.damage
+			get_hurt = true
+		else:
+			return
+
+func _on_BeforeHurt_timeout():
+	possible_actions.Can_Hurt = true
