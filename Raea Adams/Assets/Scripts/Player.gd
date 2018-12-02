@@ -122,7 +122,7 @@ func player_update(hp_change, mana_change):
 
 #This sets up the player's stats once the game begins
 func player_setup():
-	classes.Rogue = true
+	classes.Ranger = true
 	
 	if classes.Knight:
 		stats.Current_Health = 150

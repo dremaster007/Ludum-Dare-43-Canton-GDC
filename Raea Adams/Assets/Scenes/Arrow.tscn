@@ -1,7 +1,8 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Assets/Scenes/Arrow.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Scripts/Arrow.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Graphics/Weapons/arrow.png" type="Texture" id=2]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 
