@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Hubert Sheet.png-a4cb35ad193f7d53abf294befc775e23.stex"
+path="res://.import/hewer.png-d5691ddae768b83c4daf04492fe2af32.stex"
 
 [deps]
 
-source_file="res://Assets/Graphics/Hubert Sheet.png"
-dest_files=[ "res://.import/Hubert Sheet.png-a4cb35ad193f7d53abf294befc775e23.stex" ]
+source_file="res://Assets/Graphics/Characters/hewer.png"
+dest_files=[ "res://.import/hewer.png-d5691ddae768b83c4daf04492fe2af32.stex" ]
 
 [params]
 

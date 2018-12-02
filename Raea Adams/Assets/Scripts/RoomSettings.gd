@@ -25,6 +25,8 @@ func room_setup():
 	var item_limit = 0 #This will determine how many pickups are within an area
 	
 	if game_info.current_difficulty == 0: #Checks the difficulty of the game
+		$Ground.modulate = Color(1,0,0,1)
+		$Walls.modulate = Color("#3E3E3E")
 		difficulty.Easy = true #Sets the difficulty
 	if game_info.current_difficulty == 1:
 		difficulty.Decent = true

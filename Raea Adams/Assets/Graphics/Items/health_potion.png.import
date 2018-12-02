@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/raea.png-5fa65f8e3adbb584aabea3fcf6460006.stex"
+path="res://.import/health_potion.png-1dd41c68d189ce45321381604f4b5b4e.stex"
 
 [deps]
 
-source_file="res://Assets/Graphics/raea.png"
-dest_files=[ "res://.import/raea.png-5fa65f8e3adbb584aabea3fcf6460006.stex" ]
+source_file="res://Assets/Graphics/Items/health_potion.png"
+dest_files=[ "res://.import/health_potion.png-1dd41c68d189ce45321381604f4b5b4e.stex" ]
 
 [params]
 
@@ -16,7 +16,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -25,5 +25,5 @@ process/premult_alpha=false
 process/HDR_as_SRGB=false
 stream=false
 size_limit=0
-detect_3d=false
+detect_3d=true
 svg/scale=1.0
