@@ -1,6 +1,5 @@
 extends KinematicBody2D
 
-
 enum {IDLE, MOVING, ATTACK, HURT, DEAD} 
 
 export (PackedScene) var arrow_scene
@@ -19,7 +18,7 @@ var facing = "down" #This will determine which way the player or NPC is facing
 
 #Player determines if it's a human player or NPC, 0 = Enemy | 1 = NPC | 2 = Human 
 export (int) var character_type = 0
-
+export (int) var party_member = -1
 #All the stats that make up the player
 var stats = {"Current_Health": 0, 
              "Max_Health": 0, 
@@ -52,6 +51,17 @@ func change_state(new_state):
 	pass
 
 func character_setup():
+	if character_type == 1:
+		if party_member == 0:
+			$Sprite.texture = load(game_info.party.Member1)
+		if party_member == 1:
+			$Sprite.texture = load(game_info.party.Member2)
+		if party_member == 2:
+			$Sprite.texture = load(game_info.party.Member3)
+	
+	if character_type == 2:
+		$Sprite.texture = load(game_info.party.Player)
+	
 	classes.Ranger = true
 	
 	if character_type == 0:
@@ -133,17 +143,17 @@ func attack():
 				mouse_works = false
 			if classes.Knight:
 				$AttackAnim.play("sword_swing_%s" % facing)
-				$sword/SwordArea.damage = stats.Attack
+				$Weapons/sword/SwordArea.damage = stats.Attack
 		
 			if classes.Rogue:
 				$AttackAnim.play("dagger_slash_%s" % facing)
-				$dagger_front/DaggerArea.damage = stats.Attack
-				$dagger_back/DaggerArea.damage = stats.Attack
+				$Weapons/dagger_front/DaggerArea.damage = stats.Attack
+				$Weapons/dagger_back/DaggerArea.damage = stats.Attack
 		
 		#Not sure how AI will shoot arrows
 			if classes.Ranger and character_type == 2:
 				var a = arrow_scene.instance()
-				$bow/ArrowSpawn.add_child(a)
+				$Weapons/bow/ArrowSpawn.add_child(a)
 				a.hide()
 				a.position = self.position
 				a.show()
@@ -151,7 +161,7 @@ func attack():
 				a.rotation = local_mouse_position.angle()
 				a.velocity.x = local_mouse_position.x * 2
 				a.velocity.y = local_mouse_position.y * 2
-				$bow/arrow.hide()
+				$Weapons/bow/arrow.hide()
 	
 		$AttackCooldown.wait_time = stats.Attack_Speed
 		possible_actions.Attack = false #Sets the attack action to impossible

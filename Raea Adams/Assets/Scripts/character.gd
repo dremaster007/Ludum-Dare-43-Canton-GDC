@@ -56,11 +56,12 @@ func _physics_process(delta):
 		if distance >= distance_buffer:  # determines if npc should move
 			distance = sqrt(direction.x * direction.x + direction.y * direction.y)
 		will_attack()
+		move_and_slide(direction, Vector2(0,0))
 	
 	if character_type == 2:
 		get_input()
-	
-	move_and_slide(direction, Vector2(0,0))
+		move_and_slide(velocity, Vector2(0,0))
+
 
 func get_input():
 	velocity = Vector2()    
@@ -76,7 +77,7 @@ func get_input():
 		velocity = velocity.normalized() * speed   
 	mouse_position = get_global_mouse_position()
 	local_mouse_position = get_local_mouse_position()
-	$bow.rotation = local_mouse_position.angle() # 1.55 is for fine-tuning the rotation to look at the player
+	$Weapons/bow.rotation = local_mouse_position.angle() # 1.55 is for fine-tuning the rotation to look at the player
 	
 	# Explaination of changing sprite direction
 	# Determining whether or not the mouse position's x value is greater than the player's x value gets me left or right
@@ -87,25 +88,25 @@ func get_input():
 		# The player is looking directly right
 		sprite_state = "right"
 		facing = "right"
-		$sword.z_index = 1
+		$Weapons/sword.z_index = 1
 #		print ("player is looking right")
 	if mouse_position.x <position.x and mouse_position.y <= position.y + 50 and mouse_position.y >= position.y - 50:
 		# The player is looking directly left
 		sprite_state = "left"
 		facing = "left"
-		$sword.z_index = 1
+		$Weapons/sword.z_index = 1
 #		print ("player is looking left")
 	if mouse_position.y < position.y and mouse_position.x <= position.x + 50 and mouse_position.x >= position.x - 50:
 		# The player is looking up
 		sprite_state = "up"
 		facing = "up"
-		$sword.z_index = -1
+		$Weapons/sword.z_index = -1
 #		print ("player is looking up")
 	if mouse_position.y > position.y and mouse_position.x <= position.x + 50 and mouse_position.x >= position.x - 50:
 		# The player is looking down
 		sprite_state = "down"
 		facing = "down"
-		$sword.z_index = 1
+		$Weapons/sword.z_index = 1
 #		print ("player is looking down")
 	if mouse_position.x >= position.x + 50 and mouse_position.y <= position.y - 50:
 		# The player is looking up and right
@@ -174,5 +175,5 @@ func _on_HitBox_body_entered(body):
 func _on_AttackCooldown_timeout():
 	possible_actions.Attack = true #Sets attack to possible for an action
 	if classes.Ranger:
-		$bow/arrow.show()
+		$Weapons/bow/arrow.show()
 	mouse_works = true

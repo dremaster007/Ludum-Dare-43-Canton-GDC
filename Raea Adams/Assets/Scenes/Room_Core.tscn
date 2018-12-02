@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Assets/Scripts/RoomSettings.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Scenes/Enemy.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Assets/Scenes/Pickup.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Assets/Graphics/Tilesets/main_tileset.tres" type="TileSet" id=4]
+[ext_resource path="res://Assets/Scenes/Pickup.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Graphics/Tilesets/main_tileset.tres" type="TileSet" id=3]
+[ext_resource path="res://Assets/Scenes/Characters/Player.tscn" type="PackedScene" id=4]
 
 [sub_resource type="Curve2D" id=1]
 
@@ -15,8 +15,8 @@ _data = {
 [node name="Room" type="Node" index="0"]
 
 script = ExtResource( 1 )
-enemy_scene = ExtResource( 2 )
-item_scene = ExtResource( 3 )
+enemy_scene = null
+item_scene = ExtResource( 2 )
 
 [node name="EnemySpawnArea" type="Path2D" parent="." index="0"]
 
@@ -66,7 +66,7 @@ editor_draw_drag_margin = false
 [node name="Ground" type="TileMap" parent="." index="2"]
 
 mode = 0
-tile_set = ExtResource( 4 )
+tile_set = ExtResource( 3 )
 cell_size = Vector2( 64, 64 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -81,12 +81,12 @@ collision_layer = 1
 collision_mask = 1
 occluder_light_mask = 1
 format = 1
-tile_data = PoolIntArray(  )
+tile_data = PoolIntArray( 196614, 19, 0, 196615, 19, 0, 196616, 19, 0, 196617, 19, 0, 196618, 19, 0, 262150, 19, 0, 262151, 19, 0, 262152, 19, 0, 262153, 19, 0, 262154, 19, 0, 327686, 19, 0, 327687, 19, 0, 327688, 19, 0, 327689, 19, 0, 327690, 19, 0 )
 
 [node name="Walls" type="TileMap" parent="." index="3"]
 
 mode = 0
-tile_set = ExtResource( 4 )
+tile_set = ExtResource( 3 )
 cell_size = Vector2( 64, 64 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -107,7 +107,7 @@ _sections_unfolded = [ "Z Index" ]
 [node name="Foreground" type="TileMap" parent="." index="4"]
 
 mode = 0
-tile_set = ExtResource( 4 )
+tile_set = ExtResource( 3 )
 cell_size = Vector2( 64, 64 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -123,5 +123,9 @@ collision_mask = 1
 occluder_light_mask = 1
 format = 1
 tile_data = PoolIntArray(  )
+
+[node name="Player" parent="." index="5" instance=ExtResource( 4 )]
+
+position = Vector2( 522.407, 289.075 )
 
 

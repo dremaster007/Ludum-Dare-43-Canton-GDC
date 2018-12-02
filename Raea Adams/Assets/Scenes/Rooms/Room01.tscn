@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Assets/Scenes/Room_Core.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Assets/Scenes/Character_Core.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Scenes/Characters/Character_Core.tscn" type="PackedScene" id=2]
 
 [node name="Room" instance=ExtResource( 1 )]
 
@@ -40,5 +40,10 @@ _sections_unfolded = [ "Collision" ]
 
 position = Vector2( 506.065, 267.229 )
 character_type = 0
+party_member = -1
+
+[node name="Player" parent="." index="6"]
+
+party_member = -1
 
 

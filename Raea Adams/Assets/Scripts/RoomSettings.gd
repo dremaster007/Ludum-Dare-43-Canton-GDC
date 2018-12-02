@@ -17,7 +17,8 @@ var rand_num = 0 #This will be the variable I use to determine randomized events
 
 func _ready():
 	#yield(get_tree().create_timer(1),"timeout") #Use this to see the generator in action
-	room_setup() #Sets up the room enemies and pickups
+	#room_setup() #Sets up the room enemies and pickups
+	pass
 
 func room_setup():
 	randomize() 
@@ -58,7 +59,7 @@ func room_setup():
 		var e = enemy_scene.instance() #Sets e to equal instancing the enemy scene
 		$EnemySpawnArea/SpawnLocation.set_offset(randi()) #Randomly chooses a location to spawn the enemy on the path2D
 		add_child(e) #Adds the enemy as a child of Room
-		e.npc_type = 0
+		e.character_type = 0
 		e.speed = 100
 		e.distance_buffer = 50
 		e.add_to_group("enemy")
