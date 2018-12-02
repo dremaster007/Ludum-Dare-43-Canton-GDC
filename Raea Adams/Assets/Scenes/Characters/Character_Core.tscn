@@ -1,15 +1,16 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://Assets/Scripts/character.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Scenes/Arrow.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Scripts/Attack.gd" type="Script" id=3]
-[ext_resource path="res://Assets/Graphics/Weapons/sword.png" type="Texture" id=4]
-[ext_resource path="res://Assets/Graphics/Weapons/swoosh.png" type="Texture" id=5]
-[ext_resource path="res://Assets/Scripts/weapon_damage.gd" type="Script" id=6]
-[ext_resource path="res://Assets/Graphics/Weapons/dagger.png" type="Texture" id=7]
-[ext_resource path="res://Assets/Graphics/Weapons/bow.png" type="Texture" id=8]
-[ext_resource path="res://Assets/Graphics/Weapons/arrow.png" type="Texture" id=9]
-[ext_resource path="res://Assets/Graphics/Weapons/staff.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Graphics/Characters/raea.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Graphics/Weapons/sword.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Graphics/Weapons/swoosh.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Scripts/weapon_damage.gd" type="Script" id=7]
+[ext_resource path="res://Assets/Graphics/Weapons/dagger.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Graphics/Weapons/bow.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Graphics/Weapons/arrow.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Graphics/Weapons/staff.png" type="Texture" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -156,7 +157,7 @@ tracks/0/keys = {
 
 resource_name = "dagger_slash_down"
 length = 1.1
-loop = true
+loop = false
 step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Weapons/dagger_front:rotation_degrees")
@@ -1140,11 +1141,17 @@ collision/safe_margin = 0.08
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision" ]
 arrow_scene = ExtResource( 2 )
-move_speed = null
+move_speed = 200
 character_type = 2
 party_member = -1
-speed = null
-distance_buffer = null
+classes = {
+"Healer": false,
+"Knight": true,
+"Ranger": false,
+"Rogue": false
+}
+speed = 300
+distance_buffer = 1
 
 [node name="BodyCollision" type="CollisionShape2D" parent="." index="0"]
 
@@ -1203,9 +1210,12 @@ shape = SubResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="." index="4"]
 
-[node name="Weapons" type="Sprite" parent="." index="5"]
+texture = ExtResource( 4 )
+vframes = 4
+hframes = 3
+_sections_unfolded = [ "Animation" ]
 
-editor/display_folded = true
+[node name="Weapons" type="Sprite" parent="." index="5"]
 
 [node name="sword" type="Sprite" parent="Weapons" index="0"]
 
@@ -1215,7 +1225,7 @@ position = Vector2( 2.72659, 5.70587 )
 rotation = 0.39953
 scale = Vector2( 0.681128, 0.681128 )
 z_index = 1
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 offset = Vector2( 2.49275, -19.1468 )
 _sections_unfolded = [ "Animation", "Offset", "Transform", "Z Index" ]
 
@@ -1225,7 +1235,7 @@ position = Vector2( 3.76597, -27.0584 )
 rotation = -0.334148
 scale = Vector2( -0.204828, 0.195272 )
 z_index = -1
-emitting = true
+emitting = false
 amount = 1
 lifetime = 0.3
 one_shot = false
@@ -1239,7 +1249,7 @@ visibility_rect = Rect2( -100, -100, 200, 200 )
 local_coords = true
 draw_order = 0
 process_material = SubResource( 5 )
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 normal_map = null
 h_frames = 1
 v_frames = 1
@@ -1247,10 +1257,8 @@ _sections_unfolded = [ "Process Material", "Time", "Transform", "Visibility", "Z
 
 [node name="SwordArea" type="Area2D" parent="Weapons/sword" index="1" groups=[
 "damage",
-"party",
 ]]
 
-editor/display_folded = true
 position = Vector2( 2.49275, -19.1468 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -1259,7 +1267,7 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
-script = ExtResource( 6 )
+script = ExtResource( 7 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Weapons/sword/SwordArea" index="0"]
@@ -1269,22 +1277,21 @@ shape = SubResource( 6 )
 
 [node name="dagger_front" type="Sprite" parent="Weapons" index="1"]
 
-editor/display_folded = true
 visible = false
 position = Vector2( 4.8276, 6.36388 )
 rotation = 2.96329
 scale = Vector2( 0.240554, 0.240554 )
 z_index = 1
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 offset = Vector2( -0.588501, -15.7877 )
 flip_h = true
 _sections_unfolded = [ "Offset", "Transform", "Z Index" ]
 
 [node name="DaggerArea" type="Area2D" parent="Weapons/dagger_front" index="0" groups=[
 "damage",
-"party",
 ]]
 
+editor/display_folded = true
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -1292,7 +1299,7 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
-script = ExtResource( 6 )
+script = ExtResource( 7 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Weapons/dagger_front/DaggerArea" index="0"]
 
@@ -1301,22 +1308,21 @@ shape = SubResource( 7 )
 
 [node name="dagger_back" type="Sprite" parent="Weapons" index="2"]
 
-editor/display_folded = true
 visible = false
 position = Vector2( -4.67848, 7.36144 )
 rotation = -2.97074
 scale = Vector2( 0.240554, 0.240554 )
 z_index = 1
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 offset = Vector2( -0.403075, -16.9617 )
 flip_h = true
 _sections_unfolded = [ "Offset", "Transform", "Z Index" ]
 
 [node name="DaggerArea" type="Area2D" parent="Weapons/dagger_back" index="0" groups=[
 "damage",
-"party",
 ]]
 
+editor/display_folded = true
 position = Vector2( 0.315095, 0.965698 )
 rotation = -0.0185729
 input_pickable = true
@@ -1327,7 +1333,7 @@ angular_damp = 1.0
 monitoring = false
 audio_bus_override = false
 audio_bus_name = "Master"
-script = ExtResource( 6 )
+script = ExtResource( 7 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Weapons/dagger_back/DaggerArea" index="0"]
@@ -1343,7 +1349,7 @@ position = Vector2( 0.211181, 4.92345 )
 rotation = -0.0133785
 scale = Vector2( 0.348467, 0.348467 )
 z_index = 1
-texture = ExtResource( 8 )
+texture = ExtResource( 9 )
 _sections_unfolded = [ "Z Index" ]
 
 [node name="ArrowSpawn" type="Node" parent="Weapons/bow" index="0"]
@@ -1353,7 +1359,7 @@ _sections_unfolded = [ "Z Index" ]
 position = Vector2( 1.82739, 1.68408 )
 scale = Vector2( 1.23802, 1 )
 z_index = 1
-texture = ExtResource( 9 )
+texture = ExtResource( 10 )
 _sections_unfolded = [ "Z Index" ]
 
 [node name="staff" type="Sprite" parent="Weapons" index="4"]
@@ -1362,7 +1368,7 @@ visible = false
 position = Vector2( -1.59126, -3.90558 )
 rotation = 0.436062
 scale = Vector2( 0.561719, 0.561719 )
-texture = ExtResource( 10 )
+texture = ExtResource( 11 )
 
 [node name="AttackCooldown" type="Timer" parent="." index="6"]
 

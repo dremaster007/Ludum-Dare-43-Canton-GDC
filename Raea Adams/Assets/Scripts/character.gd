@@ -1,6 +1,6 @@
 extends "res://Assets/Scripts/character_core.gd"
 
-signal damage_transfer
+signal info_transfer
 
 var damage_taken = 0
 
@@ -15,8 +15,14 @@ var enemy
 onready var current_target = player
 
 func _ready():
+	if character_type == 1 or 2:
+		self.connect("info_transfer", $Weapons/sword/SwordArea, "info_transfer")
+		self.connect("info_transfer", $Weapons/dagger_front/DaggerArea, "info_transfer")
+		self.connect("info_transfer", $Weapons/dagger_back/DaggerArea, "info_transfer")
+	
+	emit_signal("info_transfer", stats.Attack, character_type)
 	if character_type == 0:
-		$Sprite.texture = load("res://Assets/Graphics/Enemies/slime_placeholder.png")
+		$Sprite.texture = load("res://Assets/Graphics/Enemies/goblin.png")
 	if character_type == 1:
 		#$Sprite.texture = load("res://Assets/Graphics/player-run-1.png")
 		pass
@@ -32,12 +38,6 @@ func _ready():
 func _physics_process(delta):
 	if facing != str($PlayerAnim.current_animation):
 		$PlayerAnim.play(facing)
-		
-	#If the velocity is not above 0 then the player is idle and the animation will stop
-	if velocity != Vector2(0,0):
-		$PlayerAnim.play()
-	else:
-		$PlayerAnim.stop()
 	
 	#If the character is within a danger zone they will get hurt
 	if get_hurt:
@@ -48,23 +48,36 @@ func _physics_process(delta):
 		dead = true
 		death()
 	
-	if character_type == 0 or 1:
+	if character_type == 0:
 		if current_target.dead:
 			current_target = player
 		direction = current_target.position - self.position  # gets the direction the npc is facing
 		distance = sqrt(direction.x * direction.x + direction.y * direction.y)  # calculates how far away player is
 		if distance >= distance_buffer:  # determines if npc should move
 			distance = sqrt(direction.x * direction.x + direction.y * direction.y)
-		will_attack()
+		if possible_actions.Attack:
+			will_attack()
+		move_and_slide(direction, Vector2(0,0))
+	
+	if character_type == 1:
+		if current_target.dead:
+			current_target = player
+		direction = current_target.position - self.position  # gets the direction the npc is facing
+		distance = sqrt(direction.x * direction.x + direction.y * direction.y)  # calculates how far away player is
+		if distance >= distance_buffer:  # determines if npc should move
+			distance = sqrt(direction.x * direction.x + direction.y * direction.y)
+		if possible_actions.Attack:
+			will_attack()
 		move_and_slide(direction, Vector2(0,0))
 	
 	if character_type == 2:
 		get_input()
 		move_and_slide(velocity, Vector2(0,0))
 
-
 func get_input():
 	velocity = Vector2()    
+	if Input.is_mouse_button_pressed(1) and character_type == 2:
+		attack()
 	if Input.is_action_pressed("left"):
 		velocity.x -= 1
 	if Input.is_action_pressed("right"):
@@ -89,25 +102,21 @@ func get_input():
 		sprite_state = "right"
 		facing = "right"
 		$Weapons/sword.z_index = 1
-#		print ("player is looking right")
 	if mouse_position.x <position.x and mouse_position.y <= position.y + 50 and mouse_position.y >= position.y - 50:
 		# The player is looking directly left
 		sprite_state = "left"
 		facing = "left"
 		$Weapons/sword.z_index = 1
-#		print ("player is looking left")
 	if mouse_position.y < position.y and mouse_position.x <= position.x + 50 and mouse_position.x >= position.x - 50:
 		# The player is looking up
 		sprite_state = "up"
 		facing = "up"
 		$Weapons/sword.z_index = -1
-#		print ("player is looking up")
 	if mouse_position.y > position.y and mouse_position.x <= position.x + 50 and mouse_position.x >= position.x - 50:
 		# The player is looking down
 		sprite_state = "down"
 		facing = "down"
 		$Weapons/sword.z_index = 1
-#		print ("player is looking down")
 	if mouse_position.x >= position.x + 50 and mouse_position.y <= position.y - 50:
 		# The player is looking up and right
 		sprite_state = "up_right"
@@ -125,8 +134,9 @@ func get_input():
 		sprite_state = "down_left"
 
 func will_attack():
-	emit_signal("damage_transfer", stats.Attack, character_type)
-	attack()
+	if possible_actions.Attack:
+		emit_signal("info_transfer", stats.Attack, character_type)
+		attack()
 
 #Handles what happens when an NPC hits a body
 func _on_body_entered(body): 
@@ -148,20 +158,23 @@ func _on_body_exited(body):
 	
 	if body.is_in_group("enemy"): #Checks to see if the body is an enemy
 		if character_type == 1: #Checks to see if the NPC is a party member
+			possible_actions.Attack = false
 			current_target = player #The NPC will go back to following the player
 
 func _on_HitBox_area_entered(area):
 	if area.is_in_group("damage"):
-		print("Enemy hit")
-		if area.is_in_group("npc"):
+		print("Remaining Health: " + str(stats.Current_Health))
+		if area.is_in_group("party"):
 			if character_type != area.character_type:
+				if character_type == 1 or 2 and area.character_type == 1 or 2:
+					return
+					print("No friendly fire")
+				print(area.character_type)
 				hurt(area.damage)
 				damage_taken = area.damage
 				get_hurt = true
 		else:
-			hurt(area.damage)
-			damage_taken = area.damage
-			get_hurt = true
+			return
 
 func _on_BeforeHurt_timeout():
 	possible_actions.Can_Hurt = true
@@ -173,7 +186,8 @@ func _on_HitBox_body_entered(body):
 
 #Handles what happens once the attack cools down
 func _on_AttackCooldown_timeout():
-	possible_actions.Attack = true #Sets attack to possible for an action
+	if character_type == 2:
+		possible_actions.Attack = true #Sets attack to possible for an action
 	if classes.Ranger:
 		$Weapons/bow/arrow.show()
 	mouse_works = true

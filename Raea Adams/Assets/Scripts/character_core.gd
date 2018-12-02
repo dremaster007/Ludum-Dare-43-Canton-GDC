@@ -30,7 +30,7 @@ var stats = {"Current_Health": 0,
             }
 
 #This holds the classes as bools so they can be clicked on or off
-var classes = {"Knight": false,
+export var classes = {"Knight": false,
                "Rogue": false,
                "Healer": false,
                "Ranger": false
@@ -61,8 +61,6 @@ func character_setup():
 	
 	if character_type == 2:
 		$Sprite.texture = load(game_info.party.Player)
-	
-	classes.Ranger = true
 	
 	if character_type == 0:
 		randomize()
@@ -139,7 +137,7 @@ func stat_update(hp_change, mana_change):
 func attack():
 	if possible_actions.Attack:
 		if character_type == 1 or 2:
-			if Input.is_mouse_button_pressed(1) and possible_actions.Attack and mouse_works:
+			if character_type == 2 and possible_actions.Attack and mouse_works:
 				mouse_works = false
 			if classes.Knight:
 				$AttackAnim.play("sword_swing_%s" % facing)

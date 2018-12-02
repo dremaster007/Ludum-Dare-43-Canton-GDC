@@ -27,7 +27,7 @@ var character_texs = {"Raea": "res://Assets/Graphics/Characters/raea.png",
                     }
 
 var party = {"Player": character_texs.Raea,
-             "Member1": "texture path",
-             "Member2": "texture path",
-             "Member3": "texture path",
+             "Member1": character_texs.Hewer,
+             "Member2": character_texs.Hewer,
+             "Member3": character_texs.Hewer,
             }
