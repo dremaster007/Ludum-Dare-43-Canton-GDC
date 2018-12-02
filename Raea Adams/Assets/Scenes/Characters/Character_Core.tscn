@@ -1146,7 +1146,7 @@ character_type = 2
 party_member = -1
 classes = {
 "Healer": false,
-"Knight": true,
+"Knight": false,
 "Ranger": false,
 "Rogue": false
 }

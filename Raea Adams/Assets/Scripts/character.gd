@@ -55,6 +55,18 @@ func _physics_process(delta):
 		distance = sqrt(direction.x * direction.x + direction.y * direction.y)  # calculates how far away player is
 		if distance >= distance_buffer:  # determines if npc should move
 			distance = sqrt(direction.x * direction.x + direction.y * direction.y)
+		
+		#This sets the facing for the AI
+		if direction.y > 0:
+			facing = "up"
+		else:
+			facing = "down"
+		
+		if direction.x > 0:
+			facing = "right"
+		else:
+			facing = "left"
+		
 		if possible_actions.Attack:
 			will_attack()
 		move_and_slide(direction, Vector2(0,0))
@@ -68,6 +80,19 @@ func _physics_process(delta):
 			distance = sqrt(direction.x * direction.x + direction.y * direction.y)
 		if possible_actions.Attack:
 			will_attack()
+		
+		#This sets the facing for the AI
+		if direction.y < 0:
+			facing = "up"
+		else:
+			facing = "down"
+		
+		if direction.x > direction.y:
+			if direction.x > 0:
+				facing = "right"
+			else:
+				facing = "left"
+		
 		move_and_slide(direction, Vector2(0,0))
 	
 	if character_type == 2:
@@ -163,13 +188,12 @@ func _on_body_exited(body):
 
 func _on_HitBox_area_entered(area):
 	if area.is_in_group("damage"):
-		print("Remaining Health: " + str(stats.Current_Health))
+		if character_type == 0:
+			print("Remaining Health: " + str(stats.Current_Health))
 		if area.is_in_group("party"):
 			if character_type != area.character_type:
 				if character_type == 1 or 2 and area.character_type == 1 or 2:
 					return
-					print("No friendly fire")
-				print(area.character_type)
 				hurt(area.damage)
 				damage_taken = area.damage
 				get_hurt = true
