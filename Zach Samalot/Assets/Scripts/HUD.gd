@@ -19,12 +19,13 @@ func _ready():
 
 
 func _process(delta):
+	pass
 	
+
+func update_HUD():
 	#Updates the health, durability and mana bars
-	
 	$Health/HealthBar.value = Health
 	$Mana/ManaBar.value = Mana
 	$Gear/Durability/DuraBar.value = Durability
 	$Gear/ItemContainer/ItemCount.text = str(ItemCount)
-	
-	
+	print("HUD updated")
