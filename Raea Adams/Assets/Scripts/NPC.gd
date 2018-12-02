@@ -40,11 +40,6 @@ func _physics_process(delta):
 	distance = sqrt(direction.x * direction.x + direction.y * direction.y)  # calculates how far away player is
 	if distance >= distance_buffer:  # determines if npc should move
 		distance = sqrt(direction.x * direction.x + direction.y * direction.y)
-		#if direction.x <= 0:
-			#$AnimatedSprite.flip_h = true
-		#elif direction.x > 0:
-			#$AnimatedSprite.flip_h = false
-	#else:
 	move_and_slide(direction, Vector2(0,0))
 	will_attack()
 
@@ -58,21 +53,25 @@ func _on_body_entered(body):
 		if npc_type == 0: #If the NPC is an enemy
 			current_target = body #The new target is the enemy
 			possible_actions.Attack = true #The enemy can now attack 
+			print("Enemy attacking party")
 	
 	if body.is_in_group("enemy"): #Checks to see if the body is an enemy
 		if npc_type == 1: #If the NPC is a party member
 			current_target = body #The enemy body is the new target 
 			possible_actions.Attack = true #The party member can now attack
+			print("Party member attacking enemy")
 
 #Handles what happens when the NPC leaves a body
 func _on_body_exited(body):
 	if body.is_in_group("party"): #If the body is a party member
 		if npc_type == 0: #Checks to see if the NPC is an enemy
 			possible_actions.Attack = false #The enemy will stop attacking
+			print("Enemy is following player")
 	
 	if body.is_in_group("enemy"): #Checks to see if the body is an enemy
 		if npc_type == 1: #Checks to see if the NPC is a party member
 			current_target = player #The NPC will go back to following the player
+			print("Party Member is following player")
 
 func _on_AttackDuration_timeout():
 	$Attack/CollisionShape2D.disabled = true

@@ -59,6 +59,7 @@ func room_setup():
 		e.npc_type = 0
 		e.speed = 100
 		e.distance_buffer = 50
+		e.add_to_group("enemy")
 		e.position = $EnemySpawnArea/SpawnLocation.position #Sets the enemy position to the random location
 	
 	for items in item_limit: #Same thing as above but for items

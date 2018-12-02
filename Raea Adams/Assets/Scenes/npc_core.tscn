@@ -95,11 +95,9 @@ texture = ExtResource( 3 )
 
 [connection signal="area_entered" from="HitBox" to="." method="_on_HitBox_area_entered"]
 
-[connection signal="body_entered" from="HitBox" to="." method="_on_body_entered"]
-
-[connection signal="body_exited" from="HitBox" to="." method="_on_body_exited"]
-
 [connection signal="body_entered" from="EnemyDetection" to="." method="_on_body_entered"]
+
+[connection signal="body_exited" from="EnemyDetection" to="." method="_on_body_exited"]
 
 [connection signal="timeout" from="AttackDuration" to="." method="_on_AttackDuration_timeout"]
 

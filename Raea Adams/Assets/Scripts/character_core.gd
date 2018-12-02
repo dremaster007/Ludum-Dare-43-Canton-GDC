@@ -20,7 +20,7 @@ func attack():
 
 func hurt(damage_taken):
 	stats.Current_Health -= damage_taken
-	print(stats.Current_Health)
+	#print(stats.Current_Health)
 	#The area2D will be used as attack boxes
 	#When an enemy attack box is entered it calls this function with one argument
 
