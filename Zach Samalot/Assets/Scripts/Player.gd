@@ -97,3 +97,12 @@ func _on_AttackBox_body_entered(body):
 func _on_AttackCooldown_timeout():
 	$AttackBox/EnemyDetect.disabled = true
 	possible_actions.Attack = true
+
+func healthpot():
+	print("Picked up a health potion!")
+
+func manapot():
+	print("Picked up a mana potion!")
+
+func dagger():
+	print("Picked up a dagger!")
