@@ -188,17 +188,21 @@ func _on_body_exited(body):
 
 func _on_HitBox_area_entered(area):
 	if area.is_in_group("damage"):
-		if character_type == 0:
-			print("Remaining Health: " + str(stats.Current_Health))
 		if area.is_in_group("party"):
 			if character_type != area.character_type:
 				if character_type == 1 or 2 and area.character_type == 1 or 2:
 					return
-				hurt(area.damage)
-				damage_taken = area.damage
-				get_hurt = true
-		else:
-			return
+					print("Friendly Fire")
+				else:
+					hurt(area.damage)
+					damage_taken = area.damage
+					get_hurt = true
+		if area.is_in_group("enemy"):
+			print("Enemy hit")
+			if character_type != area.character_type:
+					hurt(area.damage)
+					damage_taken = area.damage
+					get_hurt = true
 
 func _on_BeforeHurt_timeout():
 	possible_actions.Can_Hurt = true
