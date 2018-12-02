@@ -10,6 +10,8 @@ var local_mouse_position = Vector2()
 
 var sprite_state
 
+onready var HUD = get_parent().get_node("HUD")
+
 func _ready():
 	player_setup()
 	possible_actions.Attack = true
@@ -105,4 +107,5 @@ func manapot():
 	print("Picked up a mana potion!")
 
 func dagger():
+	#HUD/WeaponContainer/Weapon.texture = 
 	print("Picked up a dagger!")
