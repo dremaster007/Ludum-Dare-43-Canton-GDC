@@ -17,17 +17,25 @@ export (int) var distance_buffer
 
 onready var player = get_node("/root/Room/Player")  # gets the player node stored in player
 var enemy
-
+var dead = false
 onready var current_target = player
 
 func _ready():
+	if npc_type == 0:
+		$Sprite.texture = load("res://Assets/Graphics/Enemies/slime_placeholder.png")
+	if npc_type == 1:
+		$Sprite.texture = load("res://Assets/Graphics/player-run-1.png")
 	set_physics_process(true)
 	stats.Current_Health = 100
 	stats.Attack = 10
 
 func _physics_process(delta):
 	if stats.Current_Health == 0:
+		dead = true
 		death()
+	
+	if current_target.dead:
+		current_target = player
 	direction = current_target.position - self.position  # gets the direction the npc is facing
 	distance = sqrt(direction.x * direction.x + direction.y * direction.y)  # calculates how far away player is
 	if distance >= distance_buffer:  # determines if npc should move
@@ -43,7 +51,6 @@ func _physics_process(delta):
 func will_attack():
 	emit_signal("damage_transfer", stats.Attack)
 	attack()
-	print(stats.Current_Health)
 
 #Handles what happens when an NPC hits a body
 func _on_body_entered(body): 
@@ -56,8 +63,6 @@ func _on_body_entered(body):
 		if npc_type == 1: #If the NPC is a party member
 			current_target = body #The enemy body is the new target 
 			possible_actions.Attack = true #The party member can now attack
-			if body.stats.Current_Health == 0:
-				current_target = player
 
 #Handles what happens when the NPC leaves a body
 func _on_body_exited(body):

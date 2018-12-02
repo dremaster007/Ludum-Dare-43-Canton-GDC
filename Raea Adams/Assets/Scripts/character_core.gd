@@ -15,7 +15,6 @@ var possible_actions = {"Attack": false, "Pickup": false}
 func attack():
 	if possible_actions.Attack:
 		$Attack/CollisionShape2D.disabled = false
-		print("Attack false")
 		possible_actions.Attack = false
 		$AttackDuration.start()
 
