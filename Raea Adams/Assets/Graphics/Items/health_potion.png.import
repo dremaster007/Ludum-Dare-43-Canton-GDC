@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/mana_potion.png-aeeae9d37b47a965a63ebe2bce861ca4.stex"
+path="res://.import/health_potion.png-1dd41c68d189ce45321381604f4b5b4e.stex"
 
 [deps]
 
-source_file="res://Assets/Graphics/mana_potion.png"
-dest_files=[ "res://.import/mana_potion.png-aeeae9d37b47a965a63ebe2bce861ca4.stex" ]
+source_file="res://Assets/Graphics/Items/health_potion.png"
+dest_files=[ "res://.import/health_potion.png-1dd41c68d189ce45321381604f4b5b4e.stex" ]
 
 [params]
 

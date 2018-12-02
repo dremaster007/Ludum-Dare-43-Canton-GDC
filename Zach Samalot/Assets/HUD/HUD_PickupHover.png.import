@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sprite_placeholder.png-4015440b6c70c8db1a1e501e72a5bd38.stex"
+path="res://.import/HUD_PickupHover.png-50fa015a44b499543b264b4b580a3f55.stex"
 
 [deps]
 
-source_file="res://Assets/Graphics/sprite_placeholder.png"
-dest_files=[ "res://.import/sprite_placeholder.png-4015440b6c70c8db1a1e501e72a5bd38.stex" ]
+source_file="res://Assets/HUD/HUD_PickupHover.png"
+dest_files=[ "res://.import/HUD_PickupHover.png-50fa015a44b499543b264b4b580a3f55.stex" ]
 
 [params]
 

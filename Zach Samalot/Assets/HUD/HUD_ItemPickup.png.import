@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Hungario-Player-Hit_01.png-8a9d05cf0295a526cf4b65ac4f5125f2.stex"
+path="res://.import/HUD_ItemPickup.png-c2e2c59f06cc83247d9207cdd952ebc3.stex"
 
 [deps]
 
-source_file="res://Assets/Graphics/Hungario-Player-Hit_01.png"
-dest_files=[ "res://.import/Hungario-Player-Hit_01.png-8a9d05cf0295a526cf4b65ac4f5125f2.stex" ]
+source_file="res://Assets/HUD/HUD_ItemPickup.png"
+dest_files=[ "res://.import/HUD_ItemPickup.png-c2e2c59f06cc83247d9207cdd952ebc3.stex" ]
 
 [params]
 
@@ -16,7 +16,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -25,5 +25,5 @@ process/premult_alpha=false
 process/HDR_as_SRGB=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0
