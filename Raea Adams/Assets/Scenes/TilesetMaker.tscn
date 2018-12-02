@@ -204,7 +204,6 @@ _sections_unfolded = [ "Region" ]
 
 [node name="Body" type="StaticBody2D" parent="Wall01" index="0"]
 
-editor/display_folded = true
 input_pickable = false
 collision_layer = 4
 collision_mask = 27
