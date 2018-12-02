@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 8.28629, 7.03236 )
+extents = Vector2( 5.49572, 3.45813 )
 
 [sub_resource type="RectangleShape2D" id=2]
 
@@ -22,10 +22,12 @@ extents = Vector2( 48.5074, 43.3981 )
 [node name="NPC_Core" type="KinematicBody2D"]
 
 input_pickable = false
-collision_layer = 1
-collision_mask = 1
+collision_layer = 0
+collision_mask = 23
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
+_sections_unfolded = [ "Collision" ]
+arrow_scene = null
 npc_type = 0
 speed = null
 distance_buffer = null
@@ -41,8 +43,10 @@ gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
+collision_mask = 16
 audio_bus_override = false
 audio_bus_name = "Master"
+_sections_unfolded = [ "Collision" ]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="HitBox" index="0"]
 
@@ -51,6 +55,7 @@ shape = SubResource( 1 )
 
 [node name="Attack" type="Area2D" parent="." index="2" groups=[
 "damage",
+"npc",
 ]]
 
 input_pickable = true
@@ -101,6 +106,8 @@ texture = ExtResource( 3 )
 [connection signal="damage_transfer" from="." to="Attack" method="_on_NPC_Core_damage_transfer"]
 
 [connection signal="area_entered" from="HitBox" to="." method="_on_HitBox_area_entered"]
+
+[connection signal="body_entered" from="HitBox" to="." method="_on_HitBox_body_entered"]
 
 [connection signal="body_entered" from="EnemyDetection" to="." method="_on_body_entered"]
 

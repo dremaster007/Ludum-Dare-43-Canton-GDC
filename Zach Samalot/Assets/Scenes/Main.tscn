@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/Scenes/Dagger.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Scenes/HealthPot.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Scenes/ManaPot.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Scenes/Player.tscn" type="PackedScene" id=4]
+
+[node name="Main" type="Node" index="0"]
+
+[node name="Dagger" parent="." index="0" instance=ExtResource( 1 )]
+
+position = Vector2( 216.085, 130.286 )
+
+[node name="HealthPot" parent="." index="1" instance=ExtResource( 2 )]
+
+position = Vector2( 351.478, 131.107 )
+
+[node name="ManaPot" parent="." index="2" instance=ExtResource( 3 )]
+
+position = Vector2( 504.901, 125.528 )
+
+[node name="Player" parent="." index="3" instance=ExtResource( 4 )]
+
+

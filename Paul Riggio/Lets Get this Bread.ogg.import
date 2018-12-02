@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Lets Get this Bread.ogg-8d347056799b0687f68926ae67afe680.oggstr"
+
+[deps]
+
+source_file="res://Lets Get this Bread.ogg"
+dest_files=[ "res://.import/Lets Get this Bread.ogg-8d347056799b0687f68926ae67afe680.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
