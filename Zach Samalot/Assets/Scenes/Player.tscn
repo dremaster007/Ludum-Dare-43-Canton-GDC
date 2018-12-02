@@ -14,7 +14,9 @@ extents = Vector2( 9.63503, 12.5816 )
 custom_solver_bias = 0.0
 extents = Vector2( 10, 20.8741 )
 
-[node name="Player" type="KinematicBody2D" index="0"]
+[node name="Player" type="KinematicBody2D" index="0" groups=[
+"player",
+]]
 
 input_pickable = false
 collision_layer = 1
