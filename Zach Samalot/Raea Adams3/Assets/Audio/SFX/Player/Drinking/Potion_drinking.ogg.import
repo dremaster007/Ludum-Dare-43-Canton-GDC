@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Potion_drinking.ogg-8a8e39c03979855bd9ed667f1ba07316.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/Player/Drinking/Potion_drinking.ogg"
+dest_files=[ "res://.import/Potion_drinking.ogg-8a8e39c03979855bd9ed667f1ba07316.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

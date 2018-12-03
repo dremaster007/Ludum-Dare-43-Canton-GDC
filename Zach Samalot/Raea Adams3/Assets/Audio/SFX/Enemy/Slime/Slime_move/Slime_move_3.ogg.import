@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Slime_move_3.ogg-d20d84501db84b5984a85c0b65483cf9.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/Enemy/Slime/Slime_move/Slime_move_3.ogg"
+dest_files=[ "res://.import/Slime_move_3.ogg-d20d84501db84b5984a85c0b65483cf9.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
