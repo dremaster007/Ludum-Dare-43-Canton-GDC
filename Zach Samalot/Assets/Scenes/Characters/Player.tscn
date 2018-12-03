@@ -1,0 +1,58 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Assets/Scenes/Characters/Character_Core.tscn" type="PackedScene" id=1]
+
+[node name="Player" instance=ExtResource( 1 )]
+
+collision_layer = 1
+collision_mask = 22
+speed = 100
+distance_buffer = 10
+
+[node name="HitBox" parent="." index="1"]
+
+editor/display_folded = false
+collision_mask = 80
+
+[node name="Sprite" parent="." index="4"]
+
+position = Vector2( 0.566565, 0 )
+
+[node name="Weapons" parent="." index="5"]
+
+editor/display_folded = false
+
+[node name="sword" parent="Weapons" index="0"]
+
+editor/display_folded = true
+position = Vector2( -4.77084, 8.23779 )
+rotation = -0.927349
+flip_h = true
+
+[node name="Particles2D" parent="Weapons/sword" index="0"]
+
+position = Vector2( 0.516708, -24.1804 )
+scale = Vector2( 0.137138, 0.195272 )
+
+[node name="SwordArea" parent="Weapons/sword" index="1" groups=[
+"party",
+]]
+
+position = Vector2( 8.16495, -19.4616 )
+monitoring = false
+
+[node name="dagger_front" parent="Weapons" index="1"]
+
+editor/display_folded = false
+
+[node name="DaggerArea" parent="Weapons/dagger_front" index="0" groups=[
+"party",
+]]
+
+monitoring = false
+
+[node name="DaggerArea" parent="Weapons/dagger_back" index="0" groups=[
+"party",
+]]
+
+

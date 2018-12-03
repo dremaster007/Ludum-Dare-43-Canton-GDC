@@ -1186,7 +1186,7 @@ party_member = -1
 classes = {
 "Healer": false,
 "Knight": false,
-"Ranger": false,
+"Ranger": true,
 "Rogue": false
 }
 speed = 300

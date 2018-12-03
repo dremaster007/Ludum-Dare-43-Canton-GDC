@@ -1,12 +1,12 @@
 extends Area2D
 
 var damage = 0
-var npc_type = 0
+var character_type = 0
 
-func _on_NPC_Core_damage_transfer(new_damage, npc):
+func _on_NPC_Core_damage_transfer(new_damage, type):
 	damage = new_damage
-	npc_type = npc
-	if npc == 0:
+	character_type = type
+	if type == 0:
 		add_to_group("enemy")
-	if npc == 1:
+	if type == 1:
 		add_to_group("party")
