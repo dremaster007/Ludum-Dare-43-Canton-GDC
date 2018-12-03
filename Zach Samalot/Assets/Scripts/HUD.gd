@@ -3,10 +3,10 @@ extends CanvasLayer
 export (int) var MaxHealth = 100
 export (int) var MaxMana = 100
 export (int) var MaxDurability = 100
-export (int) var Durability = 20
-export (int) var Mana = 20
-export (int) var Health = 20
-export (int) var ItemCount = 20
+export (int) var Durability = 0
+export (int) var Mana = 100
+export (int) var Health = 100
+export (int) var ItemCount = 0
 
 
 func _ready():
@@ -40,4 +40,12 @@ func update_HUD():
 		$Gear/WeaponContainer/Weapon.texture = load("res://Assets/Graphics/Weapons/bow.png")
 	elif game_info.inventory.Weapon == "Staff":
 		$Gear/WeaponContainer/Weapon.texture = load("res://Assets/Graphics/Weapons/staff.png")
-	print("HUD updated")
+	
+	if game_info.inventory.Item == "None":
+		#Insert empty weapon sprite
+		$Gear/ItemContainer/Item.texture = load("res://Assets/Graphics/Items/PlaceholderPot.png")
+	elif game_info.inventory.Item == "HealthPot":
+		#Insert item obtain sprite
+		$Gear/ItemContainer/Item.texture = load("res://Assets/Graphics/Items/health_potion.png")
+	elif game_info.inventory.Item == "ManaPot":
+		$Gear/ItemContainer/Item.texture = load("res://Assets/Graphics/Items/mana_potion.png")

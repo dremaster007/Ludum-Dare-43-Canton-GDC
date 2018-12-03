@@ -6,13 +6,12 @@
 [ext_resource path="res://Assets/HUD/HUD_PickupHover.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Fonts/vtf-misterpixel.regular.otf" type="DynamicFontData" id=5]
 
-[sub_resource type="CapsuleShape2D" id=1]
+[sub_resource type="CircleShape2D" id=5]
 
 custom_solver_bias = 0.0
-radius = 10.0
-height = 20.0
+radius = 13.5
 
-[sub_resource type="InputEventKey" id=5]
+[sub_resource type="InputEventKey" id=2]
 
 device = 0
 alt = false
@@ -25,11 +24,11 @@ scancode = 88
 unicode = 0
 echo = false
 
-[sub_resource type="ShortCut" id=4]
+[sub_resource type="ShortCut" id=3]
 
-shortcut = SubResource( 5 )
+shortcut = SubResource( 2 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=4]
 
 size = 12
 use_mipmaps = false
@@ -49,6 +48,8 @@ angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
+Durability = null
+ItemType = null
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
@@ -57,11 +58,12 @@ texture = ExtResource( 2 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
 scale = Vector2( 1.5, 1.75 )
-shape = SubResource( 1 )
+shape = SubResource( 5 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="ButtonPickup" type="TextureButton" parent="." index="2"]
 
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -79,7 +81,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 toggle_mode = false
 enabled_focus_mode = 2
-shortcut = SubResource( 4 )
+shortcut = SubResource( 3 )
 group = null
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 3 )
@@ -104,7 +106,7 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 4 )
 text = "Sword"
 align = 1
 valign = 1

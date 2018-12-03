@@ -15,4 +15,4 @@ var rooms = {"Easy": [],
             }
 
 # 1 = taken | 0 = empty
-var inventory = {"Weapon": "None", "Potion": 0}
+var inventory = {"Weapon": "None", "Item": "None"}
