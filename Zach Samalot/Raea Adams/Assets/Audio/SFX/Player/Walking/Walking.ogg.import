@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Walking.ogg-217e0df712768d3e98eb79c644e024ca.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/Player/Walking/Walking.ogg"
+dest_files=[ "res://.import/Walking.ogg-217e0df712768d3e98eb79c644e024ca.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

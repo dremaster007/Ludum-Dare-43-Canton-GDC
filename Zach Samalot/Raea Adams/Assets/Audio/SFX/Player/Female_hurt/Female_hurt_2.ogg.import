@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Female_hurt_2.ogg-d9aa8a2de27e70f56cecdcaf750ae273.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/Player/Female_hurt/Female_hurt_2.ogg"
+dest_files=[ "res://.import/Female_hurt_2.ogg-d9aa8a2de27e70f56cecdcaf750ae273.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
