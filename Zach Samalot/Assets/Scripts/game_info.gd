@@ -14,5 +14,20 @@ var rooms = {"Easy": [],
              "Hell": []
             }
 
-# 1 = taken | 0 = empty
-var inventory = {"Weapon": "None", "Item": "None"}
+var character_texs = {"Raea": "res://Assets/Graphics/Characters/raea.png",
+                      "Hewer": "res://Assets/Graphics/Characters/hewer.png",
+                      "Emily": "Insert path",
+                      "Paul": "Insert path",
+                      "ZachL": "Insert path",
+                      "ZachS": "Insert path",
+                      "Tony": "Insert path",
+                      "James": "Insert path",
+                      "Karel": "Insert path",
+                      "Chris": "Insert path", 
+                    }
+
+var party = {"Player": character_texs.Raea,
+             "Member1": character_texs.Hewer,
+             "Member2": character_texs.Hewer,
+             "Member3": character_texs.Hewer,
+            }

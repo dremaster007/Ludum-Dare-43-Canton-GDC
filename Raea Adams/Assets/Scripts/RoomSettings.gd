@@ -16,9 +16,8 @@ var room_settings = {"Easy": {"Weapons": [], "Items": []},
 var rand_num = 0 #This will be the variable I use to determine randomized events
 
 func _ready():
-	#yield(get_tree().create_timer(1),"timeout") #Use this to see the generator in action
-	#room_setup() #Sets up the room enemies and pickups
-	pass
+	yield(get_tree().create_timer(1),"timeout") #Use this to see the generator in action
+	room_setup() #Sets up the room enemies and pickups
 
 func room_setup():
 	randomize() 

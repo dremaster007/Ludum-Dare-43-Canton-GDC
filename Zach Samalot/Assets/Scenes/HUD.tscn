@@ -136,7 +136,7 @@ anti_aliasing = true
 anti_aliasing_size = 1
 _sections_unfolded = [ "Shadow" ]
 
-[node name="HUD" type="CanvasLayer"]
+[node name="HUD" type="CanvasLayer" index="0"]
 
 layer = 1
 offset = Vector2( 0, 0 )

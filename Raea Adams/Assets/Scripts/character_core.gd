@@ -9,6 +9,8 @@ var damage_taking = 0 #The damage the player is still taking
 var dead = false #If the scene is alive or dead this fixes some serious crashing
 var mouse_works = true #This tells if the mouse can be used or not. A manual Just Pressed function
 
+var character_ready = false
+
 var velocity = Vector2()
 var mouse_position = Vector2()
 var local_mouse_position = Vector2()
@@ -22,7 +24,8 @@ export (int) var party_member = -1
 #All the stats that make up the player
 var stats = {"Current_Health": 0, 
              "Max_Health": 0, 
-             "Mana": 0, 
+             "Current_Mana": 0, 
+             "Max_Mana": 0,
              "Attack": 0,
              "Attack_Speed": 0.0,
              "Defense": 0,
@@ -44,7 +47,6 @@ var stat_number #This makes it easier to modify the stat limit to multiple diffi
 var rand_num
 
 func _ready():
-	character_setup()
 	possible_actions.Attack = true
 
 func change_state(new_state, new_damage):
@@ -117,7 +119,7 @@ func character_setup():
 		if classes.Knight:
 			stats.Current_Health = 150
 			stats.Max_Health = 150
-			stats.Mana = 50
+			stats.Max_Mana = 50
 			stats.Defense = 20
 			stats.Attack = 5
 			stats.Attack_Speed = 1.5
@@ -125,7 +127,7 @@ func character_setup():
 		if classes.Rogue:
 			stats.Current_Health = 70
 			stats.Max_Health = 70
-			stats.Mana = 60
+			stats.Max_Mana = 60
 			stats.Defense = 6
 			stats.Attack = 3
 			stats.Attack_Speed = 0.3
@@ -134,7 +136,7 @@ func character_setup():
 		if classes.Healer:
 			stats.Current_Health = 100
 			stats.Max_Health = 100
-			stats.Mana = 100
+			stats.Max_Mana = 100
 			stats.Defense = 4
 			stats.Attack = 1
 			stats.Attack_Speed = 1.5
@@ -142,14 +144,15 @@ func character_setup():
 		if classes.Ranger:
 			stats.Current_Health = 100
 			stats.Max_Health = 100
-			stats.Mana = 50
+			stats.Max_Mana = 50
 			stats.Defense = 7
 			stats.Attack = 999999
 			stats.Attack_Speed = 4
 			$Weapons/bow.show()
 			$Weapons/bow/arrow.show()
 	stats.Current_Health = stats.Max_Health
-	
+	character_ready = true
+
 #This is used to add/subtract stats
 func stat_update(hp_change, mana_change):
 	stats.Max_Health += hp_change

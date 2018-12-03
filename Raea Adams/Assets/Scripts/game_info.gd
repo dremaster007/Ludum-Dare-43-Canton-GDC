@@ -31,3 +31,5 @@ var party = {"Player": character_texs.Raea,
              "Member2": character_texs.Hewer,
              "Member3": character_texs.Hewer,
             }
+# 1 = taken | 0 = empty
+var inventory = {"Weapon": "None", "Item": "None"}
