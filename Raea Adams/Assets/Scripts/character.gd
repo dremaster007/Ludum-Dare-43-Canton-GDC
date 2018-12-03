@@ -41,7 +41,7 @@ func _physics_process(delta):
 	
 	#If the character is within a danger zone they will get hurt
 	if get_hurt:
-		hurt(damage_taken)
+		change_state(HURT,damage_taken)
 	
 	#If the character health is below 0 or equal to it they'll die
 	if stats.Current_Health <= 0:
@@ -49,7 +49,7 @@ func _physics_process(delta):
 		death()
 	
 	if character_type == 0:
-		if current_target.dead:
+		if current_target.dead:aaaaa
 			current_target = player
 		direction = current_target.position - self.position  # gets the direction the npc is facing
 		distance = sqrt(direction.x * direction.x + direction.y * direction.y)  # calculates how far away player is
@@ -98,6 +98,8 @@ func _physics_process(delta):
 	if character_type == 2:
 		get_input()
 		move_and_slide(velocity, Vector2(0,0))
+	if stats.Current_Health <= 0:
+		death()
 
 func get_input():
 	velocity = Vector2()    
@@ -145,15 +147,12 @@ func get_input():
 	if mouse_position.x >= position.x + 50 and mouse_position.y <= position.y - 50:
 		# The player is looking up and right
 		sprite_state = "up_right"
-#		print ("player is looking up and right")
 	if mouse_position.x >= position.x + 50 and mouse_position.y >= position.y + 50:
 		# The player is looking down and right
 		sprite_state = "down_right"
-#		print ("player is looking down and right")
 	if mouse_position.x <= position.x - 50 and mouse_position.y <= position.y - 50:
 		# The player is looking up and left
 		sprite_state = "up_left"
-#		print ("player is looking up and left")
 	if mouse_position.x <= position.x - 50 and mouse_position.y >= position.y + 50:
 		# The player is loooking down and left
 		sprite_state = "down_left"
@@ -189,20 +188,17 @@ func _on_body_exited(body):
 func _on_HitBox_area_entered(area):
 	if area.is_in_group("damage"):
 		if area.is_in_group("party"):
-			if character_type != area.character_type:
-				if character_type == 1 or 2 and area.character_type == 1 or 2:
-					return
-					print("Friendly Fire")
-				else:
-					hurt(area.damage)
+			if character_type != 1 or 2:
 					damage_taken = area.damage
+					change_state(HURT,damage_taken)
 					get_hurt = true
 		if area.is_in_group("enemy"):
-			print("Enemy hit")
-			if character_type != area.character_type:
-					hurt(area.damage)
-					damage_taken = area.damage
-					get_hurt = true
+			if character_type != 0:
+				if character_type == 0:
+					print("ENEMY")
+				damage_taken = area.damage
+				change_state(HURT,damage_taken)
+				get_hurt = true
 
 func _on_BeforeHurt_timeout():
 	possible_actions.Can_Hurt = true

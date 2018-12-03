@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/Scripts/RoomSettings.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Scenes/Pickup.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Graphics/Tilesets/main_tileset.tres" type="TileSet" id=3]
-[ext_resource path="res://Assets/Scenes/Characters/Player.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Assets/Scenes/Characters/PartyMember.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Assets/Scenes/Characters/Enemy.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/Scenes/Characters/Enemy.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Scenes/Characters/Player.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Curve2D" id=1]
 
@@ -136,63 +135,22 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Player" parent="." index="5" instance=ExtResource( 4 )]
-
-position = Vector2( 499.619, 250.115 )
-classes = {
-"Healer": false,
-"Knight": true,
-"Ranger": false,
-"Rogue": false
-}
-
-[node name="Member1" parent="." index="6" instance=ExtResource( 5 )]
-
-visible = false
-position = Vector2( 600.404, 249.386 )
-collision_layer = 32
-collision_mask = 54
-party_member = 0
-classes = {
-"Healer": false,
-"Knight": true,
-"Ranger": false,
-"Rogue": false
-}
-
-[node name="Member2" parent="." index="7" instance=ExtResource( 5 )]
-
-visible = false
-position = Vector2( 538.656, 314.809 )
-collision_layer = 32
-collision_mask = 54
-party_member = 1
-classes = {
-"Healer": false,
-"Knight": true,
-"Ranger": false,
-"Rogue": false
-}
-
-[node name="Member3" parent="." index="8" instance=ExtResource( 5 )]
-
-position = Vector2( 447.504, 329.511 )
-collision_layer = 32
-collision_mask = 54
-party_member = 2
-classes = {
-"Healer": false,
-"Knight": true,
-"Ranger": false,
-"Rogue": false
-}
-
-[node name="Enemy" parent="." index="9" instance=ExtResource( 6 )]
+[node name="Enemy" parent="." index="5" instance=ExtResource( 4 )]
 
 position = Vector2( 624.484, 310.608 )
 classes = {
 "Healer": false,
 "Knight": false,
+"Ranger": false,
+"Rogue": false
+}
+
+[node name="Player" parent="." index="6" instance=ExtResource( 5 )]
+
+position = Vector2( 545.985, 239.692 )
+classes = {
+"Healer": false,
+"Knight": true,
 "Ranger": false,
 "Rogue": false
 }

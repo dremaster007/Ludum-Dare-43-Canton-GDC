@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 enum {IDLE, MOVING, ATTACK, HURT, DEAD} 
-
+var state = IDLE
 export (PackedScene) var arrow_scene
 
 export (int) var move_speed #How fast the character can move
@@ -47,8 +47,28 @@ func _ready():
 	character_setup()
 	possible_actions.Attack = true
 
-func change_state(new_state):
-	pass
+func change_state(new_state, new_damage):
+	state = new_state
+	damage_taking = new_damage
+	match state:
+		IDLE:
+			pass
+		MOVING:
+			pass
+		ATTACK:
+			pass
+		HURT:
+			if possible_actions.Can_Hurt:
+				$BloodParticle.emitting = true
+				stats.Current_Health -= damage_taking
+				possible_actions.Can_Hurt = false
+				$BeforeHurt.start()
+				$BloodParticle.emitting = false
+				print("HURT" + str(classes))
+				if character_type == 0:
+					print("Remaining Health: " + str(stats.Current_Health))
+		DEAD:
+			pass
 
 func character_setup():
 	if character_type == 1:
@@ -165,13 +185,6 @@ func attack():
 		possible_actions.Attack = false #Sets the attack action to impossible
 		$AttackCooldown.start() #Starts the attack cooldown timer
 
-func hurt(damage_taken):
-	if possible_actions.Can_Hurt:
-		stats.Current_Health -= damage_taken
-		possible_actions.Can_Hurt = false
-		$BeforeHurt.start()
-		if character_type == 0:
-			print("Remaining Health: " + str(stats.Current_Health))
 
 func death():
 	queue_free()
