@@ -42,6 +42,7 @@ func _ready():
 		pass
 	set_physics_process(true)
 
+
 func _physics_process(delta):
 	if character_ready and character_type == 2:
 		emit_signal("hud_update", stats.Max_Health, stats.Current_Health, stats.Max_Mana, stats.Current_Mana)

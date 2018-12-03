@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Slosh_attack_3.ogg-da2908ca059f0b642c782e6c617f335e.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/Enemy/Slime/Slime_attack/Slosh_attack_3.ogg"
+dest_files=[ "res://.import/Slosh_attack_3.ogg-da2908ca059f0b642c782e6c617f335e.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
