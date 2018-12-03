@@ -42,7 +42,7 @@ editor/display_folded = true
 visible = false
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 768, 0.12, 64, 63.88 )
+region_rect = Rect2( 768, 0, 64, 64 )
 _sections_unfolded = [ "Region" ]
 
 [node name="Body" type="StaticBody2D" parent="Blank_Light" index="0"]
@@ -354,6 +354,7 @@ shape = SubResource( 1 )
 [node name="Left_Side_Wall02" type="Sprite" parent="." index="13"]
 
 editor/display_folded = true
+visible = false
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 448, 192, 64, 64 )
@@ -567,6 +568,7 @@ region_rect = Rect2( 704, 448, 64, 64 )
 
 [node name="Floor08" type="Sprite" parent="." index="26"]
 
+visible = false
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 768, 448, 64, 64 )
