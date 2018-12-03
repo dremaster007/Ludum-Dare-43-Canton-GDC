@@ -3,7 +3,7 @@
 [ext_resource path="res://Assets/Scenes/Characters/Character_Core.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Audio/SFX/Enemy/Goblin/Goblin_3.ogg" type="AudioStream" id=2]
 
-[node name="Enemy" index="0" groups=[
+[node name="Enemy" groups=[
 "enemy",
 ] instance=ExtResource( 1 )]
 
