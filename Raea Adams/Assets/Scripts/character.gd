@@ -226,6 +226,7 @@ func _on_AttackCooldown_timeout():
 	if character_type == 2:
 		possible_actions.Attack = true #Sets attack to possible for an action
 	if classes.Ranger:
+		print("Ranger")
 		$Weapons/bow/arrow.show()
 	mouse_works = true
 

@@ -175,14 +175,20 @@ classes = {
 [node name="Member1" parent="." index="7" instance=ExtResource( 7 )]
 
 position = Vector2( 641.959, 321.425 )
+classes = {
+"Healer": false,
+"Knight": true,
+"Ranger": false,
+"Rogue": false
+}
 
 [node name="Member2" parent="." index="8" instance=ExtResource( 7 )]
 
 position = Vector2( 453.541, 238.521 )
 classes = {
 "Healer": false,
-"Knight": false,
-"Ranger": true,
+"Knight": true,
+"Ranger": false,
 "Rogue": false
 }
 
@@ -191,8 +197,8 @@ classes = {
 position = Vector2( 779.128, 188.779 )
 classes = {
 "Healer": false,
-"Knight": false,
-"Ranger": true,
+"Knight": true,
+"Ranger": false,
 "Rogue": false
 }
 
