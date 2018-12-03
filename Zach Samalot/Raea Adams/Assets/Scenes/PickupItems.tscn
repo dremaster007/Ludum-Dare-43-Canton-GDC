@@ -1,12 +1,12 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Assets/Scripts/Dagger.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Graphics/Weapons/dagger.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Graphics/HUD/HUD_ItemPickup.png" type="Texture" id=3]
-[ext_resource path="res://Assets/Graphics/HUD/HUD_PickupHover.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Tony/Dagger_Weapon.png" type="Texture" id=2]
+[ext_resource path="res://Assets/HUD/HUD_ItemPickup.png" type="Texture" id=3]
+[ext_resource path="res://Assets/HUD/HUD_PickupHover.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Fonts/vtf-misterpixel.regular.otf" type="DynamicFontData" id=5]
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="CircleShape2D" id=5]
 
 custom_solver_bias = 0.0
 radius = 13.5
@@ -36,7 +36,7 @@ use_filter = false
 font_data = ExtResource( 5 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="Dagger" type="Area2D" index="0" groups=[
+[node name="Dagger" type="Area2D" groups=[
 "dagger",
 ]]
 
@@ -58,7 +58,7 @@ texture = ExtResource( 2 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
 scale = Vector2( 1.5, 1.75 )
-shape = SubResource( 1 )
+shape = SubResource( 5 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="ButtonPickup" type="TextureButton" parent="." index="2"]

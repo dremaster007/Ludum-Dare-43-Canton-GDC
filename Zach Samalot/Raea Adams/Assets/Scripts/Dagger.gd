@@ -10,9 +10,6 @@ var ItemClass
 var player
 #var HUD = get_parent().get_node("HUD")
 
-signal item
-signal weapon
-
 func _ready():
 	ButtonScale = $ButtonPickup.rect_scale
 	
