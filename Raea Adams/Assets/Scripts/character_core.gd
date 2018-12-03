@@ -81,7 +81,6 @@ func change_state(new_state, new_damage):
 				possible_actions.Can_Hurt = false
 				get_hurt = false
 				$BeforeHurt.start()
-				print("HURT")
 		DEAD:
 			pass
 
@@ -96,6 +95,12 @@ func character_setup():
 	
 	if character_type == 2:
 		$Sprite.texture = load(game_info.party.Player)
+		if game_info.inventory.Weapon == "Sword":
+			classes.Knight = true
+		if game_info.inventory.Weapon == "Dagger":
+			classes.Rogue = true
+		if game_info.inventory.Weapon == "Bow":
+			classes.Ranger = true
 	
 	if character_type == 0:
 		randomize()

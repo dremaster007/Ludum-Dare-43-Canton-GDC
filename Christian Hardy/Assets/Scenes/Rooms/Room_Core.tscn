@@ -14,7 +14,7 @@ _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 388.428, 121.986, 0, 0, 0, 0, 386.758, 372.512, 0, 0, 0, 0, 640.625, 377.523, 0, 0, 0, 0, 638.954, 322.407, 0, 0, 0, 0, 388.428, 315.726, 0, 0, 0, 0, 386.758, 248.919, 0, 0, 0, 0, 638.954, 253.93, 0, 0, 0, 0, 642.295, 187.123, 0, 0, 0, 0, 381.747, 183.782, 0, 0, 0, 0, 490.309, 116.975, 0, 0, 0, 0, 478.617, 379.193, 0, 0, 0, 0, 570.477, 382.534, 0, 0, 0, 0, 577.158, 116.975, 0, 0, 0, 0, 575.488, 121.986 )
 }
 
-[node name="Room" type="Node" index="0"]
+[node name="Room" type="Node"]
 
 script = ExtResource( 1 )
 enemy_scene = null
@@ -84,7 +84,7 @@ collision_layer = 1
 collision_mask = 1
 occluder_light_mask = 1
 format = 1
-tile_data = PoolIntArray( 196614, 19, 0, 196615, 19, 0, 196616, 19, 0, 196617, 19, 0, 196618, 19, 0, 262150, 19, 0, 262151, 19, 0, 262152, 19, 0, 262153, 19, 0, 262154, 19, 0, 327686, 19, 0, 327687, 19, 0, 327688, 19, 0, 327689, 19, 0, 327690, 19, 0 )
+tile_data = PoolIntArray(  )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -190,11 +190,5 @@ classes = {
 [node name="Enemy" parent="." index="9" instance=ExtResource( 6 )]
 
 position = Vector2( 624.484, 310.608 )
-classes = {
-"Healer": false,
-"Knight": false,
-"Ranger": false,
-"Rogue": false
-}
 
 
