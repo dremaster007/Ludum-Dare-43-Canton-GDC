@@ -6,6 +6,7 @@
 [node name="PartyMember" instance=ExtResource( 1 )]
 
 collision_layer = 1
+collision_mask = 7
 move_speed = 100
 character_type = 1
 speed = 100
