@@ -5,7 +5,7 @@
 [node name="Player" instance=ExtResource( 1 )]
 
 collision_layer = 1
-collision_mask = 22
+collision_mask = 6
 speed = 100
 distance_buffer = 10
 
@@ -13,6 +13,12 @@ distance_buffer = 10
 
 editor/display_folded = false
 collision_mask = 80
+
+[node name="AttackBox" parent="." index="2"]
+
+editor/display_folded = false
+monitoring = false
+monitorable = false
 
 [node name="Sprite" parent="." index="4"]
 
@@ -24,7 +30,6 @@ editor/display_folded = false
 
 [node name="sword" parent="Weapons" index="0"]
 
-editor/display_folded = true
 position = Vector2( -4.77084, 8.23779 )
 rotation = -0.927349
 flip_h = true
@@ -38,6 +43,7 @@ scale = Vector2( 0.137138, 0.195272 )
 "party",
 ]]
 
+editor/display_folded = true
 position = Vector2( 8.16495, -19.4616 )
 monitoring = false
 

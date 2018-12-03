@@ -3,7 +3,7 @@
 [ext_resource path="res://Assets/Scenes/Characters/Character_Core.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Graphics/Enemies/goblin.png" type="Texture" id=2]
 
-[node name="Enemy" groups=[
+[node name="Enemy" index="0" groups=[
 "enemy",
 ] instance=ExtResource( 1 )]
 
@@ -16,7 +16,6 @@ distance_buffer = 5
 
 [node name="HitBox" parent="." index="1"]
 
-editor/display_folded = false
 position = Vector2( 3.97371, 0.611338 )
 collision_mask = 80
 
@@ -24,13 +23,16 @@ collision_mask = 80
 
 position = Vector2( 2.04477, 0.137065 )
 
-[node name="AttackBox" parent="." index="2"]
+[node name="AttackBox" parent="." index="2" groups=[
+"enemy",
+]]
 
 editor/display_folded = false
 
 [node name="CollisionShape2D" parent="AttackBox" index="0"]
 
-position = Vector2( 4.58505, 5.80774 )
+position = Vector2( 3.22387, 7.84232 )
+scale = Vector2( 0.761428, 0.589021 )
 
 [node name="EnemyDetection" parent="." index="3"]
 
@@ -44,19 +46,16 @@ vframes = 3
 
 [node name="Weapons" parent="." index="5"]
 
+editor/display_folded = false
 visible = false
 
-[node name="SwordArea" parent="Weapons/sword" index="1" groups=[
-"enemy",
-]]
+[node name="dagger_front" parent="Weapons" index="1"]
+
+editor/display_folded = false
 
 [node name="DaggerArea" parent="Weapons/dagger_front" index="0" groups=[
 "enemy",
 ]]
-
-[node name="dagger_back" parent="Weapons" index="2"]
-
-editor/display_folded = true
 
 [node name="DaggerArea" parent="Weapons/dagger_back" index="0" groups=[
 "enemy",

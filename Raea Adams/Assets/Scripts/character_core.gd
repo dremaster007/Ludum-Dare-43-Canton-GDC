@@ -70,7 +70,9 @@ func change_state(new_state, new_damage):
 				if character_type == 0:
 					print(str(stats.Current_Health) + " / " + str(stats.Max_Health))
 				possible_actions.Can_Hurt = false
+				get_hurt = false
 				$BeforeHurt.start()
+				print("HURT")
 		DEAD:
 			pass
 
@@ -146,8 +148,8 @@ func character_setup():
 			stats.Max_Health = 100
 			stats.Max_Mana = 50
 			stats.Defense = 7
-			stats.Attack = 999999
-			stats.Attack_Speed = 4
+			stats.Attack = 5
+			stats.Attack_Speed = 4.0
 			$Weapons/bow.show()
 			$Weapons/bow/arrow.show()
 	stats.Current_Health = stats.Max_Health
@@ -185,12 +187,12 @@ func attack():
 				a.rotation = local_mouse_position.angle()
 				a.velocity.x = local_mouse_position.x * 2
 				a.velocity.y = local_mouse_position.y * 2
+				a.character_type = character_type
 				$Weapons/bow/arrow.hide()
 	
 		$AttackCooldown.wait_time = stats.Attack_Speed
 		possible_actions.Attack = false #Sets the attack action to impossible
 		$AttackCooldown.start() #Starts the attack cooldown timer
-
 
 func death():
 	queue_free()
