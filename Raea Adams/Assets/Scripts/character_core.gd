@@ -59,14 +59,16 @@ func change_state(new_state, new_damage):
 			pass
 		HURT:
 			if possible_actions.Can_Hurt:
+				if character_type == 2:
+					print("Player Health: " + str(stats.Current_Health))
 				$BloodParticle.emitting = true
 				stats.Current_Health -= damage_taking
-				possible_actions.Can_Hurt = false
 				$BeforeHurt.start()
 				$BloodParticle.emitting = false
-				print("HURT" + str(classes))
 				if character_type == 0:
-					print("Remaining Health: " + str(stats.Current_Health))
+					print(str(stats.Current_Health) + " / " + str(stats.Max_Health))
+				possible_actions.Can_Hurt = false
+				$BeforeHurt.start()
 		DEAD:
 			pass
 
@@ -86,7 +88,7 @@ func character_setup():
 		randomize()
 		
 		if game_info.current_difficulty == 0: #Checks the difficulty of the level
-			stat_number = 10 #Sets the stat number to the highest each stat can be
+			stat_number = 5 #Sets the stat number to the highest each stat can be
 			stats.Level = 0 #Sets the difficulty of the enemy
 		if game_info.current_difficulty == 1:
 			stat_number = 20
@@ -117,7 +119,7 @@ func character_setup():
 			stats.Max_Health = 150
 			stats.Mana = 50
 			stats.Defense = 20
-			stats.Attack = 4
+			stats.Attack = 5
 			stats.Attack_Speed = 1.5
 			$Weapons/sword.show()
 		if classes.Rogue:
@@ -146,6 +148,7 @@ func character_setup():
 			stats.Attack_Speed = 4
 			$Weapons/bow.show()
 			$Weapons/bow/arrow.show()
+	stats.Current_Health = stats.Max_Health
 	
 #This is used to add/subtract stats
 func stat_update(hp_change, mana_change):

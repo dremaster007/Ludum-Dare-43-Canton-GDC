@@ -30,10 +30,6 @@ func _ready():
 		#$Sprite.texture = load("res://Assets/Graphics/player-run-1.png")
 		pass
 	set_physics_process(true)
-	
-	#These are temp to prevent crashing
-	stats.Current_Health = 100
-	stats.Attack = 10
 
 func _physics_process(delta):
 	if facing != str($PlayerAnim.current_animation):
@@ -41,15 +37,15 @@ func _physics_process(delta):
 	
 	#If the character is within a danger zone they will get hurt
 	if get_hurt:
+		print("get hurt")
 		change_state(HURT,damage_taken)
 	
 	#If the character health is below 0 or equal to it they'll die
 	if stats.Current_Health <= 0:
 		dead = true
-		death()
 	
 	if character_type == 0:
-		if current_target.dead:aaaaa
+		if current_target.dead:
 			current_target = player
 		direction = current_target.position - self.position  # gets the direction the npc is facing
 		distance = sqrt(direction.x * direction.x + direction.y * direction.y)  # calculates how far away player is
@@ -192,10 +188,9 @@ func _on_HitBox_area_entered(area):
 					damage_taken = area.damage
 					change_state(HURT,damage_taken)
 					get_hurt = true
+		
 		if area.is_in_group("enemy"):
 			if character_type != 0:
-				if character_type == 0:
-					print("ENEMY")
 				damage_taken = area.damage
 				change_state(HURT,damage_taken)
 				get_hurt = true
@@ -215,3 +210,7 @@ func _on_AttackCooldown_timeout():
 	if classes.Ranger:
 		$Weapons/bow/arrow.show()
 	mouse_works = true
+
+func _on_HitBox_area_exited(area):
+	print("Stop pain")
+	get_hurt = false

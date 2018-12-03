@@ -41,18 +41,18 @@ lookahead = 4.0
 
 [node name="Camera2D" type="Camera2D" parent="." index="1"]
 
-position = Vector2( 516.174, 293.632 )
+position = Vector2( 564.409, 281.573 )
 anchor_mode = 1
 rotating = false
 current = true
-zoom = Vector2( 0.3, 0.3 )
+zoom = Vector2( 0.6, 0.6 )
 limit_left = -10000000
 limit_top = -10000000
 limit_right = 10000000
 limit_bottom = 10000000
 limit_smoothed = false
-drag_margin_h_enabled = true
-drag_margin_v_enabled = true
+drag_margin_h_enabled = false
+drag_margin_v_enabled = false
 smoothing_enabled = false
 smoothing_speed = 5.0
 offset_v = 0.0
@@ -83,7 +83,7 @@ collision_layer = 1
 collision_mask = 1
 occluder_light_mask = 1
 format = 1
-tile_data = PoolIntArray( 196614, 19, 0, 196615, 19, 0, 196616, 19, 0, 196617, 19, 0, 196618, 19, 0, 262150, 19, 0, 262151, 19, 0, 262152, 19, 0, 262153, 19, 0, 262154, 19, 0, 327686, 19, 0, 327687, 19, 0, 327688, 19, 0, 327689, 19, 0, 327690, 19, 0 )
+tile_data = PoolIntArray( 196612, 19, 0, 196613, 19, 0, 196614, 19, 0, 196615, 19, 0, 196616, 19, 0, 196617, 19, 0, 196618, 19, 0, 196619, 19, 0, 196620, 19, 0, 262148, 19, 0, 262149, 19, 0, 262150, 19, 0, 262151, 19, 0, 262152, 19, 0, 262153, 19, 0, 262154, 19, 0, 262155, 23, 0, 262156, 19, 0, 327684, 19, 0, 327685, 19, 0, 327686, 19, 0, 327687, 21, 0, 327688, 19, 0, 327689, 19, 0, 327690, 19, 0, 327691, 19, 0, 327692, 23, 0, 393220, 19, 0, 393221, 21, 0, 393222, 19, 0, 393223, 19, 0, 393224, 19, 0, 393225, 19, 0, 393226, 21, 0, 393227, 19, 0, 393228, 19, 0 )
 __meta__ = {
 "_edit_lock_": true
 }
