@@ -11,6 +11,9 @@ var mouse_works = true #This tells if the mouse can be used or not. A manual Jus
 
 var character_ready = false
 
+#var HurtTween = get_parent().get_node("HurtTween")
+#var HurtFX = get_parent().get_node("HurtFX")
+
 var velocity = Vector2()
 var mouse_position = Vector2()
 var local_mouse_position = Vector2()
@@ -56,6 +59,12 @@ var rand_num
 
 func _ready():
 	possible_actions.Attack = true
+	
+func hurt_tween():
+	$HurtFX.restart()
+	$HurtTween.interpolate_property($Sprite, "rotation_degrees", $Sprite.rotation_degrees - 20, $Sprite.rotation_degrees, 0.3, Tween.TRANS_QUART, Tween.EASE_IN_OUT)
+	$HurtTween.interpolate_property($Sprite, "modulate", Color(200,0,0,1), Color(1,1,1,1), 0.3, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
+	$HurtTween.start()
 
 func change_state(new_state, new_damage):
 	state = new_state
@@ -69,6 +78,7 @@ func change_state(new_state, new_damage):
 			pass
 		HURT:
 			if possible_actions.Can_Hurt:
+				hurt_tween()
 				if character_type == 2:
 					$HitSFX.play()
 					print("Player Health: " + str(stats.Current_Health))
