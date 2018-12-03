@@ -1,0 +1,683 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://Assets/Scenes/TitleScene.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Graphics/NightBackground.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Graphics/Vignette.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Graphics/Campfire_spritesheet.png" type="Texture" id=4]
+[ext_resource path="res://Assets/fire.ogg" type="AudioStream" id=5]
+[ext_resource path="res://Assets/Fonts/vtf-misterpixel.regular.otf" type="DynamicFontData" id=6]
+[ext_resource path="res://Assets/Graphics/Characters/raea.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Title_shop.ogg" type="AudioStream" id=8]
+
+[sub_resource type="Animation" id=1]
+
+resource_name = "fire"
+length = 0.9
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+}
+
+[sub_resource type="DynamicFont" id=2]
+
+size = 35
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 6 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=3]
+
+size = 50
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 6 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=4]
+
+size = 18
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 6 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=5]
+
+size = 18
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 6 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="Animation" id=6]
+
+resource_name = "walkright"
+length = 0.6
+loop = true
+step = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath("RaeaSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 6, 7, 8, 7 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("RaeaSprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("RaeaSprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+
+[sub_resource type="Animation" id=7]
+
+resource_name = "walkup"
+length = 0.6
+loop = true
+step = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath("RaeaSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 9, 10, 11, 10 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("RaeaSprite:vframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("RaeaSprite:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+
+[sub_resource type="DynamicFont" id=8]
+
+size = 18
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 6 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=9]
+
+size = 18
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 6 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=10]
+
+size = 18
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 6 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=11]
+
+size = 18
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 6 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=12]
+
+size = 18
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 6 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=13]
+
+size = 18
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 6 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[node name="TitleScene" type="Node"]
+
+script = ExtResource( 1 )
+
+[node name="Background" type="Sprite" parent="." index="0"]
+
+position = Vector2( 512, 300 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Vignette" type="Sprite" parent="." index="1"]
+
+position = Vector2( 512, 363.819 )
+scale = Vector2( 2, 1.57454 )
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Campfire" type="Sprite" parent="." index="2"]
+
+position = Vector2( 511.447, 348.338 )
+scale = Vector2( 2.56329, 2.56329 )
+texture = ExtResource( 4 )
+vframes = 3
+hframes = 3
+_sections_unfolded = [ "Animation", "Transform" ]
+
+[node name="CampfireAnimations" type="AnimationPlayer" parent="Campfire" index="0"]
+
+root_node = NodePath("..")
+autoplay = "fire"
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/fire = SubResource( 1 )
+blend_times = [  ]
+
+[node name="CampfireCrackle" type="AudioStreamPlayer" parent="Campfire" index="1"]
+
+stream = ExtResource( 5 )
+volume_db = -10.0
+pitch_scale = 1.1
+autoplay = true
+mix_target = 0
+bus = "Master"
+
+[node name="StartButton" type="Button" parent="." index="3"]
+
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -49.0
+margin_top = -63.0
+margin_right = 49.0
+margin_bottom = -21.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 2 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Start"
+flat = false
+align = 1
+_sections_unfolded = [ "Rect", "custom_fonts" ]
+
+[node name="TitleLabel" type="Label" parent="." index="4"]
+
+anchor_left = 0.5
+anchor_top = 0.0
+anchor_right = 0.5
+anchor_bottom = 0.0
+margin_left = -194.0
+margin_top = 45.0
+margin_right = 194.0
+margin_bottom = 96.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 3 )
+text = "Our Shared Agony"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "custom_fonts" ]
+
+[node name="HubertButton" type="Button" parent="." index="5"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 215.0
+margin_top = 271.0
+margin_right = 299.0
+margin_bottom = 309.0
+rect_scale = Vector2( 2, 2 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 4 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Hubert"
+flat = true
+align = 2
+_sections_unfolded = [ "Grow Direction", "Rect", "custom_fonts" ]
+
+[node name="HubertSprite" type="Sprite" parent="HubertButton" index="0"]
+
+position = Vector2( 12.4774, 16.7333 )
+texture = ExtResource( 7 )
+vframes = 4
+hframes = 3
+_sections_unfolded = [ "Animation", "Transform" ]
+
+[node name="HubertAnim" type="AnimationPlayer" parent="HubertButton" index="1"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+blend_times = [  ]
+
+[node name="RaeaButton" type="Button" parent="." index="6"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 285.0
+margin_top = 163.0
+margin_right = 353.0
+margin_bottom = 201.0
+rect_scale = Vector2( 2, 2 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 5 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Raea"
+flat = true
+align = 2
+_sections_unfolded = [ "Rect", "custom_fonts" ]
+
+[node name="RaeaSprite" type="Sprite" parent="RaeaButton" index="0"]
+
+position = Vector2( 13.832, 17.3767 )
+texture = ExtResource( 7 )
+vframes = 4
+hframes = 3
+frame = 6
+_sections_unfolded = [ "Animation" ]
+
+[node name="RaeaAnim" type="AnimationPlayer" parent="RaeaButton/RaeaSprite" index="0"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/walkright = SubResource( 6 )
+anims/walkup = SubResource( 7 )
+blend_times = [  ]
+
+[node name="LawrenceButton" type="Button" parent="." index="7"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 196.0
+margin_top = 374.0
+margin_right = 302.0
+margin_bottom = 412.0
+rect_scale = Vector2( 2, 2 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 8 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Lawrence"
+flat = true
+align = 2
+_sections_unfolded = [ "Rect", "custom_fonts" ]
+
+[node name="LawrenceSprite" type="Sprite" parent="LawrenceButton" index="0"]
+
+position = Vector2( 12.8392, 18.355 )
+texture = ExtResource( 7 )
+vframes = 4
+hframes = 3
+_sections_unfolded = [ "Animation" ]
+
+[node name="LawrenceAnim" type="AnimationPlayer" parent="LawrenceButton" index="1"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+blend_times = [  ]
+
+[node name="EmilyButton" type="Button" parent="." index="8"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 241.0
+margin_top = 480.0
+margin_right = 318.0
+margin_bottom = 518.0
+rect_scale = Vector2( 2, 2 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 9 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Emily"
+flat = true
+align = 2
+_sections_unfolded = [ "Rect", "custom_fonts" ]
+
+[node name="EmilySprite" type="Sprite" parent="EmilyButton" index="0"]
+
+position = Vector2( 15.6995, 16.0531 )
+texture = ExtResource( 7 )
+vframes = 4
+hframes = 3
+_sections_unfolded = [ "Animation" ]
+
+[node name="EmilyAnim" type="AnimationPlayer" parent="EmilyButton" index="1"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+blend_times = [  ]
+
+[node name="ZachButton" type="Button" parent="." index="9"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 687.0
+margin_top = 475.0
+margin_right = 757.0
+margin_bottom = 513.0
+rect_scale = Vector2( 2, 2 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 10 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Zach"
+flat = true
+align = 2
+_sections_unfolded = [ "Rect", "custom_fonts" ]
+
+[node name="ZachSprite" type="Sprite" parent="ZachButton" index="0"]
+
+position = Vector2( 14.1995, 17.7739 )
+texture = ExtResource( 7 )
+vframes = 4
+hframes = 3
+_sections_unfolded = [ "Animation" ]
+
+[node name="ZachAnim" type="AnimationPlayer" parent="ZachButton" index="1"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+blend_times = [  ]
+
+[node name="ChrisButton" type="Button" parent="." index="10"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 714.0
+margin_top = 375.0
+margin_right = 789.0
+margin_bottom = 413.0
+rect_scale = Vector2( 2, 2 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 11 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Chris"
+flat = true
+align = 2
+_sections_unfolded = [ "Rect", "custom_fonts" ]
+
+[node name="ChrisSprite" type="Sprite" parent="ChrisButton" index="0"]
+
+position = Vector2( 14.5193, 16.8324 )
+texture = ExtResource( 7 )
+vframes = 4
+hframes = 3
+_sections_unfolded = [ "Animation" ]
+
+[node name="ChrisAnim" type="AnimationPlayer" parent="ChrisButton" index="1"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+blend_times = [  ]
+
+[node name="PeteButton" type="Button" parent="." index="11"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 706.0
+margin_top = 269.0
+margin_right = 773.0
+margin_bottom = 307.0
+rect_scale = Vector2( 2, 2 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 12 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Pete"
+flat = true
+align = 2
+_sections_unfolded = [ "Rect", "custom_fonts" ]
+
+[node name="PeteSprite" type="Sprite" parent="PeteButton" index="0"]
+
+position = Vector2( 12.5877, 17.2545 )
+texture = ExtResource( 7 )
+vframes = 4
+hframes = 3
+_sections_unfolded = [ "Animation" ]
+
+[node name="PeteAnim" type="AnimationPlayer" parent="PeteButton" index="1"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+blend_times = [  ]
+
+[node name="ShiraButton" type="Button" parent="." index="12"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 637.0
+margin_top = 168.0
+margin_right = 710.0
+margin_bottom = 206.0
+rect_scale = Vector2( 2, 2 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 13 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Shira"
+flat = true
+align = 2
+_sections_unfolded = [ "Rect", "custom_fonts" ]
+
+[node name="ShiraSprite" type="Sprite" parent="ShiraButton" index="0"]
+
+position = Vector2( 12.5546, 15.7458 )
+texture = ExtResource( 7 )
+vframes = 4
+hframes = 3
+_sections_unfolded = [ "Animation" ]
+
+[node name="ShiraAnim" type="AnimationPlayer" parent="ShiraButton" index="1"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+blend_times = [  ]
+
+[node name="TitleSong" type="AudioStreamPlayer" parent="." index="13"]
+
+stream = ExtResource( 8 )
+volume_db = -5.0
+pitch_scale = 1.0
+autoplay = true
+mix_target = 0
+bus = "Master"
+
+[connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
+
+[connection signal="pressed" from="HubertButton" to="." method="_on_HubertButton_pressed"]
+
+[connection signal="pressed" from="RaeaButton" to="." method="_on_RaeaButton_pressed"]
+
+[connection signal="pressed" from="LawrenceButton" to="." method="_on_LawrenceButton_pressed"]
+
+[connection signal="pressed" from="EmilyButton" to="." method="_on_EmilyButton_pressed"]
+
+[connection signal="pressed" from="ZachButton" to="." method="_on_ZachButton_pressed"]
+
+[connection signal="pressed" from="ChrisButton" to="." method="_on_ChrisButton_pressed"]
+
+[connection signal="pressed" from="PeteButton" to="." method="_on_PeteButton_pressed"]
+
+[connection signal="pressed" from="ShiraButton" to="." method="_on_ShiraButton_pressed"]
+
+

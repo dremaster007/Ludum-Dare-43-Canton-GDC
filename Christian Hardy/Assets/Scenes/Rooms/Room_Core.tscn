@@ -84,7 +84,7 @@ collision_layer = 1
 collision_mask = 1
 occluder_light_mask = 1
 format = 1
-tile_data = PoolIntArray( 196614, 19, 0, 196615, 19, 0, 196616, 19, 0, 196617, 19, 0, 196618, 19, 0, 262150, 19, 0, 262151, 19, 0, 262152, 19, 0, 262153, 19, 0, 262154, 19, 0, 327686, 19, 0, 327687, 19, 0, 327688, 19, 0, 327689, 19, 0, 327690, 19, 0 )
+tile_data = PoolIntArray(  )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -190,11 +190,5 @@ classes = {
 [node name="Enemy" parent="." index="9" instance=ExtResource( 6 )]
 
 position = Vector2( 624.484, 310.608 )
-classes = {
-"Healer": false,
-"Knight": false,
-"Ranger": false,
-"Rogue": false
-}
 
 
