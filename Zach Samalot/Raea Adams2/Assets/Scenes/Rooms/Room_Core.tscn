@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Assets/Scripts/RoomSettings.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Scenes/PickupItems.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Assets/Graphics/Tilesets/main_tileset.tres" type="TileSet" id=3]
-[ext_resource path="res://Assets/Scenes/Characters/Enemy.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Scenes/Characters/Enemy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Scenes/PickupItems.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Graphics/Tilesets/main_tileset.tres" type="TileSet" id=4]
 [ext_resource path="res://Assets/Scenes/Characters/Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Scenes/Characters/PartyMember.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/Scenes/HUD.tscn" type="PackedScene" id=7]
 
 [sub_resource type="Curve2D" id=1]
 
@@ -13,15 +15,14 @@ _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 388.428, 121.986, 0, 0, 0, 0, 386.758, 372.512, 0, 0, 0, 0, 640.625, 377.523, 0, 0, 0, 0, 638.954, 322.407, 0, 0, 0, 0, 388.428, 315.726, 0, 0, 0, 0, 386.758, 248.919, 0, 0, 0, 0, 638.954, 253.93, 0, 0, 0, 0, 642.295, 187.123, 0, 0, 0, 0, 381.747, 183.782, 0, 0, 0, 0, 490.309, 116.975, 0, 0, 0, 0, 478.617, 379.193, 0, 0, 0, 0, 570.477, 382.534, 0, 0, 0, 0, 577.158, 116.975, 0, 0, 0, 0, 575.488, 121.986 )
 }
 
-[node name="Room" type="Node"]
+[node name="Room" type="Node" index="0"]
 
 script = ExtResource( 1 )
-enemy_scene = null
-item_scene = ExtResource( 2 )
+enemy_scene = ExtResource( 2 )
+item_scene = ExtResource( 3 )
 
 [node name="EnemySpawnArea" type="Path2D" parent="." index="0"]
 
-editor/display_folded = true
 self_modulate = Color( 0.5, 0.6, 1, 0.7 )
 position = Vector2( -1.36038, 1.36035 )
 curve = SubResource( 1 )
@@ -41,18 +42,18 @@ lookahead = 4.0
 
 [node name="Camera2D" type="Camera2D" parent="." index="1"]
 
-position = Vector2( 564.409, 281.573 )
+position = Vector2( 516.174, 293.632 )
 anchor_mode = 1
 rotating = false
 current = true
-zoom = Vector2( 0.6, 0.6 )
+zoom = Vector2( 0.3, 0.3 )
 limit_left = -10000000
 limit_top = -10000000
 limit_right = 10000000
 limit_bottom = 10000000
 limit_smoothed = false
-drag_margin_h_enabled = false
-drag_margin_v_enabled = false
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
 smoothing_enabled = false
 smoothing_speed = 5.0
 offset_v = 0.0
@@ -68,7 +69,7 @@ editor_draw_drag_margin = false
 [node name="Ground" type="TileMap" parent="." index="2"]
 
 mode = 0
-tile_set = ExtResource( 3 )
+tile_set = ExtResource( 4 )
 cell_size = Vector2( 64, 64 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -91,7 +92,7 @@ __meta__ = {
 [node name="Walls" type="TileMap" parent="." index="3"]
 
 mode = 0
-tile_set = ExtResource( 3 )
+tile_set = ExtResource( 4 )
 cell_size = Vector2( 64, 64 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -115,7 +116,7 @@ __meta__ = {
 [node name="Foreground" type="TileMap" parent="." index="4"]
 
 mode = 0
-tile_set = ExtResource( 3 )
+tile_set = ExtResource( 4 )
 cell_size = Vector2( 64, 64 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -135,24 +136,67 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Enemy" parent="." index="5" instance=ExtResource( 4 )]
+[node name="Player" parent="." index="5" instance=ExtResource( 5 )]
 
-position = Vector2( 624.484, 310.608 )
-classes = {
-"Healer": false,
-"Knight": false,
-"Ranger": false,
-"Rogue": false
-}
-
-[node name="Player" parent="." index="6" instance=ExtResource( 5 )]
-
-position = Vector2( 545.985, 239.692 )
+position = Vector2( 499.619, 250.115 )
 classes = {
 "Healer": false,
 "Knight": true,
 "Ranger": false,
 "Rogue": false
 }
+
+[node name="Member1" parent="." index="6" instance=ExtResource( 6 )]
+
+visible = false
+position = Vector2( 600.404, 249.386 )
+collision_layer = 32
+collision_mask = 54
+party_member = 0
+classes = {
+"Healer": false,
+"Knight": true,
+"Ranger": false,
+"Rogue": false
+}
+
+[node name="Member2" parent="." index="7" instance=ExtResource( 6 )]
+
+visible = false
+position = Vector2( 538.656, 314.809 )
+collision_layer = 32
+collision_mask = 54
+party_member = 1
+classes = {
+"Healer": false,
+"Knight": true,
+"Ranger": false,
+"Rogue": false
+}
+
+[node name="Member3" parent="." index="8" instance=ExtResource( 6 )]
+
+position = Vector2( 447.504, 329.511 )
+collision_layer = 32
+collision_mask = 54
+party_member = 2
+classes = {
+"Healer": false,
+"Knight": true,
+"Ranger": false,
+"Rogue": false
+}
+
+[node name="Enemy" parent="." index="9" instance=ExtResource( 2 )]
+
+position = Vector2( 624.484, 310.608 )
+classes = {
+"Healer": false,
+"Knight": false,
+"Ranger": true,
+"Rogue": false
+}
+
+[node name="HUD" parent="." index="10" instance=ExtResource( 7 )]
 
 
