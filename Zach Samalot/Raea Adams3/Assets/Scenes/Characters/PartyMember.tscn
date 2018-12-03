@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Scenes/Characters/Character_Core.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Graphics/Characters/char_2_hubert/hewer.png" type="Texture" id=2]
+
+[node name="PartyMember" instance=ExtResource( 1 )]
+
+collision_layer = 32
+collision_mask = 38
+move_speed = 100
+character_type = 1
+speed = 100
+distance_buffer = 15
+
+[node name="HitBox" parent="." index="1"]
+
+editor/display_folded = false
+collision_mask = 80
+
+[node name="Sprite" parent="." index="4"]
+
+texture = ExtResource( 2 )
+
+[node name="SwordArea" parent="Weapons/sword" index="1" groups=[
+"party",
+]]
+
+editor/display_folded = true
+
+[node name="DaggerArea" parent="Weapons/dagger_front" index="0" groups=[
+"party",
+]]
+
+[node name="DaggerArea" parent="Weapons/dagger_back" index="0" groups=[
+"party",
+]]
+
+

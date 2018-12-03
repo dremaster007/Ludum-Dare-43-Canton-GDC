@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Goblin_1.ogg-f7c647260b90a194f64175f297656e8b.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/Enemy/Goblin/Goblin_1.ogg"
+dest_files=[ "res://.import/Goblin_1.ogg-f7c647260b90a194f64175f297656e8b.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
