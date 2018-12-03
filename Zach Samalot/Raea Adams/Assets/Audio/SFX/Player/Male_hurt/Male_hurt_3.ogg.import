@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Male_hurt_3.ogg-d0a88e9d31bf6668a177e0197ea7250b.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/Player/Male_hurt/Male_hurt_3.ogg"
+dest_files=[ "res://.import/Male_hurt_3.ogg-d0a88e9d31bf6668a177e0197ea7250b.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

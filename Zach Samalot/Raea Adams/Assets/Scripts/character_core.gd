@@ -11,6 +11,9 @@ var mouse_works = true #This tells if the mouse can be used or not. A manual Jus
 
 var character_ready = false
 
+#var HurtTween = get_parent().get_node("HurtTween")
+#var HurtFX = get_parent().get_node("HurtFX")
+
 var velocity = Vector2()
 var mouse_position = Vector2()
 var local_mouse_position = Vector2()
@@ -32,6 +35,14 @@ var stats = {"Current_Health": 0,
              "Level": 0
             }
 
+var enemy_textures = {"Slime": "res://Assets/Graphics/Enemies/Slime/Slime_spritesheet.png",
+                      "Goblin": "res://Assets/Graphics/Enemies/Goblin/Goblin_spritesheet.png",
+                      "Shadow Slime": "res://Assets/Graphics/Enemies/Shadow_goblin/Shadow_goblin_spritesheet.png",
+                      "Shadow Goblin": "res://Assets/Graphics/Enemies/Shadow_goblin/Shadow_goblin_spritesheet.png"
+                      }
+
+var enemy_tex_array = ["Slime", "Goblin", "Shadow Slime", "Shadow Goblin"]
+
 #This holds the classes as bools so they can be clicked on or off
 export var classes = {"Knight": false,
                "Rogue": false,
@@ -48,6 +59,12 @@ var rand_num
 
 func _ready():
 	possible_actions.Attack = true
+	
+func hurt_tween():
+	$HurtFX.restart()
+	$HurtTween.interpolate_property($Sprite, "rotation_degrees", $Sprite.rotation_degrees - 20, $Sprite.rotation_degrees, 0.3, Tween.TRANS_QUART, Tween.EASE_IN_OUT)
+	$HurtTween.interpolate_property($Sprite, "modulate", Color(200,0,0,1), Color(1,1,1,1), 0.3, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
+	$HurtTween.start()
 
 func change_state(new_state, new_damage):
 	state = new_state
@@ -61,7 +78,9 @@ func change_state(new_state, new_damage):
 			pass
 		HURT:
 			if possible_actions.Can_Hurt:
+				hurt_tween()
 				if character_type == 2:
+					$HitSFX.play()
 					print("Player Health: " + str(stats.Current_Health))
 				$BloodParticle.emitting = true
 				stats.Current_Health -= damage_taking
@@ -70,7 +89,9 @@ func change_state(new_state, new_damage):
 				if character_type == 0:
 					print(str(stats.Current_Health) + " / " + str(stats.Max_Health))
 				possible_actions.Can_Hurt = false
+				get_hurt = false
 				$BeforeHurt.start()
+				print("HURT")
 		DEAD:
 			pass
 
@@ -88,8 +109,11 @@ func character_setup():
 	
 	if character_type == 0:
 		randomize()
+		var enemy_tex
 		
 		if game_info.current_difficulty == 0: #Checks the difficulty of the level
+			enemy_tex = randi()%enemy_tex_array.size()
+			$Sprite.texture = load(enemy_textures[enemy_tex_array[enemy_tex]])
 			stat_number = 5 #Sets the stat number to the highest each stat can be
 			stats.Level = 0 #Sets the difficulty of the enemy
 		if game_info.current_difficulty == 1:
@@ -146,8 +170,8 @@ func character_setup():
 			stats.Max_Health = 100
 			stats.Max_Mana = 50
 			stats.Defense = 7
-			stats.Attack = 999999
-			stats.Attack_Speed = 4
+			stats.Attack = 8
+			stats.Attack_Speed = 4.0
 			$Weapons/bow.show()
 			$Weapons/bow/arrow.show()
 	stats.Current_Health = stats.Max_Health
@@ -185,12 +209,12 @@ func attack():
 				a.rotation = local_mouse_position.angle()
 				a.velocity.x = local_mouse_position.x * 2
 				a.velocity.y = local_mouse_position.y * 2
+				a.character_type = character_type
 				$Weapons/bow/arrow.hide()
 	
 		$AttackCooldown.wait_time = stats.Attack_Speed
 		possible_actions.Attack = false #Sets the attack action to impossible
 		$AttackCooldown.start() #Starts the attack cooldown timer
-
 
 func death():
 	queue_free()

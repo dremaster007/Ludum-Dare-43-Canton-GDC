@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Scenes/Characters/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Scenes/Characters/Player.tscn" type="PackedScene" id=2]
+
+[node name="AnimTest" type="Node" index="0"]
+
+[node name="Enemy" parent="." index="0" instance=ExtResource( 1 )]
+
+position = Vector2( 237.61, 71.1155 )
+
+[node name="Player" parent="." index="1" instance=ExtResource( 2 )]
+
+

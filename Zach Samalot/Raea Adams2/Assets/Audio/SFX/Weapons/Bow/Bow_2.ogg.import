@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Bow_2.ogg-01c9ea714f298afaf00110ef41f633c1.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/Weapons/Bow/Bow_2.ogg"
+dest_files=[ "res://.import/Bow_2.ogg-01c9ea714f298afaf00110ef41f633c1.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

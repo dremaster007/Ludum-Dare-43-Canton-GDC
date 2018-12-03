@@ -23,12 +23,10 @@ var enemy
 
 func _ready():
 	character_setup()
-	if character_type == 2:
-		stats.Current_Health = stats.Max_Health
-		stats.Current_Mana = stats.Max_Mana
-		print(stats.Current_Mana)
-		health_percent = stats.Current_Health / stats.Max_Health
-		mana_percent = stats.Current_Mana / stats.Max_Mana
+	
+	if character_type == 0:
+		self.connect("info_transfer", $AttackBox, "info_transfer")
+	
 	if character_type == 1 or 2:
 		self.connect("info_transfer", $Weapons/sword/SwordArea, "info_transfer")
 		self.connect("info_transfer", $Weapons/dagger_front/DaggerArea, "info_transfer")
@@ -36,8 +34,6 @@ func _ready():
 		if character_type == 2:
 			self.connect("hud_update", hud, "update_HUD")
 	emit_signal("info_transfer", stats.Attack, character_type)
-	if character_type == 0:
-		$Sprite.texture = load("res://Assets/Graphics/Enemies/goblin.png")
 	if character_type == 1:
 		#$Sprite.texture = load("res://Assets/Graphics/player-run-1.png")
 		pass
@@ -45,6 +41,7 @@ func _ready():
 		#$Sprite.texture = load("res://Assets/Graphics/player-run-1.png")
 		pass
 	set_physics_process(true)
+
 
 func _physics_process(delta):
 	if character_ready and character_type == 2:
@@ -55,7 +52,6 @@ func _physics_process(delta):
 	
 	#If the character is within a danger zone they will get hurt
 	if get_hurt:
-		#print("get hurt")
 		change_state(HURT,damage_taken)
 	
 	#If the character health is below 0 or equal to it they'll die
@@ -202,15 +198,18 @@ func _on_body_exited(body):
 func _on_HitBox_area_entered(area):
 	if area.is_in_group("damage"):
 		if area.is_in_group("party"):
-			if character_type != 1 or 2:
+			if character_type != 2:
 					damage_taken = area.damage
 					change_state(HURT,damage_taken)
+					#print("Line 203")
+					#print(area.damage)
 					get_hurt = true
-		
+
 		if area.is_in_group("enemy"):
 			if character_type != 0:
 				damage_taken = area.damage
-				change_state(HURT,damage_taken)
+				#print("209 Line HURT")
+				change_state(HURT, damage_taken)
 				get_hurt = true
 
 func _on_BeforeHurt_timeout():
@@ -219,7 +218,9 @@ func _on_BeforeHurt_timeout():
 func _on_HitBox_body_entered(body):
 	if body.is_in_group("damage") and body.is_in_group("party"):
 		if character_type == 0: 
-			hurt(body.damage)
+			damage_taken = body.damage
+			print("Line 220 HURT")
+			change_state(HURT, damage_taken)
 
 #Handles what happens once the attack cools down
 func _on_AttackCooldown_timeout():
