@@ -1,8 +1,12 @@
 extends "res://Assets/Scripts/character_core.gd"
 
 signal info_transfer
+signal hud_update
 
 var damage_taken = 0
+
+var health_percent = 0.0
+var mana_percent = 0.0
 
 var distance
 var direction = Vector2()
@@ -11,15 +15,26 @@ export (int) var speed
 export (int) var distance_buffer
 
 onready var player = get_node("/root/Room/Player")  # gets the player node stored in player
-var enemy
+onready var hud = get_node("/root/Room/HUD")
 onready var current_target = player
 
+var enemy
+
+
 func _ready():
+	character_setup()
+	if character_type == 2:
+		stats.Current_Health = stats.Max_Health
+		stats.Current_Mana = stats.Max_Mana
+		print(stats.Current_Mana)
+		health_percent = stats.Current_Health / stats.Max_Health
+		mana_percent = stats.Current_Mana / stats.Max_Mana
 	if character_type == 1 or 2:
 		self.connect("info_transfer", $Weapons/sword/SwordArea, "info_transfer")
 		self.connect("info_transfer", $Weapons/dagger_front/DaggerArea, "info_transfer")
 		self.connect("info_transfer", $Weapons/dagger_back/DaggerArea, "info_transfer")
-	
+		if character_type == 2:
+			self.connect("hud_update", hud, "update_HUD")
 	emit_signal("info_transfer", stats.Attack, character_type)
 	if character_type == 0:
 		$Sprite.texture = load("res://Assets/Graphics/Enemies/goblin.png")
@@ -32,12 +47,15 @@ func _ready():
 	set_physics_process(true)
 
 func _physics_process(delta):
+	if character_ready and character_type == 2:
+		emit_signal("hud_update", stats.Max_Health, stats.Current_Health, stats.Max_Mana, stats.Current_Mana)
+	
 	if facing != str($PlayerAnim.current_animation):
 		$PlayerAnim.play(facing)
 	
 	#If the character is within a danger zone they will get hurt
 	if get_hurt:
-		print("get hurt")
+		#print("get hurt")
 		change_state(HURT,damage_taken)
 	
 	#If the character health is below 0 or equal to it they'll die
@@ -212,5 +230,5 @@ func _on_AttackCooldown_timeout():
 	mouse_works = true
 
 func _on_HitBox_area_exited(area):
-	print("Stop pain")
+	possible_actions.Can_Hurt = false
 	get_hurt = false

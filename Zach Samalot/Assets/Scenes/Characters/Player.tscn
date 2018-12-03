@@ -18,8 +18,13 @@ collision_mask = 80
 
 position = Vector2( 0.566565, 0 )
 
+[node name="Weapons" parent="." index="5"]
+
+editor/display_folded = false
+
 [node name="sword" parent="Weapons" index="0"]
 
+editor/display_folded = true
 position = Vector2( -4.77084, 8.23779 )
 rotation = -0.927349
 flip_h = true
@@ -34,10 +39,17 @@ scale = Vector2( 0.137138, 0.195272 )
 ]]
 
 position = Vector2( 8.16495, -19.4616 )
+monitoring = false
+
+[node name="dagger_front" parent="Weapons" index="1"]
+
+editor/display_folded = false
 
 [node name="DaggerArea" parent="Weapons/dagger_front" index="0" groups=[
 "party",
 ]]
+
+monitoring = false
 
 [node name="DaggerArea" parent="Weapons/dagger_back" index="0" groups=[
 "party",
