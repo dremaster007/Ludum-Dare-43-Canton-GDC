@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Assets/Scenes/TitleScene.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Graphics/NightBackground.png" type="Texture" id=2]
@@ -6,8 +6,15 @@
 [ext_resource path="res://Assets/Graphics/Campfire_spritesheet.png" type="Texture" id=4]
 [ext_resource path="res://Assets/fire.ogg" type="AudioStream" id=5]
 [ext_resource path="res://Assets/Fonts/vtf-misterpixel.regular.otf" type="DynamicFontData" id=6]
-[ext_resource path="res://Assets/Graphics/Characters/raea.png" type="Texture" id=7]
-[ext_resource path="res://Assets/Title_shop.ogg" type="AudioStream" id=8]
+[ext_resource path="res://Assets/Graphics/Characters/hewer.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Graphics/Characters/raea.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Graphics/Characters/Lawerence_spritesheet.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Graphics/Characters/Emily_spritesheet.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Graphics/Characters/Zach_spritesheet.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Graphics/Characters/Chris_spritesheet.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Graphics/Characters/PeteWalkingSpritesheet.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Graphics/Characters/Shira_spritesheet.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Title_shop.ogg" type="AudioStream" id=15]
 
 [sub_resource type="Animation" id=1]
 
@@ -60,92 +67,6 @@ use_filter = true
 font_data = ExtResource( 6 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[sub_resource type="Animation" id=6]
-
-resource_name = "walkright"
-length = 0.6
-loop = true
-step = 0.15
-tracks/0/type = "value"
-tracks/0/path = NodePath("RaeaSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 6, 7, 8, 7 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("RaeaSprite:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 3 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("RaeaSprite:vframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 4 ]
-}
-
-[sub_resource type="Animation" id=7]
-
-resource_name = "walkup"
-length = 0.6
-loop = true
-step = 0.15
-tracks/0/type = "value"
-tracks/0/path = NodePath("RaeaSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 9, 10, 11, 10 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("RaeaSprite:vframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 4 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("RaeaSprite:hframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 3 ]
-}
-
 [sub_resource type="DynamicFont" id=8]
 
 size = 18
@@ -194,7 +115,7 @@ use_filter = false
 font_data = ExtResource( 6 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="TitleScene" type="Node"]
+[node name="TitleScene" type="Node" index="0"]
 
 script = ExtResource( 1 )
 
@@ -324,19 +245,12 @@ position = Vector2( 12.4774, 16.7333 )
 texture = ExtResource( 7 )
 vframes = 4
 hframes = 3
+frame = 1
 _sections_unfolded = [ "Animation", "Transform" ]
-
-[node name="HubertAnim" type="AnimationPlayer" parent="HubertButton" index="1"]
-
-root_node = NodePath("..")
-autoplay = ""
-playback_process_mode = 1
-playback_default_blend_time = 0.0
-playback_speed = 1.0
-blend_times = [  ]
 
 [node name="RaeaButton" type="Button" parent="." index="6"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -366,25 +280,14 @@ _sections_unfolded = [ "Rect", "custom_fonts" ]
 [node name="RaeaSprite" type="Sprite" parent="RaeaButton" index="0"]
 
 position = Vector2( 13.832, 17.3767 )
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 vframes = 4
 hframes = 3
-frame = 6
 _sections_unfolded = [ "Animation" ]
-
-[node name="RaeaAnim" type="AnimationPlayer" parent="RaeaButton/RaeaSprite" index="0"]
-
-root_node = NodePath("..")
-autoplay = ""
-playback_process_mode = 1
-playback_default_blend_time = 0.0
-playback_speed = 1.0
-anims/walkright = SubResource( 6 )
-anims/walkup = SubResource( 7 )
-blend_times = [  ]
 
 [node name="LawrenceButton" type="Button" parent="." index="7"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -414,22 +317,14 @@ _sections_unfolded = [ "Rect", "custom_fonts" ]
 [node name="LawrenceSprite" type="Sprite" parent="LawrenceButton" index="0"]
 
 position = Vector2( 12.8392, 18.355 )
-texture = ExtResource( 7 )
+texture = ExtResource( 9 )
 vframes = 4
 hframes = 3
 _sections_unfolded = [ "Animation" ]
 
-[node name="LawrenceAnim" type="AnimationPlayer" parent="LawrenceButton" index="1"]
-
-root_node = NodePath("..")
-autoplay = ""
-playback_process_mode = 1
-playback_default_blend_time = 0.0
-playback_speed = 1.0
-blend_times = [  ]
-
 [node name="EmilyButton" type="Button" parent="." index="8"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -459,22 +354,14 @@ _sections_unfolded = [ "Rect", "custom_fonts" ]
 [node name="EmilySprite" type="Sprite" parent="EmilyButton" index="0"]
 
 position = Vector2( 15.6995, 16.0531 )
-texture = ExtResource( 7 )
+texture = ExtResource( 10 )
 vframes = 4
 hframes = 3
 _sections_unfolded = [ "Animation" ]
 
-[node name="EmilyAnim" type="AnimationPlayer" parent="EmilyButton" index="1"]
-
-root_node = NodePath("..")
-autoplay = ""
-playback_process_mode = 1
-playback_default_blend_time = 0.0
-playback_speed = 1.0
-blend_times = [  ]
-
 [node name="ZachButton" type="Button" parent="." index="9"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -504,22 +391,14 @@ _sections_unfolded = [ "Rect", "custom_fonts" ]
 [node name="ZachSprite" type="Sprite" parent="ZachButton" index="0"]
 
 position = Vector2( 14.1995, 17.7739 )
-texture = ExtResource( 7 )
+texture = ExtResource( 11 )
 vframes = 4
 hframes = 3
 _sections_unfolded = [ "Animation" ]
 
-[node name="ZachAnim" type="AnimationPlayer" parent="ZachButton" index="1"]
-
-root_node = NodePath("..")
-autoplay = ""
-playback_process_mode = 1
-playback_default_blend_time = 0.0
-playback_speed = 1.0
-blend_times = [  ]
-
 [node name="ChrisButton" type="Button" parent="." index="10"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -549,22 +428,14 @@ _sections_unfolded = [ "Rect", "custom_fonts" ]
 [node name="ChrisSprite" type="Sprite" parent="ChrisButton" index="0"]
 
 position = Vector2( 14.5193, 16.8324 )
-texture = ExtResource( 7 )
+texture = ExtResource( 12 )
 vframes = 4
 hframes = 3
 _sections_unfolded = [ "Animation" ]
 
-[node name="ChrisAnim" type="AnimationPlayer" parent="ChrisButton" index="1"]
-
-root_node = NodePath("..")
-autoplay = ""
-playback_process_mode = 1
-playback_default_blend_time = 0.0
-playback_speed = 1.0
-blend_times = [  ]
-
 [node name="PeteButton" type="Button" parent="." index="11"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -594,22 +465,14 @@ _sections_unfolded = [ "Rect", "custom_fonts" ]
 [node name="PeteSprite" type="Sprite" parent="PeteButton" index="0"]
 
 position = Vector2( 12.5877, 17.2545 )
-texture = ExtResource( 7 )
+texture = ExtResource( 13 )
 vframes = 4
 hframes = 3
 _sections_unfolded = [ "Animation" ]
 
-[node name="PeteAnim" type="AnimationPlayer" parent="PeteButton" index="1"]
-
-root_node = NodePath("..")
-autoplay = ""
-playback_process_mode = 1
-playback_default_blend_time = 0.0
-playback_speed = 1.0
-blend_times = [  ]
-
 [node name="ShiraButton" type="Button" parent="." index="12"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -639,23 +502,14 @@ _sections_unfolded = [ "Rect", "custom_fonts" ]
 [node name="ShiraSprite" type="Sprite" parent="ShiraButton" index="0"]
 
 position = Vector2( 12.5546, 15.7458 )
-texture = ExtResource( 7 )
+texture = ExtResource( 14 )
 vframes = 4
 hframes = 3
 _sections_unfolded = [ "Animation" ]
 
-[node name="ShiraAnim" type="AnimationPlayer" parent="ShiraButton" index="1"]
-
-root_node = NodePath("..")
-autoplay = ""
-playback_process_mode = 1
-playback_default_blend_time = 0.0
-playback_speed = 1.0
-blend_times = [  ]
-
 [node name="TitleSong" type="AudioStreamPlayer" parent="." index="13"]
 
-stream = ExtResource( 8 )
+stream = ExtResource( 15 )
 volume_db = -5.0
 pitch_scale = 1.0
 autoplay = true
