@@ -121,6 +121,7 @@ func move_character(character):
 					npc_check()
 				counter += 1
 				if counter == 3:
+					random_weapon()
 					get_tree().change_scene("res://Assets/Scenes/Rooms/First_Room.tscn")
 				print(counter)
 				if char1 == null:
@@ -135,6 +136,18 @@ func move_character(character):
 				
 	else:
 		pass
+
+func random_weapon():
+	var weapon_list = ["Sword", "Dagger", "Bow"]
+	var selected_weapon
+	var rand_num = 0
+	
+	randomize()
+	rand_num = randi()%weapon_list.size()
+	selected_weapon = weapon_list[rand_num]
+	print(selected_weapon)
+	
+	game_info.inventory.Weapon = selected_weapon
 
 func npc_check():
 	if players_choice == "RaeaButton":
