@@ -16,7 +16,6 @@ var room_settings = {"Easy": {"Weapons": [], "Items": []},
 var rand_num = 0 #This will be the variable I use to determine randomized events
 
 func _ready():
-	yield(get_tree().create_timer(1),"timeout") #Use this to see the generator in action
 	room_setup() #Sets up the room enemies and pickups
 
 func room_setup():
@@ -25,16 +24,24 @@ func room_setup():
 	var item_limit = 0 #This will determine how many pickups are within an area
 	
 	if game_info.current_difficulty == 0: #Checks the difficulty of the game
-		$Ground.modulate = Color(1,0,0,1)
-		$Walls.modulate = Color("#3E3E3E")
+		$Ground.modulate = Color("#ff72cb")
+		$Walls.modulate = Color("#bc4791")
 		difficulty.Easy = true #Sets the difficulty
 	if game_info.current_difficulty == 1:
+		$Ground.modulate = Color("#89a4ff")
+		$Walls.modulate = Color("#233e99")
 		difficulty.Decent = true
 	if game_info.current_difficulty == 2:
+		$Ground.modulate = Color("#54d85b")
+		$Walls.modulate = Color("#138419")
 		difficulty.Hard = true
 	if game_info.current_difficulty == 3:
+		$Ground.modulate = Color("#ff49cb")
+		$Walls.modulate = Color("#6de6ff")
 		difficulty.Insane = true
 	if game_info.current_difficulty == 4:
+		$Ground.modulate = Color("#ff2b2b")
+		$Walls.modulate = Color("#272827")
 		difficulty.Hell = true
 	
 	if difficulty.Easy: #Checks the difficulty that will be generated

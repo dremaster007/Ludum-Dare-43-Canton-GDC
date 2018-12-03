@@ -32,6 +32,14 @@ var stats = {"Current_Health": 0,
              "Level": 0
             }
 
+var enemy_textures = {"Slime": "res://Assets/Graphics/Enemies/Slime/Slime_spritesheet.png",
+                      "Goblin": "res://Assets/Graphics/Enemies/Goblin/Goblin_spritesheet.png",
+                      "Shadow Slime": "res://Assets/Graphics/Enemies/Shadow_goblin/Shadow_goblin_spritesheet.png",
+                      "Shadow Goblin": "res://Assets/Graphics/Enemies/Shadow_goblin/Shadow_goblin_spritesheet.png"
+                      }
+
+var enemy_tex_array = ["Slime", "Goblin", "Shadow Slime", "Shadow Goblin"]
+
 #This holds the classes as bools so they can be clicked on or off
 export var classes = {"Knight": false,
                "Rogue": false,
@@ -62,6 +70,7 @@ func change_state(new_state, new_damage):
 		HURT:
 			if possible_actions.Can_Hurt:
 				if character_type == 2:
+					$HitSFX.play()
 					print("Player Health: " + str(stats.Current_Health))
 				$BloodParticle.emitting = true
 				stats.Current_Health -= damage_taking
@@ -90,8 +99,11 @@ func character_setup():
 	
 	if character_type == 0:
 		randomize()
+		var enemy_tex
 		
 		if game_info.current_difficulty == 0: #Checks the difficulty of the level
+			enemy_tex = randi()%enemy_tex_array.size()
+			$Sprite.texture = load(enemy_textures[enemy_tex_array[enemy_tex]])
 			stat_number = 5 #Sets the stat number to the highest each stat can be
 			stats.Level = 0 #Sets the difficulty of the enemy
 		if game_info.current_difficulty == 1:
@@ -148,7 +160,7 @@ func character_setup():
 			stats.Max_Health = 100
 			stats.Max_Mana = 50
 			stats.Defense = 7
-			stats.Attack = 5
+			stats.Attack = 8
 			stats.Attack_Speed = 4.0
 			$Weapons/bow.show()
 			$Weapons/bow/arrow.show()

@@ -3,7 +3,7 @@
 [ext_resource path="res://Assets/Scripts/character.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Scenes/Arrow.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Scripts/Attack.gd" type="Script" id=3]
-[ext_resource path="res://Assets/Graphics/Characters/raea.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Graphics/Characters/char_1_raea/Raea_spritesheet.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Graphics/Weapons/sword.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Graphics/Weapons/swoosh.png" type="Texture" id=6]
 [ext_resource path="res://Assets/Scripts/weapon_damage.gd" type="Script" id=7]
@@ -1477,6 +1477,17 @@ normal_map = null
 h_frames = 1
 v_frames = 1
 _sections_unfolded = [ "Process Material", "Time" ]
+
+[node name="HitSFX" type="AudioStreamPlayer2D" parent="." index="11"]
+
+stream = null
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
 
 [connection signal="area_entered" from="HitBox" to="." method="_on_HitBox_area_entered"]
 
