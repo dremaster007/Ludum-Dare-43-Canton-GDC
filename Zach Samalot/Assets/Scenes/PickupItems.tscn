@@ -1,0 +1,138 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Assets/Scripts/Dagger.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Tony/Dagger_Weapon.png" type="Texture" id=2]
+[ext_resource path="res://Assets/HUD/HUD_ItemPickup.png" type="Texture" id=3]
+[ext_resource path="res://Assets/HUD/HUD_PickupHover.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Fonts/vtf-misterpixel.regular.otf" type="DynamicFontData" id=5]
+
+[sub_resource type="CircleShape2D" id=5]
+
+custom_solver_bias = 0.0
+radius = 13.5
+
+[sub_resource type="InputEventKey" id=2]
+
+device = 0
+alt = false
+shift = false
+control = false
+meta = false
+command = false
+pressed = false
+scancode = 88
+unicode = 0
+echo = false
+
+[sub_resource type="ShortCut" id=3]
+
+shortcut = SubResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+
+size = 12
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 5 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[node name="Dagger" type="Area2D" groups=[
+"dagger",
+]]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 1 )
+Durability = null
+ItemType = null
+
+[node name="Sprite" type="Sprite" parent="." index="0"]
+
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+
+scale = Vector2( 1.5, 1.75 )
+shape = SubResource( 5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="ButtonPickup" type="TextureButton" parent="." index="2"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -40.0
+margin_top = -50.0
+margin_right = 40.0
+margin_bottom = -10.0
+rect_pivot_offset = Vector2( 40, 40 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = SubResource( 3 )
+group = null
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 4 )
+expand = true
+stretch_mode = 4
+_sections_unfolded = [ "Rect", "Size Flags", "Textures", "Theme", "Visibility" ]
+
+[node name="ItemName" type="Label" parent="ButtonPickup" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 20.0
+margin_top = 1.0
+margin_right = 63.0
+margin_bottom = 21.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 4 )
+text = "Sword"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="ButtonPopup" type="Tween" parent="." index="3"]
+
+repeat = false
+playback_process_mode = 1
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+_sections_unfolded = [ "playback" ]
+
+[connection signal="body_entered" from="." to="." method="_on_Dagger_body_entered"]
+
+[connection signal="body_exited" from="." to="." method="_on_Dagger_body_exited"]
+
+[connection signal="pressed" from="ButtonPickup" to="." method="_on_ButtonPickup_pressed"]
+
+[connection signal="tween_completed" from="ButtonPopup" to="." method="_on_ButtonPopup_tween_completed"]
+
+[connection signal="tween_started" from="ButtonPopup" to="." method="_on_ButtonPopup_tween_started"]
+
+
