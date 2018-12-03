@@ -107,5 +107,5 @@ func healthpot():
 func manapot():
 	print("Picked up a mana potion!")
 
-func dagger():
-	#HUD/WeaponContainer/Weapon.texture = dagger_sprite
+func pickup():
+	
