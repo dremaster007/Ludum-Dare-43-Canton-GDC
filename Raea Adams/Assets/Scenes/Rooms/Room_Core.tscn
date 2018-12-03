@@ -1,0 +1,218 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Assets/Scripts/RoomSettings.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Scenes/Characters/Enemy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Scripts/Pickup.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Graphics/Tilesets/main_tileset.tres" type="TileSet" id=4]
+[ext_resource path="res://Assets/Scenes/HUD.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Scenes/Characters/Player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/Scenes/Characters/PartyMember.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Assets/Graphics/Environment/Vignette.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Audio/Music/Danger_zone.ogg" type="AudioStream" id=9]
+
+[sub_resource type="CircleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 10.0
+
+[sub_resource type="PackedScene" id=2]
+
+_bundled = {
+"conn_count": 0,
+"conns": PoolIntArray(  ),
+"editable_instances": [  ],
+"names": PoolStringArray( "Pickup", "Area2D", "input_pickable", "gravity_vec", "gravity", "linear_damp", "angular_damp", "audio_bus_override", "audio_bus_name", "script", "CollisionShape", "CollisionShape2D", "shape" ),
+"node_count": 2,
+"node_paths": [ NodePath(".") ],
+"nodes": PoolIntArray( -1, -1, 1, 0, -1, 8, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 7, 5, 8, 6, 9, 7, 0, 1073741824, 0, 11, 262154, -1, 1, 12, 8, 0 ),
+"variants": [ true, Vector2( 0, 1 ), 98.0, 0.1, 1.0, false, "Master", ExtResource( 3 ), SubResource( 1 ) ],
+"version": 2
+}
+
+[sub_resource type="Curve2D" id=3]
+
+bake_interval = 5.0
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 820.727, 266.314, 0, 0, 0, 0, 814.079, 373.793, 0, 0, 0, 0, 707.708, 372.685 )
+}
+
+[node name="Room" type="Node"]
+
+script = ExtResource( 1 )
+enemy_scene = ExtResource( 2 )
+item_scene = SubResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="." index="0"]
+
+position = Vector2( 621.778, 318.585 )
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 0.6, 0.6 )
+limit_left = -10000000
+limit_top = -10000000
+limit_right = 10000000
+limit_bottom = 10000000
+limit_smoothed = false
+drag_margin_h_enabled = false
+drag_margin_v_enabled = false
+smoothing_enabled = false
+smoothing_speed = 5.0
+offset_v = 0.0
+offset_h = 0.0
+drag_margin_left = 0.2
+drag_margin_top = 0.2
+drag_margin_right = 0.2
+drag_margin_bottom = 0.2
+editor_draw_screen = true
+editor_draw_limits = false
+editor_draw_drag_margin = false
+
+[node name="EnemySpawnArea" type="Path2D" parent="." index="1"]
+
+editor/display_folded = true
+self_modulate = Color( 0.5, 0.6, 1, 0.7 )
+curve = SubResource( 3 )
+
+[node name="SpawnLocation" type="PathFollow2D" parent="EnemySpawnArea" index="0"]
+
+position = Vector2( 820.727, 266.314 )
+rotation = -0.719981
+scale = Vector2( 0.143579, 0.143579 )
+offset = 0.0
+h_offset = 0.0
+v_offset = 0.0
+rotate = false
+cubic_interp = true
+loop = true
+lookahead = 4.0
+
+[node name="Ground" type="TileMap" parent="." index="2"]
+
+mode = 0
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 64, 64 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray(  )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Walls" type="TileMap" parent="." index="3"]
+
+mode = 0
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 64, 64 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray(  )
+_sections_unfolded = [ "Z Index" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Foreground" type="TileMap" parent="." index="4"]
+
+mode = 0
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 64, 64 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray(  )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="HUD" parent="." index="5" instance=ExtResource( 5 )]
+
+[node name="Player" parent="." index="6" groups=[
+"player",
+] instance=ExtResource( 6 )]
+
+visible = false
+position = Vector2( 572.688, 286.117 )
+classes = {
+"Healer": false,
+"Knight": false,
+"Ranger": true,
+"Rogue": false
+}
+
+[node name="Member1" parent="." index="7" instance=ExtResource( 7 )]
+
+position = Vector2( 641.959, 321.425 )
+
+[node name="Member2" parent="." index="8" instance=ExtResource( 7 )]
+
+position = Vector2( 453.541, 238.521 )
+classes = {
+"Healer": false,
+"Knight": false,
+"Ranger": true,
+"Rogue": false
+}
+
+[node name="Member3" parent="." index="9" instance=ExtResource( 7 )]
+
+position = Vector2( 779.128, 188.779 )
+classes = {
+"Healer": false,
+"Knight": false,
+"Ranger": true,
+"Rogue": false
+}
+
+[node name="Vignette" type="Sprite" parent="." index="10"]
+
+visible = false
+position = Vector2( 606.659, 318.465 )
+scale = Vector2( 0.629583, 0.846229 )
+texture = ExtResource( 8 )
+
+[node name="LevelMusic" type="AudioStreamPlayer2D" parent="." index="11"]
+
+position = Vector2( 549.843, 322.635 )
+stream = ExtResource( 9 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = true
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
+
+
