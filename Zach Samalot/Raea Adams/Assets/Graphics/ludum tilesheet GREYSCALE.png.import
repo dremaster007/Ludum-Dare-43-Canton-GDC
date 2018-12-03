@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ludum tilesheet GREYSCALE.png-2d2171e9eea55f3792eebaf970562ffc.stex"
+path="res://.import/ludum tilesheet GREYSCALE.png-50b858d6ec770d0002ded1a43b8ae81e.stex"
 
 [deps]
 
-source_file="res://Assets/Graphics/Tilesets/ludum tilesheet GREYSCALE.png"
-dest_files=[ "res://.import/ludum tilesheet GREYSCALE.png-2d2171e9eea55f3792eebaf970562ffc.stex" ]
+source_file="res://Assets/Graphics/ludum tilesheet GREYSCALE.png"
+dest_files=[ "res://.import/ludum tilesheet GREYSCALE.png-50b858d6ec770d0002ded1a43b8ae81e.stex" ]
 
 [params]
 

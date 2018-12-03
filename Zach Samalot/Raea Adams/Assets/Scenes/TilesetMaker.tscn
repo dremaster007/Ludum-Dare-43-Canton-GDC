@@ -1,7 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Assets/Graphics/Tilesets/tilesheet_wip.png" type="Texture" id=1]
-
+[ext_resource path="res://Assets/Graphics/Tilesets/ludum_tilesheet_WIP_GREYSCALE.png" type="Texture" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -16,7 +15,7 @@ editor/display_folded = true
 visible = false
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 689.25, 2.24, 60, 61 )
+region_rect = Rect2( 704, 0, 64, 64 )
 _sections_unfolded = [ "Region" ]
 
 [node name="Body" type="StaticBody2D" parent="Blank_Dark" index="0"]
@@ -43,7 +42,7 @@ editor/display_folded = true
 visible = false
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 745.351, 0.12, 65, 61 )
+region_rect = Rect2( 768, 0.12, 64, 63.88 )
 _sections_unfolded = [ "Region" ]
 
 [node name="Body" type="StaticBody2D" parent="Blank_Light" index="0"]
@@ -70,7 +69,7 @@ editor/display_folded = true
 visible = false
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 374.059, -3, 60.5, 64 )
+region_rect = Rect2( 384, 0, 64, 64 )
 _sections_unfolded = [ "Region" ]
 
 [node name="Body" type="StaticBody2D" parent="Foreground_Wall01" index="0"]
@@ -96,7 +95,7 @@ editor/display_folded = true
 visible = false
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 438.559, -8.5, 60, 70 )
+region_rect = Rect2( 448, 0, 64, 64 )
 _sections_unfolded = [ "Region" ]
 
 [node name="Body" type="StaticBody2D" parent="Foreground_Wall02" index="0"]
@@ -122,7 +121,7 @@ editor/display_folded = true
 visible = false
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 500.324, -7, 61.5, 69.5 )
+region_rect = Rect2( 512, 0, 64, 64 )
 _sections_unfolded = [ "Region" ]
 
 [node name="Body" type="StaticBody2D" parent="Foreground_Wall03" index="0"]
@@ -148,7 +147,7 @@ editor/display_folded = true
 visible = false
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 563.324, -3.5, 61, 65 )
+region_rect = Rect2( 576, 0, 64, 64 )
 _sections_unfolded = [ "Region" ]
 
 [node name="Body" type="StaticBody2D" parent="Foreground_Wall04" index="0"]
@@ -174,7 +173,7 @@ editor/display_folded = true
 visible = false
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 624.324, -3.5, 61.5, 65 )
+region_rect = Rect2( 640, 0, 64, 64 )
 _sections_unfolded = [ "Region" ]
 
 [node name="Body" type="StaticBody2D" parent="Foreground_Wall05" index="0"]
@@ -200,7 +199,7 @@ editor/display_folded = true
 visible = false
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 61.3475, 0.5, 63, 62 )
+region_rect = Rect2( 64, 0, 64, 64 )
 _sections_unfolded = [ "Region" ]
 
 [node name="Body" type="StaticBody2D" parent="Wall01" index="0"]
@@ -225,7 +224,7 @@ editor/display_folded = true
 visible = false
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 123.348, 1.5, 62, 60.5 )
+region_rect = Rect2( 128, 0, 64, 64 )
 _sections_unfolded = [ "Region" ]
 
 [node name="Body" type="StaticBody2D" parent="Wall02" index="0"]
@@ -251,7 +250,7 @@ editor/display_folded = true
 visible = false
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 123.348, 1.5, 62, 60.5 )
+region_rect = Rect2( 128, 0, 64, 64 )
 _sections_unfolded = [ "Region" ]
 
 [node name="Body" type="StaticBody2D" parent="Wall03" index="0"]
@@ -277,7 +276,7 @@ editor/display_folded = true
 visible = false
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 437.947, 375.859, 122, 61 )
+region_rect = Rect2( 448, 384, 128, 64 )
 _sections_unfolded = [ "Region" ]
 
 [node name="Body" type="StaticBody2D" parent="Long_Wall01" index="0"]
@@ -304,7 +303,7 @@ editor/display_folded = true
 visible = false
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 437.947, 437.859, 121, 63 )
+region_rect = Rect2( 448, 448, 128, 64 )
 _sections_unfolded = [ "Region" ]
 
 [node name="Body" type="StaticBody2D" parent="Long_Wall02" index="0"]
@@ -331,7 +330,7 @@ editor/display_folded = true
 visible = false
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 375.066, 187.464, 62, 62 )
+region_rect = Rect2( 384, 192, 64, 64 )
 _sections_unfolded = [ "Region" ]
 
 [node name="Body" type="StaticBody2D" parent="Left_Side_Wall01" index="0"]
@@ -355,10 +354,9 @@ shape = SubResource( 1 )
 [node name="Left_Side_Wall02" type="Sprite" parent="." index="13"]
 
 editor/display_folded = true
-visible = false
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 436.066, 188.964, 62.5, 61.5 )
+region_rect = Rect2( 448, 192, 64, 64 )
 _sections_unfolded = [ "Region" ]
 
 [node name="Body" type="StaticBody2D" parent="Left_Side_Wall02" index="0"]
@@ -385,7 +383,7 @@ editor/display_folded = true
 visible = false
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 497.879, 187.464, 65.5, 62 )
+region_rect = Rect2( 512, 192, 64, 64 )
 _sections_unfolded = [ "Region" ]
 
 [node name="Body" type="StaticBody2D" parent="Right_Side_Wall01" index="0"]
@@ -412,7 +410,7 @@ editor/display_folded = true
 visible = false
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 562.38, 187.464, 64.5, 61.5 )
+region_rect = Rect2( 576, 192, 64, 64 )
 _sections_unfolded = [ "Region" ]
 
 [node name="Body" type="StaticBody2D" parent="Right_Side_Wall02" index="0"]
@@ -439,7 +437,7 @@ editor/display_folded = true
 visible = false
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 623.387, 187.464, 64, 61.5 )
+region_rect = Rect2( 640, 192, 64, 64 )
 _sections_unfolded = [ "Region" ]
 
 [node name="Body" type="StaticBody2D" parent="Corner_Wall01" index="0"]
@@ -466,7 +464,7 @@ editor/display_folded = true
 visible = false
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 687.172, 187.464, 64.5, 62 )
+region_rect = Rect2( 704, 192, 64, 64 )
 _sections_unfolded = [ "Region" ]
 
 [node name="Body" type="StaticBody2D" parent="Corner_Wall02" index="0"]
@@ -493,7 +491,7 @@ editor/display_folded = true
 visible = false
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 752.672, 185.964, 58.5, 64 )
+region_rect = Rect2( 768, 192, 64, 64 )
 _sections_unfolded = [ "Region" ]
 
 [node name="Body" type="StaticBody2D" parent="Corner_Wall03" index="0"]
@@ -519,56 +517,58 @@ shape = SubResource( 1 )
 visible = false
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 562.43, 375.183, 63.5, 64 )
+region_rect = Rect2( 576, 384, 64, 64 )
 
 [node name="Floor02" type="Sprite" parent="." index="20"]
 
 visible = false
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 625.43, 375.683, 63.5, 62.5 )
+region_rect = Rect2( 640, 384, 64, 64 )
 
 [node name="Floor03" type="Sprite" parent="." index="21"]
 
 visible = false
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 687.506, 375.683, 63.651, 63 )
+region_rect = Rect2( 704, 384, 64, 64 )
+_sections_unfolded = [ "Region" ]
 
 [node name="Floor04" type="Sprite" parent="." index="22"]
 
+visible = false
 position = Vector2( 1.47541, -1.01587 )
 scale = Vector2( 1.04918, 1.03175 )
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 749.506, 374.683, 61.651, 63.5 )
+region_rect = Rect2( 768, 384, 64, 64 )
+_sections_unfolded = [ "Region" ]
 
 [node name="Floor05" type="Sprite" parent="." index="23"]
 
 visible = false
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 561.157, 436.767, 64.5, 63.5 )
+region_rect = Rect2( 576, 448, 64, 64 )
 
 [node name="Floor06" type="Sprite" parent="." index="24"]
 
 visible = false
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 625.657, 437.767, 62, 61.5 )
+region_rect = Rect2( 640, 448, 64, 64 )
 
 [node name="Floor07" type="Sprite" parent="." index="25"]
 
 visible = false
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 687.657, 437.767, 62.5, 61 )
+region_rect = Rect2( 704, 448, 64, 64 )
 
 [node name="Floor08" type="Sprite" parent="." index="26"]
 
-visible = false
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 750.657, 437.767, 60, 61.5 )
+region_rect = Rect2( 768, 448, 64, 64 )
 
 
