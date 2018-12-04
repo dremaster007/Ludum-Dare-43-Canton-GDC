@@ -7,12 +7,11 @@
 custom_solver_bias = 0.0
 extents = Vector2( 32, 22 )
 
-[node name="TilesetMaker" type="Node"]
+[node name="TilesetMaker" type="Node" index="0"]
 
 [node name="Blank_Dark" type="Sprite" parent="." index="0"]
 
 editor/display_folded = true
-visible = false
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 689.25, 2.24, 60, 61 )
@@ -39,7 +38,6 @@ shape = SubResource( 1 )
 [node name="Blank_Light" type="Sprite" parent="." index="1"]
 
 editor/display_folded = true
-visible = false
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 768, 0, 64, 64 )
@@ -66,7 +64,6 @@ shape = SubResource( 1 )
 [node name="Foreground_Wall01" type="Sprite" parent="." index="2"]
 
 editor/display_folded = true
-visible = false
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 384, 0, 64, 64 )
@@ -92,7 +89,6 @@ shape = SubResource( 1 )
 [node name="Foreground_Wall02" type="Sprite" parent="." index="3"]
 
 editor/display_folded = true
-visible = false
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 448, 0, 64, 64 )
@@ -118,7 +114,6 @@ shape = SubResource( 1 )
 [node name="Foreground_Wall03" type="Sprite" parent="." index="4"]
 
 editor/display_folded = true
-visible = false
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 512, 0, 64, 64 )
@@ -144,7 +139,6 @@ shape = SubResource( 1 )
 [node name="Foreground_Wall04" type="Sprite" parent="." index="5"]
 
 editor/display_folded = true
-visible = false
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 576, 0, 64, 64 )
@@ -170,7 +164,6 @@ shape = SubResource( 1 )
 [node name="Foreground_Wall05" type="Sprite" parent="." index="6"]
 
 editor/display_folded = true
-visible = false
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 640, 0, 64, 64 )
@@ -196,7 +189,6 @@ shape = SubResource( 1 )
 [node name="Wall01" type="Sprite" parent="." index="7"]
 
 editor/display_folded = true
-visible = false
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 64, 0, 64, 64 )
@@ -221,7 +213,6 @@ shape = SubResource( 1 )
 [node name="Wall02" type="Sprite" parent="." index="8"]
 
 editor/display_folded = true
-visible = false
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 128, 0, 64, 64 )
@@ -247,7 +238,6 @@ shape = SubResource( 1 )
 [node name="Pillar01" type="Sprite" parent="." index="9"]
 
 editor/display_folded = true
-visible = false
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 320, 320, 64, 160 )
@@ -273,7 +263,6 @@ shape = SubResource( 1 )
 [node name="Long_Wall01" type="Sprite" parent="." index="10"]
 
 editor/display_folded = true
-visible = false
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 448, 384, 128, 64 )
@@ -300,7 +289,6 @@ shape = SubResource( 1 )
 [node name="Long_Wall02" type="Sprite" parent="." index="11"]
 
 editor/display_folded = true
-visible = false
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 448, 448, 128, 64 )
@@ -327,7 +315,6 @@ shape = SubResource( 1 )
 [node name="Left_Side_Wall01" type="Sprite" parent="." index="12"]
 
 editor/display_folded = true
-visible = false
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 384, 192, 64, 64 )
@@ -354,7 +341,6 @@ shape = SubResource( 1 )
 [node name="Left_Side_Wall02" type="Sprite" parent="." index="13"]
 
 editor/display_folded = true
-visible = false
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 448, 192, 64, 64 )
@@ -381,7 +367,6 @@ shape = SubResource( 1 )
 [node name="Right_Side_Wall01" type="Sprite" parent="." index="14"]
 
 editor/display_folded = true
-visible = false
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 512, 192, 64, 64 )
@@ -408,7 +393,6 @@ shape = SubResource( 1 )
 [node name="Corner_Wall01" type="Sprite" parent="." index="15"]
 
 editor/display_folded = true
-visible = false
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 640, 192, 64, 64 )
@@ -434,8 +418,6 @@ shape = SubResource( 1 )
 
 [node name="Corner_Wall02" type="Sprite" parent="." index="16"]
 
-editor/display_folded = true
-visible = false
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 704, 192, 64, 64 )

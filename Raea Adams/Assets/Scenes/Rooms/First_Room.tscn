@@ -7,7 +7,7 @@
 
 bake_interval = 5.0
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 468.501, 198.632, 0, 0, 0, 0, 480.744, 417.653, 0, 0, 0, 0, 736.495, 414.933, 0, 0, 0, 0, 620.863, 307.463, 0, 0, 0, 0, 520.195, 379.563, 0, 0, 0, 0, 528.357, 274.814, 0, 0, 0, 0, 570.529, 221.759, 0, 0, 0, 0, 664.395, 229.921, 0, 0, 0, 0, 701.125, 278.895, 0, 0, 0, 0, 706.567, 349.634, 0, 0, 0, 0, 714.729, 391.806, 0, 0, 0, 0, 642.629, 398.608, 0, 0, 0, 0, 544.682, 349.634, 0, 0, 0, 0, 558.286, 292.498 )
+"points": PoolVector2Array( 0, 0, 0, 0, 508.507, 268.354, 0, 0, 0, 0, 707.96, 268.354, 0, 0, 0, 0, 715.18, 348.677 )
 }
 
 [node name="Room" instance=ExtResource( 1 )]
@@ -18,7 +18,7 @@ curve = SubResource( 1 )
 
 [node name="SpawnLocation" parent="EnemySpawnArea" index="0"]
 
-position = Vector2( 468.501, 198.632 )
+position = Vector2( 508.507, 268.354 )
 
 [node name="Ground" parent="." index="2"]
 
@@ -39,6 +39,21 @@ tile_data = PoolIntArray( 458758, 16, 0, 458759, 2, 0, 458760, 2, 0, 458761, 2, 
 
 visible = true
 position = Vector2( 607.065, 233.324 )
+
+[node name="Member1" parent="." index="7"]
+
+position = Vector2( 669.167, 231.64 )
+party_member = 1
+
+[node name="Member2" parent="." index="8"]
+
+position = Vector2( 503.875, 208.593 )
+party_member = 2
+
+[node name="Member3" parent="." index="9"]
+
+position = Vector2( 720.632, 235.032 )
+party_member = 3
 
 [node name="Vignette" parent="." index="10"]
 

@@ -33,10 +33,10 @@ _bundled = {
 
 bake_interval = 5.0
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 820.727, 266.314, 0, 0, 0, 0, 814.079, 373.793, 0, 0, 0, 0, 707.708, 372.685 )
+"points": PoolVector2Array( 0, 0, 0, 0, 767.373, 279.567, 0, 0, 0, 0, 814.079, 373.793, 0, 0, 0, 0, 707.708, 372.685, 0, 0, 0, 0, 252.939, 80.9503, 0, 0, 0, 0, 252.939, 474.02, 0, 0, 0, 0, 791.353, 487.817, 0, 0, 0, 0, 368.815, 205.915, 0, 0, 0, 0, 389.264, 371.777, 0, 0, 0, 0, 752.797, 421.763, 0, 0, 0, 0, 593.751, 196.826 )
 }
 
-[node name="Room" type="Node" index="0"]
+[node name="Room" type="Node"]
 
 script = ExtResource( 1 )
 enemy_scene = ExtResource( 2 )
@@ -76,7 +76,7 @@ curve = SubResource( 3 )
 
 [node name="SpawnLocation" type="PathFollow2D" parent="EnemySpawnArea" index="0"]
 
-position = Vector2( 820.727, 266.314 )
+position = Vector2( 767.373, 279.567 )
 rotation = -0.719981
 scale = Vector2( 0.143579, 0.143579 )
 offset = 0.0
@@ -159,12 +159,11 @@ __meta__ = {
 
 [node name="HUD" parent="." index="5" instance=ExtResource( 5 )]
 
-[node name="Player" parent="." index="6" groups=[
-"player",
-] instance=ExtResource( 6 )]
+[node name="Player" parent="." index="6" instance=ExtResource( 6 )]
 
 visible = false
 position = Vector2( 572.688, 286.117 )
+party_member = 1
 classes = {
 "Healer": false,
 "Knight": false,
@@ -175,6 +174,7 @@ classes = {
 [node name="Member1" parent="." index="7" instance=ExtResource( 7 )]
 
 position = Vector2( 641.959, 321.425 )
+party_member = 2
 classes = {
 "Healer": false,
 "Knight": true,
@@ -185,6 +185,7 @@ classes = {
 [node name="Member2" parent="." index="8" instance=ExtResource( 7 )]
 
 position = Vector2( 453.541, 238.521 )
+party_member = 3
 classes = {
 "Healer": false,
 "Knight": true,

@@ -1,6 +1,6 @@
 [gd_scene load_steps=22 format=2]
 
-[ext_resource path="res://Assets/Scenes/TitleScene.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Scripts/TitleScene.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Graphics/Environment/NightBackground.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Graphics/Environment/Vignette.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Graphics/Environment/Campfire_spritesheet.png" type="Texture" id=4]

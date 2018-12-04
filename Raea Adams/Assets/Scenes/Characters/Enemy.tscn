@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Assets/Scenes/Characters/Character_Core.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Assets/Audio/SFX/Enemy/Goblin/Goblin_3.ogg" type="AudioStream" id=2]
+[ext_resource path="res://Assets/Graphics/Enemies/Goblin/Goblin_spritesheet.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Audio/SFX/Enemy/Goblin/Goblin_3.ogg" type="AudioStream" id=3]
 
 [node name="Enemy" groups=[
 "enemy",
@@ -16,12 +17,15 @@ distance_buffer = 5
 
 [node name="HitBox" parent="." index="1"]
 
-position = Vector2( 3.97371, 0.611338 )
+editor/display_folded = false
+position = Vector2( 4.68558, 4.55246 )
+scale = Vector2( 0.363109, 0.690112 )
+collision_layer = 2
 collision_mask = 80
 
 [node name="CollisionShape2D2" parent="HitBox" index="0"]
 
-position = Vector2( 2.04477, 0.137065 )
+position = Vector2( 6.8444, -4.55291 )
 
 [node name="AttackBox" parent="." index="2" groups=[
 "enemy",
@@ -41,12 +45,11 @@ position = Vector2( 8.2531, -3.57628e-007 )
 
 [node name="Sprite" parent="." index="4"]
 
-texture = null
+texture = ExtResource( 2 )
 vframes = 3
 
 [node name="Weapons" parent="." index="5"]
 
-editor/display_folded = false
 visible = false
 
 [node name="dagger_front" parent="Weapons" index="1"]
@@ -63,7 +66,7 @@ editor/display_folded = false
 
 [node name="EnemyScreech" type="AudioStreamPlayer2D" parent="." index="12"]
 
-stream = ExtResource( 2 )
+stream = ExtResource( 3 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = true
