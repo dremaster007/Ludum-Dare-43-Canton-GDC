@@ -1,0 +1,75 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Scenes/Characters/Character_Core.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Audio/SFX/Enemy/Goblin/Goblin_3.ogg" type="AudioStream" id=2]
+
+[node name="Enemy" groups=[
+"enemy",
+] instance=ExtResource( 1 )]
+
+position = Vector2( -9.1655, 1.13448 )
+scale = Vector2( 1.29948, 1.29948 )
+collision_layer = 2
+collision_mask = 55
+character_type = 0
+distance_buffer = 5
+
+[node name="HitBox" parent="." index="1"]
+
+position = Vector2( 3.97371, 0.611338 )
+collision_mask = 80
+
+[node name="CollisionShape2D2" parent="HitBox" index="0"]
+
+position = Vector2( 2.04477, 0.137065 )
+
+[node name="AttackBox" parent="." index="2" groups=[
+"enemy",
+]]
+
+editor/display_folded = false
+
+[node name="CollisionShape2D" parent="AttackBox" index="0"]
+
+position = Vector2( 3.22387, 7.84232 )
+scale = Vector2( 0.761428, 0.589021 )
+
+[node name="EnemyDetection" parent="." index="3"]
+
+visible = false
+position = Vector2( 8.2531, -3.57628e-007 )
+
+[node name="Sprite" parent="." index="4"]
+
+texture = null
+vframes = 3
+
+[node name="Weapons" parent="." index="5"]
+
+editor/display_folded = false
+visible = false
+
+[node name="dagger_front" parent="Weapons" index="1"]
+
+editor/display_folded = false
+
+[node name="DaggerArea" parent="Weapons/dagger_front" index="0" groups=[
+"enemy",
+]]
+
+[node name="DaggerArea" parent="Weapons/dagger_back" index="0" groups=[
+"enemy",
+]]
+
+[node name="EnemyScreech" type="AudioStreamPlayer2D" parent="." index="12"]
+
+stream = ExtResource( 2 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = true
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
+
+

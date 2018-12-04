@@ -65,6 +65,12 @@ func hurt_tween():
 	$HurtTween.interpolate_property($Sprite, "rotation_degrees", $Sprite.rotation_degrees - 20, $Sprite.rotation_degrees, 0.3, Tween.TRANS_QUART, Tween.EASE_IN_OUT)
 	$HurtTween.interpolate_property($Sprite, "modulate", Color(200,0,0,1), Color(1,1,1,1), 0.3, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
 	$HurtTween.start()
+	
+func death_tween():
+	$DeathFX.restart()
+	$DeathTween.interpolate_property($DeathFX, "amount", $DeathFX.amount + 1000, $DeathFX.amount, 1, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
+	$DeathTween.interpolate_property($Sprite, "modulate", Color(1,1,1,1), Color(1,1,1,0), 0.8, Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
+	$DeathTween.start()
 
 func change_state(new_state, new_damage):
 	state = new_state
@@ -93,7 +99,8 @@ func change_state(new_state, new_damage):
 				$BeforeHurt.start()
 				print("HURT")
 		DEAD:
-			pass
+			death_tween()
+			
 
 func character_setup():
 	if character_type == 1:

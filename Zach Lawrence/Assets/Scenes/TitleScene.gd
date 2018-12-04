@@ -12,9 +12,15 @@ var char1
 var char2
 var char3
 
+var protag
+var npc1
+var npc2
+var npc3
+
 var player_chosen
 
 var ButtonNameArray = []
+var CharacterNames = []
 
 func _ready():
 	ButtonNameArray = ["HubertButton", "RaeaButton", 
@@ -23,6 +29,7 @@ func _ready():
 
 func _process(delta):
 	randomize()
+	#print (protag)
 	if players_choice != null and can_scale:
 		get_node(players_choice).rect_scale *= 1.4
 		if old_choice != null:
@@ -37,48 +44,56 @@ func _process(delta):
 
 func _on_HubertButton_pressed():
 	players_choice = "HubertButton"
+	protag = "Hubert"
 	players_choice_number = 0
 	can_scale = true
 	scaling_check()
 
 func _on_RaeaButton_pressed():
 	players_choice = "RaeaButton"
+	protag = "Raea"
 	players_choice_number = 1
 	can_scale = true
 	scaling_check()
 
 func _on_LawrenceButton_pressed():
 	players_choice = "LawrenceButton"
+	protag = "Lawrence"
 	players_choice_number = 2
 	can_scale = true
 	scaling_check()
 
 func _on_EmilyButton_pressed():
 	players_choice = "EmilyButton"
+	protag = "Emily"
 	players_choice_number = 3
 	can_scale = true
 	scaling_check()
 
 func _on_ZachButton_pressed():
 	players_choice = "ZachButton"
+	protag = "Zach"
 	players_choice_number = 4
 	can_scale = true
 	scaling_check()
 
 func _on_ChrisButton_pressed():
 	players_choice = "ChrisButton"
+	protag = "Chris"
 	players_choice_number = 5
 	can_scale = true
 	scaling_check()
 
 func _on_PeteButton_pressed():
 	players_choice = "PeteButton"
+	protag = "Pete"
 	players_choice_number = 6
 	can_scale = true
 	scaling_check()
 
 func _on_ShiraButton_pressed():
 	players_choice = "ShiraButton"
+	protag = "Shira"
 	players_choice_number = 7
 	can_scale = true
 	scaling_check()
@@ -108,8 +123,6 @@ func move_character(character):
 			get_node(character).rect_position.x += 5
 			if get_node(character).rect_position.x >= 800 and counter < 3:
 				npc_chosen = randi() % ButtonNameArray.size()
-				if ButtonNameArray[npc_chosen] == "skip":
-					npc_chosen = randi() % ButtonNameArray.size()
 				counter += 1
 				if char1 == null:
 					char1 = ButtonNameArray[npc_chosen]
@@ -122,3 +135,15 @@ func move_character(character):
 				replaceArrayValue(npc_chosen)
 	else:
 		pass
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
