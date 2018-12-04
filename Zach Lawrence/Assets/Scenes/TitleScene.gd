@@ -1,26 +1,22 @@
 extends Node
 
-var players_choice
-var players_choice_number
-var can_scale = false
-var old_choice
+var players_choice # This is the string that has the main player
+var players_choice_number # This is used to find the players_choice in the Array
+var can_scale = false # Stops the button from OMEGA scaling
+var old_choice # The previous choice (only used for button animation)
 
-var counter = 0
-var npc_chosen
+var counter = 0 # allows the selection of 3 characters
+var npc_chosen # random number that chooses from the array a random character
 
-var char1
-var char2
-var char3
+var char1 # name of first character
+var char2 # name of second character
+var char3 # name of third character
 
-var protag
-var npc1
-var npc2
-var npc3
+var player_chosen # variable that's true when you press the button
 
-var player_chosen
+var ButtonNameArray = [] # Array of character names
 
-var ButtonNameArray = []
-var CharacterNames = []
+# ready gets the ButtonNameArray ready
 
 func _ready():
 	ButtonNameArray = ["HubertButton", "RaeaButton", 
@@ -28,8 +24,7 @@ func _ready():
 	"ChrisButton", "PeteButton", "ShiraButton"]
 
 func _process(delta):
-	randomize()
-	#print (protag)
+	randomize() # randomize's seed
 	if players_choice != null and can_scale:
 		get_node(players_choice).rect_scale *= 1.4
 		if old_choice != null:
@@ -44,56 +39,48 @@ func _process(delta):
 
 func _on_HubertButton_pressed():
 	players_choice = "HubertButton"
-	protag = "Hubert"
 	players_choice_number = 0
 	can_scale = true
 	scaling_check()
 
 func _on_RaeaButton_pressed():
 	players_choice = "RaeaButton"
-	protag = "Raea"
 	players_choice_number = 1
 	can_scale = true
 	scaling_check()
 
 func _on_LawrenceButton_pressed():
 	players_choice = "LawrenceButton"
-	protag = "Lawrence"
 	players_choice_number = 2
 	can_scale = true
 	scaling_check()
 
 func _on_EmilyButton_pressed():
 	players_choice = "EmilyButton"
-	protag = "Emily"
 	players_choice_number = 3
 	can_scale = true
 	scaling_check()
 
 func _on_ZachButton_pressed():
 	players_choice = "ZachButton"
-	protag = "Zach"
 	players_choice_number = 4
 	can_scale = true
 	scaling_check()
 
 func _on_ChrisButton_pressed():
 	players_choice = "ChrisButton"
-	protag = "Chris"
 	players_choice_number = 5
 	can_scale = true
 	scaling_check()
 
 func _on_PeteButton_pressed():
 	players_choice = "PeteButton"
-	protag = "Pete"
 	players_choice_number = 6
 	can_scale = true
 	scaling_check()
 
 func _on_ShiraButton_pressed():
 	players_choice = "ShiraButton"
-	protag = "Shira"
 	players_choice_number = 7
 	can_scale = true
 	scaling_check()
@@ -111,8 +98,7 @@ func _on_StartButton_pressed():
 	$StartButton.disabled = true
 
 func replaceArrayValue(array_val_chosen):
-	#ButtonNameArray.insert(array_val_chosen, "skip")
-	ButtonNameArray.erase(ButtonNameArray[array_val_chosen]) # + 1])
+	ButtonNameArray.erase(ButtonNameArray[array_val_chosen])
 	
 func move_character(character):
 	#print(character)
@@ -135,15 +121,6 @@ func move_character(character):
 				replaceArrayValue(npc_chosen)
 	else:
 		pass
-	
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+func _on_GameStartTimer_timeout():
+	print ("gameHasStarted")
