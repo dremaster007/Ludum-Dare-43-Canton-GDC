@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Assets/Scenes/TitleScene.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Graphics/Environment/NightBackground.png" type="Texture" id=2]
@@ -27,6 +27,85 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
 }
+
+[sub_resource type="Gradient" id=14]
+
+offsets = PoolRealArray( 0.147929, 0.674556, 0.988166 )
+colors = PoolColorArray( 0.996094, 0.818263, 0.540848, 1, 0.988281, 0.3035, 0.0656281, 0.839765, 0.429688, 0.374298, 0.374298, 0.734784 )
+
+[sub_resource type="GradientTexture" id=15]
+
+flags = 4
+gradient = SubResource( 14 )
+width = 2048
+
+[sub_resource type="Curve" id=16]
+
+min_value = -200.0
+max_value = 200.0
+bake_resolution = 100
+_data = [ Vector2( 0, 17.1875 ), 0.0, 998.63, 0, 0, Vector2( 0.24955, 17.1875 ), 1517.31, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=17]
+
+flags = 4
+width = 2048
+curve = SubResource( 16 )
+
+[sub_resource type="Curve" id=18]
+
+min_value = 0.0
+max_value = 1.0
+bake_resolution = 100
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=19]
+
+flags = 4
+width = 2048
+curve = SubResource( 18 )
+
+[sub_resource type="ParticlesMaterial" id=20]
+
+render_priority = 0
+trail_divisor = 5
+emission_shape = 1
+emission_sphere_radius = 10.0
+flag_align_y = false
+flag_rotate_y = false
+flag_disable_z = true
+spread = 45.0
+flatness = 0.0
+gravity = Vector3( 0, -10, 0 )
+initial_velocity = 1.0
+initial_velocity_random = 0.0
+angular_velocity = 6.0
+angular_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 3.0
+linear_accel_random = 1.0
+linear_accel_curve = SubResource( 17 )
+radial_accel = 0.0
+radial_accel_random = 0.0
+tangential_accel = 0.0
+tangential_accel_random = 0.0
+damping = 0.0
+damping_random = 0.0
+angle = 0.0
+angle_random = 0.0
+scale = 3.0
+scale_random = 0.0
+scale_curve = SubResource( 19 )
+color_ramp = SubResource( 15 )
+hue_variation = 0.0
+hue_variation_random = 0.0
+anim_speed = 0.0
+anim_speed_random = 0.0
+anim_offset = 0.0
+anim_offset_random = 0.0
+anim_loop = false
+_sections_unfolded = [ "Angular Velocity", "Color", "Emission Shape", "Gravity", "Linear Accel", "Orbit Velocity", "Scale", "Spread", "Trail" ]
 
 [sub_resource type="DynamicFont" id=2]
 
@@ -194,7 +273,7 @@ use_filter = false
 font_data = ExtResource( 6 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="TitleScene" type="Node"]
+[node name="TitleScene" type="Node" index="0"]
 
 script = ExtResource( 1 )
 
@@ -239,6 +318,29 @@ pitch_scale = 1.1
 autoplay = true
 mix_target = 0
 bus = "Master"
+
+[node name="Particles2D" type="Particles2D" parent="Campfire" index="2"]
+
+position = Vector2( 0, 9.75308 )
+emitting = true
+amount = 50
+lifetime = 5.0
+one_shot = false
+preprocess = 0.0
+speed_scale = 1.0
+explosiveness = 0.0
+randomness = 1.0
+fixed_fps = 0
+fract_delta = true
+visibility_rect = Rect2( -100, -100, 200, 200 )
+local_coords = true
+draw_order = 0
+process_material = SubResource( 20 )
+texture = null
+normal_map = null
+h_frames = 1
+v_frames = 1
+_sections_unfolded = [ "Process Material", "Time" ]
 
 [node name="StartButton" type="Button" parent="." index="3"]
 
