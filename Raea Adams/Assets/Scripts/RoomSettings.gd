@@ -16,6 +16,16 @@ var room_settings = {"Easy": {"Weapons": [], "Items": []},
 var rand_num = 0 #This will be the variable I use to determine randomized events
 
 func _ready():
+	if game_info.room_count == 5:
+		game_info.current_difficulty += 1
+		game_info.room_count = 0
+	game_info.room_count += 1
+	if game_info.member1_dead:
+		$Member1.queue_free()
+	if game_info.member2_dead:
+		$Member2.queue_free()
+	if game_info.member3_dead:
+		$Member3.queue_free()
 	room_setup() #Sets up the room enemies and pickups
 
 func room_setup():

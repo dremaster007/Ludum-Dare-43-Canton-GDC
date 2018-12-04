@@ -19,10 +19,11 @@ onready var hud = get_node("/root/Room/HUD")
 onready var current_target = player
 
 var enemy
-
+var ready_to_play = false
 
 func _ready():
 	character_setup()
+	ready_to_play = true
 	
 	if character_type == 0:
 		self.connect("info_transfer", $AttackBox, "info_transfer")
@@ -34,13 +35,8 @@ func _ready():
 		if character_type == 2:
 			self.connect("hud_update", hud, "update_HUD")
 	emit_signal("info_transfer", stats.Attack, character_type)
-	if character_type == 1:
-		#$Sprite.texture = load("res://Assets/Graphics/player-run-1.png")
-		pass
-	if character_type == 2:
-		#$Sprite.texture = load("res://Assets/Graphics/player-run-1.png")
-		pass
 	set_physics_process(true)
+	ready_to_play = true
 
 func _physics_process(delta):
 	if character_ready and character_type == 2:
@@ -52,9 +48,10 @@ func _physics_process(delta):
 	#If the character is within a danger zone they will get hurt
 	if get_hurt:
 		change_state(HURT,damage_taken)
+		hurt_tween()
 	
 	#If the character health is below 0 or equal to it they'll die
-	if stats.Current_Health <= 0:
+	if stats.Current_Health <= 0 and ready_to_play:
 		dead = true
 	
 	if character_type == 0:
@@ -87,7 +84,7 @@ func _physics_process(delta):
 		distance = sqrt(direction.x * direction.x + direction.y * direction.y)  # calculates how far away player is
 		if distance >= distance_buffer:  # determines if npc should move
 			distance = sqrt(direction.x * direction.x + direction.y * direction.y)
-		if possible_actions.Attack:
+		if possible_actions.Attack and is_colliding:
 			will_attack()
 		
 		#This sets the facing for the AI
@@ -182,6 +179,7 @@ func _on_body_entered(body):
 		if character_type == 1: #If the NPC is a party member
 			current_target = body #The enemy body is the new target 
 			possible_actions.Attack = true #The party member can now attack
+			is_colliding = true
 
 #Handles what happens when the NPC leaves a body
 func _on_body_exited(body):
@@ -192,23 +190,23 @@ func _on_body_exited(body):
 	if body.is_in_group("enemy"): #Checks to see if the body is an enemy
 		if character_type == 1: #Checks to see if the NPC is a party member
 			possible_actions.Attack = false
+			is_colliding = false
 			current_target = player #The NPC will go back to following the player
 
 func _on_HitBox_area_entered(area):
 	if area.is_in_group("damage"):
 		if area.is_in_group("party"):
 			if character_type != 2:
-					damage_taken = area.damage
-					change_state(HURT,damage_taken)
-					#print("Line 203")
-					#print(area.damage)
-					get_hurt = true
+				damage_taken = area.damage
+				change_state(HURT,damage_taken)
+				hurt_tween()
+				get_hurt = true
 
 		if area.is_in_group("enemy"):
 			if character_type != 0:
 				damage_taken = area.damage
-				#print("209 Line HURT")
 				change_state(HURT, damage_taken)
+				hurt_tween()
 				get_hurt = true
 
 func _on_BeforeHurt_timeout():
@@ -218,15 +216,13 @@ func _on_HitBox_body_entered(body):
 	if body.is_in_group("damage") and body.is_in_group("party"):
 		if character_type == 0: 
 			damage_taken = body.damage
-			print("Line 220 HURT")
 			change_state(HURT, damage_taken)
+			hurt_tween()
 
 #Handles what happens once the attack cools down
 func _on_AttackCooldown_timeout():
-	if character_type == 2:
-		possible_actions.Attack = true #Sets attack to possible for an action
+	possible_actions.Attack = true #Sets attack to possible for an action
 	if classes.Ranger:
-		print("Ranger")
 		$Weapons/bow/arrow.show()
 	mouse_works = true
 
