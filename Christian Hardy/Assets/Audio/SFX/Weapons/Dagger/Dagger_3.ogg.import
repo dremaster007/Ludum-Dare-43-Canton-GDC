@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Dagger_3.ogg-689803163041d82aa69344f2df47373f.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/Weapons/Dagger/Dagger_3.ogg"
+dest_files=[ "res://.import/Dagger_3.ogg-689803163041d82aa69344f2df47373f.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

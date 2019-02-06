@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Falling.ogg-5885f360688466d0f9cbc46eaba22fc6.oggstr"
+
+[deps]
+
+source_file="res://Assets/Audio/Music/Falling.ogg"
+dest_files=[ "res://.import/Falling.ogg-5885f360688466d0f9cbc46eaba22fc6.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

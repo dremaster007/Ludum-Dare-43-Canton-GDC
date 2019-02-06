@@ -1,0 +1,109 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Assets/Scripts/Room.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Scenes/npc_core.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Scenes/Pickup.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Scenes/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Scenes/HUD.tscn" type="PackedScene" id=5]
+
+[sub_resource type="Curve2D" id=1]
+
+bake_interval = 5.0
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 389.34, 166.2, 0, 0, 0, 0, 389, 163, 0, 0, 0, 0, 727.201, 103.275, 0, 0, 0, 0, 734.545, 255.556, 0, 0, 0, 0, 551.334, 188.934, 0, 0, 0, 0, 667.923, 150.071, 0, 0, 0, 0, 355.168, 224.096, 0, 0, 0, 0, 432.895, 336.983, 0, 0, 0, 0, 630.911, 298.12, 0, 0, 0, 0, 758.603, 420.261, 0, 0, 0, 0, 497.666, 442.469, 0, 0, 0, 0, 294.098, 388.801, 0, 0, 0, 0, 260.787, 201.888, 0, 0, 0, 0, 303.351, 144.519, 0, 0, 0, 0, 408.836, 76.046, 0, 0, 0, 0, 456.953, 100.104, 0, 0, 0, 0, 532.828, 250.004, 0, 0, 0, 0, 584.645, 362.892, 0, 0, 0, 0, 351.467, 327.73, 0, 0, 0, 0, 701.234, 303.672, 0, 0, 0, 0, 332.961, 192.635, 0, 0, 0, 0, 405.135, 163.025, 0, 0, 0, 0, 390.33, 163.025, 0, 0, 0, 0, 389.34, 166.2 )
+}
+
+[sub_resource type="CircleShape2D" id=2]
+
+custom_solver_bias = 0.0
+radius = 36.1653
+
+[node name="Room" type="Node" index="0"]
+
+script = ExtResource( 1 )
+enemy_scene = ExtResource( 2 )
+item_scene = ExtResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="." index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 209.0
+margin_top = 50.0
+margin_right = 813.0
+margin_bottom = 504.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 0.214844, 0.214844, 0.214844, 1 )
+
+[node name="EnemySpawnArea" type="Path2D" parent="." index="1"]
+
+self_modulate = Color( 0.5, 0.6, 1, 0.7 )
+position = Vector2( -1.36038, 1.36035 )
+curve = SubResource( 1 )
+
+[node name="SpawnLocation" type="PathFollow2D" parent="EnemySpawnArea" index="0"]
+
+position = Vector2( 389.34, 166.2 )
+rotation = -0.719981
+scale = Vector2( 0.143579, 0.143579 )
+offset = 0.0
+h_offset = 0.0
+v_offset = 0.0
+rotate = false
+cubic_interp = true
+loop = true
+lookahead = 4.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemySpawnArea/SpawnLocation" index="0"]
+
+shape = SubResource( 2 )
+
+[node name="Player" parent="." index="2" groups=[
+"player",
+"party",
+] instance=ExtResource( 4 )]
+
+position = Vector2( 510.771, 266.489 )
+
+[node name="NPC_Core2" parent="." index="3" groups=[
+"party",
+] instance=ExtResource( 2 )]
+
+position = Vector2( 664.377, 256.318 )
+npc_type = 1
+speed = 50
+distance_buffer = 10
+
+[node name="NPC_Core3" parent="." index="4" groups=[
+"party",
+] instance=ExtResource( 2 )]
+
+visible = false
+position = Vector2( 541.685, 179.068 )
+npc_type = 1
+speed = 50
+distance_buffer = 10
+
+[node name="NPC_Core4" parent="." index="5" groups=[
+"party",
+] instance=ExtResource( 2 )]
+
+position = Vector2( 571.222, 335.841 )
+speed = 50
+distance_buffer = 10
+
+[node name="HUD" parent="." index="6" instance=ExtResource( 5 )]
+
+Durability = 100
+Mana = 100
+Health = 100
+ItemCount = 0
+
+
