@@ -38,7 +38,7 @@ func _ready():
 
 # this funtion will kill a given play that you pass into the funtion 
 #if you put this when a player dyes then you will make 
-func choice_event(player, game_info): #pass int he player
+func choice_event(player): #pass int he player
 	last_camera_position = $Camera2D.position
 	dead_player = player
 	#cammera zoom	
@@ -51,15 +51,21 @@ func choice_event(player, game_info): #pass int he player
 	
 	
 
-func end_choive_evnet():
+func end_choice_event():
 	$Choice_HUD.hide()
-	$Camera
+	$Camera2D.zoom /= 2 
+	$Camera2D.position = last_camera_position # brings it back to the original
+	
 func kill_player():
 	dead_player.queue_free()
+	end_choice_evet()
 	
 func save_player():
 	game_info.Health /= 2
-	hud.update_healt(game_info.Health)
+	$HUD.update_health(game_info.Health)
+	end_choice_event()
+	
+
 
 func room_setup():
 	randomize() 
