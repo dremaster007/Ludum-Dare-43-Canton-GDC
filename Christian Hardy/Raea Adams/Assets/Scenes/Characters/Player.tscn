@@ -1,0 +1,99 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Scenes/Characters/Character_Core.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Audio/SFX/Player/Male_hurt/Male_hurt_5.ogg" type="AudioStream" id=2]
+
+[node name="Player" groups=[
+"player",
+"party",
+] instance=ExtResource( 1 )]
+
+collision_layer = 1
+collision_mask = 14
+speed = 100
+distance_buffer = 10
+
+[node name="HitBox" parent="." index="1" groups=[
+"player",
+]]
+
+collision_mask = 80
+
+[node name="AttackBox" parent="." index="2" groups=[
+"party",
+]]
+
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" parent="AttackBox" index="0"]
+
+disabled = true
+
+[node name="EnemyDetection" parent="." index="3" groups=[
+"player",
+]]
+
+[node name="Sprite" parent="." index="4"]
+
+position = Vector2( 0.566565, 0 )
+
+[node name="sword" parent="Weapons" index="0"]
+
+editor/display_folded = false
+visible = false
+position = Vector2( -4.77084, 8.23779 )
+rotation = -0.927349
+flip_h = true
+
+[node name="Particles2D" parent="Weapons/sword" index="0"]
+
+visible = false
+position = Vector2( 0.516708, -24.1804 )
+scale = Vector2( 0.137138, 0.195272 )
+
+[node name="SwordArea" parent="Weapons/sword" index="1" groups=[
+"party",
+]]
+
+editor/display_folded = true
+visible = false
+position = Vector2( 8.16495, -19.4616 )
+monitoring = false
+
+[node name="CollisionShape2D" parent="Weapons/sword/SwordArea" index="0"]
+
+disabled = true
+
+[node name="dagger_front" parent="Weapons" index="1"]
+
+visible = false
+
+[node name="DaggerArea" parent="Weapons/dagger_front" index="0" groups=[
+"party",
+]]
+
+visible = false
+monitoring = false
+
+[node name="CollisionShape2D" parent="Weapons/dagger_front/DaggerArea" index="0"]
+
+disabled = true
+
+[node name="dagger_back" parent="Weapons" index="2"]
+
+visible = false
+
+[node name="DaggerArea" parent="Weapons/dagger_back" index="0" groups=[
+"party",
+]]
+
+[node name="CollisionShape2D" parent="Weapons/dagger_back/DaggerArea" index="0"]
+
+disabled = true
+
+[node name="HitSFX" parent="." index="11"]
+
+stream = ExtResource( 2 )
+
+

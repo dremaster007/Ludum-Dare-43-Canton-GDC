@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/Scenes/Characters/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Scenes/HUD.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Scenes/Characters/Enemy.tscn" type="PackedScene" id=3]
+
+[node name="Room" type="Node"]
+
+[node name="ColorRect" type="ColorRect" parent="." index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 348.0
+margin_top = 130.0
+margin_right = 758.0
+margin_bottom = 440.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 1, 1, 1, 1 )
+
+[node name="Player" parent="." index="1" instance=ExtResource( 1 )]
+
+position = Vector2( 542.214, 294.091 )
+classes = {
+"Healer": false,
+"Knight": true,
+"Ranger": false,
+"Rogue": false
+}
+
+[node name="HUD" parent="." index="2" instance=ExtResource( 2 )]
+
+[node name="Enemy" parent="." index="3" instance=ExtResource( 3 )]
+
+position = Vector2( 440.411, 199.181 )
+scale = Vector2( 1.56314, 1.56314 )
+move_speed = 5
+classes = {
+"Healer": false,
+"Knight": true,
+"Ranger": false,
+"Rogue": false
+}
+speed = 5
+distance_buffer = 10
+
+
